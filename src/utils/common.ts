@@ -1,13 +1,13 @@
 /*
  * @Author: codingfly
- * @Description: 阿里工具类
+ * @Description: api工具类
  * @Date: 2020-07-22 16:37:08
- * @LastEditTime: 2020-08-13 10:39:48
- * @FilePath: \templates-ts\src\utils\common.ts
+ * @LastEditTime: 2020-08-13 19:48:13
+ * @FilePath: \remax-templates\src\utils\common.ts
  */
 import { request, showToast, showModal, showLoading, hideLoading, setStorageSync, getStorageSync, clearStorageSync, redirectTo, navigateTo } from 'remax/wechat';
 export function interfaceUrl() {
-    return 'https://erp.ycome.com'
+    return 'https://easy-mock.com/mock/5f351b9a12264d21462acebf/mall/api'
 }
 export function toast(content: string, success?: any, duration?: any) {
     showToast({
@@ -38,8 +38,7 @@ export function setUserInfo(mobile: string, token: any) {
     setStorageSync("mobile", storageMobile)
 }
 export function getToken() {
-    const storageToken = JSON.parse(getStorageSync("token"))
-    return storageToken
+    return getStorageSync("token")
 }
 export function isLogin() {
     return getStorageSync("mobile") ? true : false
@@ -55,7 +54,7 @@ export function href(url: string, isVerify?: boolean) {
         });
     }
 }
-export function ajax(url: string, method: any, postData: any, isDelay?: boolean, isForm?: boolean, hideLoad?: boolean) {
+export function ajax(url: string, method: any, postData: any, isDelay: boolean = false, isForm: boolean = true, hideLoad: boolean = false) {
     //接口请求
     let loadding: boolean = false;
     let carfun: any = null;

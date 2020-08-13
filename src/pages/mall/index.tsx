@@ -11,86 +11,32 @@ import GroupTitle from '@/components/group_title/index';
 import GoodsModel from '@/components/goods_model/index';
 import CategoryModel from '@/components/category_model/index';
 import page_path from '@/utils/page_path';
+
+import { getBanners, getCategorys, getProducts } from '@/api/index'
+
 export default () => {
   const [isLoading, setLoading] = useState(true)
-  const [banners] = useState([
-    'https://www.thorui.cn/h5/static/images/mall/banner/1.jpg',
-    'https://www.thorui.cn/h5/static/images/mall/banner/2.jpg',
-    'https://www.thorui.cn/h5/static/images/mall/banner/3.jpg',
-    'https://www.thorui.cn/h5/static/images/mall/banner/4.jpg',
-  ])
-  const [grid] = useState([
-    {
-      image: 'https://www.thorui.cn/h5/static/images/mall/category/1.jpg',
-      title: '短袖T恤',
-    },
-    {
-      image: 'https://www.thorui.cn/h5/static/images/mall/category/1.jpg',
-      title: '短袖T恤',
-    },
-    {
-      image: 'https://www.thorui.cn/h5/static/images/mall/category/1.jpg',
-      title: '短袖T恤',
-    },
-    {
-      image: 'https://www.thorui.cn/h5/static/images/mall/category/1.jpg',
-      title: '短袖T恤',
-    },
-    {
-      image: 'https://www.thorui.cn/h5/static/images/mall/category/1.jpg',
-      title: '短袖T恤',
-    },
-    {
-      image: 'https://www.thorui.cn/h5/static/images/mall/category/1.jpg',
-      title: '短袖T恤',
-    },
-  ])
-  const [items] = useState([
-    {
-      images: 'https://www.thorui.cn/h5/static/images/mall/product/2.jpg',
-      title: '德国DMK进口牛奶  欧德堡（Oldenburger）超高温处理全脂纯牛奶1L*12盒',
-      newPrice: '11',
-      originalPrice: '79',
-    },
-    {
-      images: 'https://www.thorui.cn/h5/static/images/mall/product/2.jpg',
-      title: '德国DMK进口牛奶  欧德堡（Oldenburger）超高温处理全脂纯牛奶1L*12盒',
-      newPrice: '22',
-      originalPrice: '79',
-    },
-    {
-      images: 'https://www.thorui.cn/h5/static/images/mall/product/2.jpg',
-      title: '德国DMK进口牛奶  欧德堡（Oldenburger）超高温处理全脂纯牛奶1L*12盒',
-      newPrice: '33',
-      originalPrice: '79',
-    },
-    {
-      images: 'https://www.thorui.cn/h5/static/images/mall/product/2.jpg',
-      title: '德国DMK进口牛奶  欧德堡（Oldenburger）超高温处理全脂纯牛奶1L*12盒',
-      newPrice: '44',
-      originalPrice: '79',
-    },
-    {
-      images: 'https://www.thorui.cn/h5/static/images/mall/product/2.jpg',
-      title: '德国DMK进口牛奶  欧德堡（Oldenburger）超高温处理全脂纯牛奶1L*12盒',
-      newPrice: '55',
-      originalPrice: '79',
-    }
-  ])
+  const [banners, setBanners] = useState([])
+  const [ategorys, setAtegorys] = useState<any[]>([])
+  const [items, setItems] = useState<any[]>([])
   useEffect(() => {
-    const setFun = setTimeout(() => {
-      setLoading(false)
-    }, 1500)
-    return () => {
-      setFun
-    }
+    init()
   }, [])
-  const renderGridItem = (items: any, index?: number) => (
-    <View className="text-center" >
-      <Image src={items.image} mode="widthFix" />
-      <View>{items.title}</View>
-    </View>
-  );
+  const init = async () => {
+    const bannerResult: any = await getBanners()
+    const categoryResult: any = await getCategorys()
+    const productResult: any = await getProducts({})
+    if (bannerResult.status === 200) {
+      setBanners(bannerResult.data)
+    }
+    if (categoryResult.status === 200) {
+      setAtegorys(categoryResult.data)
+    }
+    if (productResult.status === 200) {
+      setItems(productResult.data)
+    }
+    setLoading(false)
+  }
   return (
     <View className="app">
       <View className="padding-bottom-sm">
@@ -108,7 +54,7 @@ export default () => {
 
         {/* 分类导航 */}
         <View >
-          <CategoryModel items={grid} detail={() => console.log(grid)} />
+          <CategoryModel items={ategorys} detail={() => console.log(ategorys)} />
         </View>
         {/* 分类导航 结束 */}
 

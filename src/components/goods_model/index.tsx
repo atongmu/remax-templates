@@ -7,7 +7,7 @@ import './index.less'
 export interface Props {
     detail: () => void;
     item: {
-        images: string,
+        image: string,
         title: string,
         newPrice: string,
         originalPrice: string,
@@ -20,7 +20,7 @@ const GoodsModel = (props: Props) => {
     return (
         <View className="goods-model" onClick={detail}>
             <View className="head">
-                <Image className="image" src={item.images} mode="widthFix" />
+                <Image className="image" src={item.image} mode="widthFix" />
             </View>
             <View className="content">
                 <View className="title">{item.title}</View>

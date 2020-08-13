@@ -5,7 +5,7 @@ import { View, Swiper, SwiperItem, Image } from 'remax/wechat';
 import './index.less'
 
 export interface Props {
-    items: Array<string>;
+    items: Array<any>;
     indicatorDots: boolean,
     autoplay: boolean,
     indicatorColor: string,
@@ -19,7 +19,7 @@ const SwiperModel = (props: Props) => {
             <Swiper autoplay={autoplay} indicatorDots={indicatorDots} indicatorActiveColor={indicatorActiveColor} indicatorColor={indicatorColor} circular={true}>
                 {items.map((item, index) => {
                     return (<SwiperItem key={index}>
-                        <Image src={item}  mode="widthFix"  />
+                        <Image src={item.image} style={{width:"100%",height:"100%"}}  mode="widthFix"  />
                     </SwiperItem>)
                 })}
 

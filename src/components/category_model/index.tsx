@@ -12,14 +12,14 @@ export interface Props {
 const CategoryModel = (props: Props) => {
     const { items, detail } = props
     const renderGridItem = (items: any, index?: number) => (
-        <View className="text-center" onClick={detail}>
+        <View className="text-center margin-bottom-sm" onClick={detail}>
             <Image className="category-image" src={items.image} mode="widthFix" />
             <View className="category-title">{items.title}</View>
         </View>
     );
     return (
         <View className="category-model">
-            <Grid data={items} columns={3}>
+            <Grid data={items} columns={4}>
                 {renderGridItem}
             </Grid>
         </View>
