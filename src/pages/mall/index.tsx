@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'remax/wechat';
+import { View, Image } from 'remax/wechat';
 import { Grid } from 'anna-remax-ui';
 
 import './index.less';
@@ -18,7 +18,32 @@ export default () => {
     'https://www.thorui.cn/h5/static/images/mall/banner/3.jpg',
     'https://www.thorui.cn/h5/static/images/mall/banner/4.jpg',
   ])
-  const [grid] = useState(['#FFDDDD', '#FFFFCC', '#FFDDDD', '#FFFFCC', '#FFDDDD', '#FFFFCC'])
+  const [grid] = useState([
+    {
+      image: 'https://www.thorui.cn/h5/static/images/mall/category/1.jpg',
+      title: '短袖T恤',
+    },
+    {
+      image: 'https://www.thorui.cn/h5/static/images/mall/category/1.jpg',
+      title: '短袖T恤',
+    },
+    {
+      image: 'https://www.thorui.cn/h5/static/images/mall/category/1.jpg',
+      title: '短袖T恤',
+    },
+    {
+      image: 'https://www.thorui.cn/h5/static/images/mall/category/1.jpg',
+      title: '短袖T恤',
+    },
+    {
+      image: 'https://www.thorui.cn/h5/static/images/mall/category/1.jpg',
+      title: '短袖T恤',
+    },
+    {
+      image: 'https://www.thorui.cn/h5/static/images/mall/category/1.jpg',
+      title: '短袖T恤',
+    },
+  ])
   const [items] = useState([
     {
       images: 'https://www.thorui.cn/h5/static/images/mall/product/2.jpg',
@@ -59,9 +84,10 @@ export default () => {
       setFun
     }
   }, [])
-  const renderGridItem = (col: any, index?: number) => (
-    <View className="text-center" style={{ backgroundColor: col }}>
-      {index}
+  const renderGridItem = (items: any, index?: number) => (
+    <View className="text-center" >
+      <Image src={items.image} mode="widthFix" />
+      <View>{items.title}</View>
     </View>
   );
   return (
@@ -80,22 +106,24 @@ export default () => {
         {/* 轮播图 结束 */}
 
         {/* 分类导航 */}
-        <View className="bg-white">
-          <Grid data={grid} columns={4}>
+        <View className="bg-white padding-tb-sm">
+          <Grid data={grid} columns={3}>
             {renderGridItem}
           </Grid>
         </View>
         {/* 分类导航 结束 */}
 
         {/* 热门推荐 */}
-        <View className="bg-white">
-          <GroupTitle text="热门推荐" icon={true} />
+        <View>
+          <View className=" padding-tb">
+            <GroupTitle text="热门推荐" icon={false} />
+          </View>
           <View className="product-list">
             <View className="product-container">
               {items.map((item, index) => {
                 return (
                   ((index + 1) % 2 != 0) && (
-                    <GoodsModel key={index} item={item} />
+                    <GoodsModel key={index} item={item} detail={() => console.log(item.title)} />
                   )
                 )
               })}
@@ -104,7 +132,7 @@ export default () => {
               {items.map((item, index) => {
                 return (
                   ((index + 1) % 2 === 0) && (
-                    <GoodsModel key={index} item={item} />
+                    <GoodsModel key={index} item={item} detail={() => console.log(item.title)} />
                   )
                 )
               })}

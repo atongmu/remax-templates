@@ -5,6 +5,7 @@ import { View, Text, Image } from 'remax/wechat';
 import './index.less'
 
 export interface Props {
+    detail: () => void;
     item: {
         images: string,
         title: string,
@@ -14,18 +15,18 @@ export interface Props {
 }
 
 const GoodsModel = (props: Props) => {
-    const { item } = props
+    const { item, detail } = props
 
     return (
-        <View className="goods-model">
+        <View className="goods-model" onClick={detail}>
             <View className="head">
                 <Image className="image" src={item.images} mode="widthFix" />
             </View>
             <View className="content">
                 <View className="title">{item.title}</View>
-                <View className="price">
-                    <Text className="text-red text-price">{item.newPrice}</Text>
-                    <Text className="original">{item.originalPrice}</Text>
+                <View className="price margin-tb-sm">
+                    <Text className="text-red text-price text-lg">{item.newPrice}</Text>
+                    <Text className="original text-sm text-gray">{item.originalPrice}</Text>
                 </View>
             </View>
         </View>
