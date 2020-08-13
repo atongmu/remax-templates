@@ -9,6 +9,7 @@ import SwiperModel from '@/components/swiper_model/index';
 import PageLoading from '@/components/page_loading';
 import GroupTitle from '@/components/group_title/index';
 import GoodsModel from '@/components/goods_model/index';
+import CategoryModel from '@/components/category_model/index';
 import page_path from '@/utils/page_path';
 export default () => {
   const [isLoading, setLoading] = useState(true)
@@ -106,10 +107,8 @@ export default () => {
         {/* 轮播图 结束 */}
 
         {/* 分类导航 */}
-        <View className="bg-white padding-tb-sm">
-          <Grid data={grid} columns={3}>
-            {renderGridItem}
-          </Grid>
+        <View >
+          <CategoryModel items={grid} detail={() => console.log(grid)} />
         </View>
         {/* 分类导航 结束 */}
 
