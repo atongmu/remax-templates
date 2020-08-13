@@ -26,7 +26,7 @@ const GoodsModel = (props: Props) => {
                 <View className="title">{item.title}</View>
                 <View className="price margin-tb-sm">
                     <Text className="text-red text-price text-lg">{item.newPrice}</Text>
-                    <Text className="original text-sm text-gray">{item.originalPrice}</Text>
+                    <Text className="original margin-left-sm text-gray text-price text-sm">{item.originalPrice}</Text>
                 </View>
             </View>
         </View>
