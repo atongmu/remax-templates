@@ -1,0 +1,26 @@
+{
+  "name": "templates-ts",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Remax Project With TypeScript",
+  "main": "index.js",
+  "keywords": [],
+  "author": "zenos <715636539@163.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "remax build -t wechat -w",
+    "build": "cross-env NODE_ENV=production remax build -t wechat"
+  },
+  "dependencies": {
+    "@remax/plugin-less": "^1.0.0",
+    "anna-remax-ui": "^1.8.8",
+    "moment": "^2.27.0",
+    "react": "^16.12.0",
+    "remax": "^2.7.7"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "@types/react": "^16.9.16",
+    "typescript": "^3.7.3"
+  }
+}
