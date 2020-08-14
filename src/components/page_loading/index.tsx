@@ -15,7 +15,7 @@ const PageLoading = (props: Props) => {
     return (
         <View className="loading" style={{ top: topVal }}>
             <View className="content">
-                <Loading color={color} />
+                <Loading type="anna" color={color} />
             </View>
         </View>
     );
