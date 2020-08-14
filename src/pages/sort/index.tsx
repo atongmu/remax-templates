@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { View } from 'remax/wechat';
 import { Card, Selector } from 'anna-remax-ui';
 
-import styles from './index.css';
+import './index.less';
 import { href } from '@/utils/common'
+import PageLoading from '@/components/page_loading';
 import { getSorts } from '@/api/index'
+import SortModel from '@/components/sort_model';
 
 export default () => {
   const [isLoading, setLoading] = useState(true)
@@ -20,7 +22,7 @@ export default () => {
   const init = async () => {
     const sortResult: any = await getSorts()
     if (sortResult.status === 200) {
-      setSelector(sortResult.data)
+      setReturnDeliveryWay(sortResult.data)
     }
     setLoading(false)
   }
@@ -31,8 +33,13 @@ export default () => {
     });
   };
   return (
-    <View className={styles.app}>
-      <Selector options={ReturnDeliveryWay} onChange={handleChange} value={selector.value} />
+    <View className="app">
+      <View className="sort">
+        <SortModel options={ReturnDeliveryWay} value={selector.value} />
+      </View>
+      {isLoading && (
+        <PageLoading color="#28a745" topVal="0" />
+      )}
     </View>
   );
 };
