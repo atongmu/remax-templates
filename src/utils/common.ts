@@ -2,12 +2,12 @@
  * @Author: codingfly
  * @Description: api工具类
  * @Date: 2020-07-22 16:37:08
- * @LastEditTime: 2020-08-13 19:48:13
- * @FilePath: \remax-templates\src\utils\common.ts
+ * @LastEditTime: 2020-08-14 10:34:47
+ * @FilePath: \templates-ts\src\utils\common.ts
  */
 import { request, showToast, showModal, showLoading, hideLoading, setStorageSync, getStorageSync, clearStorageSync, redirectTo, navigateTo } from 'remax/wechat';
 export function interfaceUrl() {
-    return 'https://easy-mock.com/mock/5f351b9a12264d21462acebf/mall/api'
+    return 'http://rap2.taobao.org:38080/app/mock/263788/'
 }
 export function toast(content: string, success?: any, duration?: any) {
     showToast({
@@ -105,7 +105,7 @@ export function ajax(url: string, method: any, postData: any, isDelay: boolean =
             fail: (res) => {
                 clearTimeout(carfun)
                 carfun = null
-                toast("网络不给力，请稍后再试~", "fail")
+                toast("网络不给力，请稍后再试~", "none")
                 reject(res)
             }
         })
