@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Icon, Button } from 'anna-remax-ui';
 import { View, Swiper, SwiperItem, Image } from 'remax/wechat';
 
-import './index.less'
-
 export interface Props {
     items: Array<any>;
     indicatorDots: boolean,
@@ -19,7 +17,7 @@ const SwiperModel = (props: Props) => {
             <Swiper autoplay={autoplay} indicatorDots={indicatorDots} indicatorActiveColor={indicatorActiveColor} indicatorColor={indicatorColor} circular={true}>
                 {items.map((item, index) => {
                     return (<SwiperItem key={index}>
-                        <Image src={item.image} style={{width:"100%",height:"100%"}}  mode="widthFix"  />
+                        <Image src={item.image} style={{ width: "100%", height: "100%" }} />
                     </SwiperItem>)
                 })}
 
