@@ -43,11 +43,18 @@ const SortModel = (props: Props) => {
     const handleClickChildrenOption = (option: OptionProps) => {
         onChange?.([currentParent.key, option.key], `${currentParent.value} ${option.value}`);
     };
-
+    const renderGridItem = (item: any, index?: number) => (
+        <View className="text-center margin-bottom-sm ">
+            <View style={{ width: "100rpx", height: '100rpx', margin: '0 auto' }}>
+                <Image style={{ width: '100%', height: '100%' }} src={item.image} />
+            </View>
+            <View className="text-center">{item.value}</View>
+        </View>
+    );
     return (
         <View className="sort-model">
             <View className="sort-left">
-                <ScrollView scroll-y="true" style={{ height: '100%' }}>
+                <ScrollView scrollY={true} style={{ height: '100%' }}>
                     {options.map((item, index) => {
                         return (
                             <View
@@ -61,7 +68,24 @@ const SortModel = (props: Props) => {
                     })}
                 </ScrollView>
             </View>
-            <View className="sort-right"></View>
+            <View className="sort-right">
+                <ScrollView scrollY={true} style={{ height: '100%' }}>
+                    <Grid data={childrenData} columns={3}>
+                        {renderGridItem}
+                    </Grid>
+                    {/* {childrenData.map((item, index) => {
+                        return (
+                            <View
+                                key={index}
+                                className="sort-item"
+                                onClick={() => handleClickChildrenOption(item)}
+                            >
+                                {item.value}
+                            </View>
+                        )
+                    })} */}
+                </ScrollView>
+            </View>
         </View>
     );
 };
