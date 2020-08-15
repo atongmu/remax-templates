@@ -10,9 +10,11 @@ import PageLoading from '@/components/page_loading';
 import GroupTitle from '@/components/group_title/index';
 import GoodsModel from '@/components/goods_model/index';
 import CategoryModel from '@/components/category_model/index';
+import TabBar from '@/components/tab_bar';
 import page_path from '@/utils/page_path';
 
 import { getBanners, getCategorys, getProducts } from '@/api/index'
+
 
 export default () => {
   const [isLoading, setLoading] = useState(true)
@@ -83,6 +85,15 @@ export default () => {
               })}
             </View>
           </View>
+        </View>
+        {/* 热门推荐 结束 */}
+        {/* 底部导航 */}
+        <View className="bar">
+          <TabBar items={[
+            { image: 'http://dummyimage.com/200x200', title: '首页', path: `/pages/mall/index` },
+            { image: 'http://dummyimage.com/200x200', title: '购物车', path: `/pages/cart/index` },
+            { image: 'http://dummyimage.com/200x200', title: '我的', path: `/pages/my/index` },
+          ]} />
         </View>
         {/* 热门推荐 结束 */}
       </View>
