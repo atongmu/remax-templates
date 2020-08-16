@@ -85,6 +85,9 @@ image {
 .radius {
 	border-radius: 6rpx;
 }
+.radius-shape{
+	border-radius: 100rpx;
+}
 
 /* ==================
           图片
