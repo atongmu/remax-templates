@@ -10,16 +10,16 @@ export interface Props {
 const TabBar = (props: Props) => {
     const { items } = props
     return (
-        <View className="tab-bar solid-top bg-white padding-tb-sm">
+        <View className="tab-bar solid-top bg-white" style={{paddingTop:'10rpx'}}>
             <Row>
                 {items.map((item, index) => {
                     return (
                         <Col key={index} span={24 / items.length}>
                             <View className="text-center">
                                 <View onClick={() => href(item.path)}>
-                                    <Image style={{ width: '96rpx', height: '96rpx', margin: '0 auto' }} src={item.image} />
+                                    <Image style={{ width: '60rpx', height: '60rpx', margin: '0 auto' }} src={item.image} />
                                 </View>
-                                <View>{item.title}</View>
+                                <View className="text-sm">{item.title}</View>
                             </View>
                         </Col>
                     )
