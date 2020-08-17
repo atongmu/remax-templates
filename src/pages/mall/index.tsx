@@ -70,7 +70,7 @@ export default () => {
               {items.map((item, index) => {
                 return (
                   ((index + 1) % 2 != 0) && (
-                    <GoodsModel key={index} item={item} detail={() => console.log(item.title)} />
+                    <GoodsModel key={index} item={item} detail={() => href(page_path.goods_info)} />
                   )
                 )
               })}
@@ -79,7 +79,7 @@ export default () => {
               {items.map((item, index) => {
                 return (
                   ((index + 1) % 2 === 0) && (
-                    <GoodsModel key={index} item={item} detail={() => console.log(item.title)} />
+                    <GoodsModel key={index} item={item} detail={() => href(page_path.goods_info)} />
                   )
                 )
               })}
