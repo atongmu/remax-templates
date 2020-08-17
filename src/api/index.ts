@@ -2,8 +2,8 @@
  * @Author: codingfly
  * @Description: 接口
  * @Date: 2020-07-30 17:27:03
- * @LastEditTime: 2020-08-13 21:07:40
- * @FilePath: \remax-templates\src\api\index.ts
+ * @LastEditTime: 2020-08-17 10:48:18
+ * @FilePath: \templates-ts\src\api\index.ts
  */
 import { ajax } from '@/utils/common'
 const api = {
@@ -11,6 +11,7 @@ const api = {
     categorys: '/category',
     sorts: '/sort',
     product_list: '/product_list',
+    product_info: '/product_info',
 }
 export default api
 
@@ -29,4 +30,8 @@ export function getSorts() {
 //  获取分页商品
 export function getProducts(data: any) {
     return ajax(api.product_list, 'GET', data, false, true, true)
+}
+//  获取分页商品
+export function getProduct(data: any) {
+    return ajax(api.product_info, 'GET', data, false, true, true)
 }
