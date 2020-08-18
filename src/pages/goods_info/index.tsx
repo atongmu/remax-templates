@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, Swiper, SwiperItem, getSystemInfo } from 'remax/wechat';
+import { View, Text, Image, Swiper, SwiperItem, getSystemInfo, getStorageSync, setStorageSync } from 'remax/wechat';
 import { Stepper, Popup, Button, Icon, Tag } from 'anna-remax-ui';
 
 import './index.less';
@@ -10,6 +10,7 @@ import PageLoading from '@/components/page_loading';
 import { toast } from '../../utils/common';
 
 export interface Info {
+  id: number,
   banners: Array<{ image: string }>,
   title: string,
   pack: boolean,
@@ -39,6 +40,7 @@ export default () => {
   })
   const [num, setNum] = React.useState(1);
   const [goodsInfo, setGoodsInfo] = useState<Info>({
+    id: 0,
     banners: [],
     title: '',
     pack: false,
@@ -61,6 +63,7 @@ export default () => {
     setScrollH(windowWidth)
     if (result.status === 200) {
       const data = {
+        id: result.data.id,
         banners: result.data.banners,
         title: result.data.title,
         pack: result.data.pack,
@@ -78,6 +81,24 @@ export default () => {
     }
     setLoading(false)
   }
+  const appendCart = () => {
+    const cartItems = getStorageSync("token")
+    if (cartItems) {
+      console.log(1)
+    } else {
+      const goods = {
+        id: goodsInfo.id,
+        name: goodsInfo.title,
+        newPrice: goodsInfo.newPrice,
+        sku: goodsInfo.sku,
+        changeGoods: changeGoods,
+        num: num
+
+      }
+      const storageGoods = JSON.stringify(goods)
+      setStorageSync("cart", storageGoods)
+    }
+  }
   return (
     <View className="goods-info">
       <View style={{ position: 'relative' }}>
@@ -89,11 +110,11 @@ export default () => {
               </SwiperItem>)
             })}
           </Swiper>
-          <View style={{ position: 'absolute', bottom: '20', right: '0' }}>
+          <View style={{ position: 'absolute', bottom: '30', right: '0' }}>
             <Text style={{ padding: '10rpx 6rpx 10rpx 20rpx', borderRadius: '50rpx 0 0 50rpx', backgroundColor: 'rgba(0,0,0,.7)', color: '#ffffff' }}>{bannerIndex + 1}/{goodsInfo.banners.length}</Text>
           </View>
         </View>
-        <View style={{ position: 'absolute', bottom: '20', left: 'calc(50% - 42rpx)' }}>
+        <View style={{ position: 'absolute', bottom: '30', left: 'calc(50% - 20rpx)' }}>
           <Icon type="video" color="#fe4f4f" size="42" />
         </View>
       </View>
@@ -130,21 +151,21 @@ export default () => {
         <View className="radius bg-white margin-tb-sm">
           <View className="padding-sm">
             <View className="flex align-center solid-bottom">
-              <View><Text className="text-bold text-bold">已选</Text></View>
+              <View><Text className="text-bold text-black">已选</Text></View>
               <View className="flex-sub margin-lr-sm">{changeGoods.value}</View>
               <View onClick={() => setShow(true)}><Icon type="more" size="36" /></View>
             </View>
           </View>
           <View className="padding-sm">
             <View className="flex align-center solid-bottom">
-              <View><Text className="text-bold text-bold">送至</Text></View>
+              <View><Text className="text-bold text-black">送至</Text></View>
               <View className="flex-sub margin-lr-sm">今日23:59前完成下单，预计6月28日23:30前发货，7月1日24:00前送达</View>
               <View><Icon type="more" size="36" /></View>
             </View>
           </View>
           <View className="padding-sm">
             <View className="flex align-center">
-              <View><Text className="text-bold text-bold">运费</Text></View>
+              <View><Text className="text-bold text-black">运费</Text></View>
               <View className="flex-sub margin-lr-sm">在线支付免运费</View>
               <View><Icon type="more" size="36" /></View>
             </View>
@@ -262,7 +283,7 @@ export default () => {
 
             <View className="flex">
               <View className="flex-sub">
-                <Button look="orange" block onTap={() => setShow(false)}>加入购物车</Button>
+                <Button look="orange" block onTap={() => { appendCart(); setShow(false) }}>加入购物车</Button>
               </View>
               <View className="flex-sub margin-left-sm">
                 <Button look="anna" block onTap={() => toast("立即购买")}>立即购买</Button>
