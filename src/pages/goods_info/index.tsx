@@ -82,11 +82,11 @@ export default () => {
     setLoading(false)
   }
   const appendCart = () => {
-    const cartItems = getStorageSync("token")
+    const cartItems = getStorageSync("cart")
     if (cartItems) {
       console.log(1)
     } else {
-      const goods = {
+      const goods = [{
         id: goodsInfo.id,
         name: goodsInfo.title,
         newPrice: goodsInfo.newPrice,
@@ -94,7 +94,7 @@ export default () => {
         changeGoods: changeGoods,
         num: num
 
-      }
+      }]
       const storageGoods = JSON.stringify(goods)
       setStorageSync("cart", storageGoods)
     }
