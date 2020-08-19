@@ -2,8 +2,8 @@
  * @Author: codingfly
  * @Description: 页面路径管理
  * @Date: 2020-08-13 09:56:53
- * @LastEditTime: 2020-08-18 08:16:58
- * @FilePath: \remax-templates\src\utils\page_path.ts
+ * @LastEditTime: 2020-08-19 14:30:25
+ * @FilePath: \templates-ts\src\utils\page_path.ts
  */
 const path = {
     // 首页
@@ -20,6 +20,8 @@ const path = {
     sort: '/pages/sort/index',
     // 商品详情
     goods_info: '/pages/goods_info/index',
+    // 购物车
+    cart: '/pages/cart/index',
     // 订单列表
     order_list: '/pages/order_list/index',
     // 订单列表

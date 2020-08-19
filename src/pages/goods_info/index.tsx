@@ -4,6 +4,7 @@ import { Stepper, Popup, Button, Icon, Tag } from 'anna-remax-ui';
 
 import './index.less';
 import { href } from '@/utils/common'
+import page_path from '@/utils/page_path';
 import { getProduct } from '@/api/index'
 import GroupTitle from '@/components/group_title/index';
 import PageLoading from '@/components/page_loading';
@@ -222,7 +223,7 @@ export default () => {
               <View><Icon type="shop" size="36" /></View>
               <View className="text-xs">店铺</View>
             </View>
-            <View className="flex-sub text-center" onClick={() => toast("购物车")}>
+            <View className="flex-sub text-center" onClick={() => href(page_path.cart)}>
               <View><Icon type="cart_fill_light" size="36" /></View>
               <View className="text-xs">购物车</View>
             </View>
@@ -232,7 +233,7 @@ export default () => {
               <Button look="orange" block onTap={() => setShow(true)}>加入购物车</Button>
             </View>
             <View className="flex-sub margin-left-sm">
-              <Button look="anna" block onTap={() => toast("立即购买")}>立即购买</Button>
+              <Button look="anna" block onTap={() => href(page_path.order_submit)}>立即购买</Button>
             </View>
           </View>
         </View>
