@@ -205,7 +205,9 @@ export default () => {
         </View>
 
         <View>
-          <GroupTitle text="宝贝详情" icon={false} />
+          <View className="padding">
+            <GroupTitle text="宝贝详情" icon={false} />
+          </View>
           <View className="bg-white padding-sm">
             <Text>{goodsInfo.content}</Text>
           </View>
