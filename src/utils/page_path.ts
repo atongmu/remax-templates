@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: 页面路径管理
  * @Date: 2020-08-13 09:56:53
- * @LastEditTime: 2020-08-19 14:30:25
+ * @LastEditTime: 2020-08-19 16:04:08
  * @FilePath: \templates-ts\src\utils\page_path.ts
  */
 const path = {
@@ -33,7 +33,7 @@ const path = {
     // 新增地址
     address_edit: '/pages/address_edit/index',
     // 支付成功
-    succeess: '/pages/succeess/index',
+    succeess: '/pages/success/index',
     // 支付失败
     error: '/pages/error/index',
 }

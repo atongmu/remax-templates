@@ -22,7 +22,7 @@ const pages: Array<string> = [
   'pages/order_submit/index',
   'pages/address/index',
   'pages/address_edit/index',
-  'pages/succeess/index',
+  'pages/success/index',
   'pages/error/index',
 ]
 
