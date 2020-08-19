@@ -1,11 +1,11 @@
 /*
  * @Author: codingfly
- * @Description: 登录
- * @Date: 2020-08-13 10:02:35
- * @LastEditTime: 2020-08-13 10:03:57
- * @FilePath: \templates-ts\src\pages\login\index.config.ts
+ * @Description: 订单列表
+ * @Date: 2020-08-14 08:10:00
+ * @LastEditTime: 2020-08-19 16:15:12
+ * @FilePath: \templates-ts\src\pages\order_list\index.config.ts
  */
 
 module.exports = {
-  navigationBarTitleText: '登录'
+  navigationBarTitleText: '订单列表'
 };
