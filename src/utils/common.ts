@@ -2,12 +2,12 @@
  * @Author: codingfly
  * @Description: api工具类
  * @Date: 2020-07-22 16:37:08
- * @LastEditTime: 2020-08-14 10:34:47
- * @FilePath: \templates-ts\src\utils\common.ts
+ * @LastEditTime: 2020-08-19 21:17:47
+ * @FilePath: \remax-templates\src\utils\common.ts
  */
 import { request, showToast, showModal, showLoading, hideLoading, setStorageSync, getStorageSync, clearStorageSync, redirectTo, navigateTo } from 'remax/wechat';
 export function interfaceUrl() {
-    return 'http://rap2.taobao.org:38080/app/mock/263788/'
+    return 'https://yuyue.codingfly.site/wechat/'
 }
 export function toast(content: string, success?: any, duration?: any) {
     showToast({
