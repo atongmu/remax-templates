@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: 接口
  * @Date: 2020-07-30 17:27:03
- * @LastEditTime: 2020-08-17 10:48:18
+ * @LastEditTime: 2020-08-20 10:39:00
  * @FilePath: \templates-ts\src\api\index.ts
  */
 import { ajax } from '@/utils/common'
@@ -12,6 +12,7 @@ const api = {
     sorts: '/sort',
     product_list: '/product_list',
     product_info: '/product_info',
+    order_list: '/order_list',
 }
 export default api
 
@@ -31,7 +32,11 @@ export function getSorts() {
 export function getProducts(data: any) {
     return ajax(api.product_list, 'GET', data, false, true, true)
 }
-//  获取分页商品
+//  获取商品
 export function getProduct(data: any) {
     return ajax(api.product_info, 'GET', data, false, true, true)
+}
+//  获取分页订单
+export function getOrders(data: any) {
+    return ajax(api.order_list, 'GET', data, false, true, true)
 }
