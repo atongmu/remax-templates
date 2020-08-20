@@ -12,7 +12,6 @@ export interface Props {
         newPrice: string,
         content: string,
         changeGoods: { key: string, value: string, image: string },
-        sku: Array<{ key: string, value: string, image: string }>,
         num: number
     };
 }
@@ -21,14 +20,14 @@ const OrderModel = (props: Props) => {
     const { item, detail } = props
 
     return (
-        <View className="goods-model" onClick={detail}>
+        <View className="order-model flex" onClick={detail}>
             <View style={{ width: '180', height: '180' }}>
                 <Image style={{ width: '100%', height: '100%' }} src={item.changeGoods.image} />
             </View>
-            <View className="flex-sub margin-left-xs flex padding-tb-xs">
-                <View className="flex-sub">
-                    <View className="margin-bottom-sm">{item.name}</View>
-                    <View className="text-gray">sku</View>
+            <View className="flex-sub flex padding-tb-xs">
+                <View className="content flex-sub margin-lr-xs">
+                    <View className="title">{item.name}</View>
+                    <View className="text-gray padding-top-sm text-sm">{item.changeGoods.value}</View>
                 </View>
                 <View className="text-right text-gray">
                     <View><Text className="text-price">{item.newPrice}</Text></View>
