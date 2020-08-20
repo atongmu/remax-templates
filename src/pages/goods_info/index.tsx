@@ -150,15 +150,15 @@ export default () => {
           <View className="flex-sub">{goodsInfo.city}</View>
         </View>
         <View className="radius bg-white margin-tb-sm">
-          <View className="padding-sm">
-            <View className="flex align-center solid-bottom">
+          <View className="padding-sm solid-bottom">
+            <View className="flex align-center">
               <View><Text className="text-bold text-black">已选</Text></View>
               <View className="flex-sub margin-lr-sm">{changeGoods.value}</View>
               <View onClick={() => setShow(true)}><Icon type="more" size="36" /></View>
             </View>
           </View>
-          <View className="padding-sm">
-            <View className="flex align-center solid-bottom">
+          <View className="padding-sm solid-bottom">
+            <View className="flex align-center">
               <View><Text className="text-bold text-black">送至</Text></View>
               <View className="flex-sub margin-lr-sm">今日23:59前完成下单，预计6月28日23:30前发货，7月1日24:00前送达</View>
               <View><Icon type="more" size="36" /></View>
