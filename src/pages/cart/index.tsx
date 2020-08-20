@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, getStorageSync } from 'remax/wechat';
-import { Cell, Loading, } from 'anna-remax-ui';
+import { Cell, Checkbox, } from 'anna-remax-ui';
 
 import { href, toast } from '@/utils/common'
 import PageLoading from '@/components/page_loading';
 import page_path from '@/utils/page_path'
-export interface item {
+import CartModel from '../../components/cart_model/index';
+export interface Goods {
   id: number,
   name: string,
   newPrice: string,
@@ -17,7 +18,7 @@ export interface item {
 export default () => {
   const [isLoading, setLoading] = useState(true)
   const [isEdit, setIsEdit] = useState(false)
-  const [items, setItems] = useState<item[]>([])
+  const [items, setItems] = useState<Goods[]>([])
 
   useEffect(() => {
     init()
@@ -45,7 +46,13 @@ export default () => {
               </View>
             </View>
             <View>
-
+              {
+                items.map((item, index) => (
+                  <View key={index}>
+                    <CartModel item={item} detail={() => console.log(item)} />
+                  </View>
+                ))
+              }
             </View>
             <View>全选 合计</View>
           </View>
