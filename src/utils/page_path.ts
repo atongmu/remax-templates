@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: 页面路径管理
  * @Date: 2020-08-13 09:56:53
- * @LastEditTime: 2020-08-19 16:04:08
+ * @LastEditTime: 2020-08-20 16:08:25
  * @FilePath: \templates-ts\src\utils\page_path.ts
  */
 const path = {
@@ -26,6 +26,8 @@ const path = {
     order_list: '/pages/order_list/index',
     // 订单列表
     order_info: '/pages/order_info/index',
+    // 订单详情
+    order_detail: '/pages/order_detail/index',
     // 提交订单
     order_submit: '/pages/order_submit/index',
     // 地址
@@ -36,5 +38,7 @@ const path = {
     succeess: '/pages/success/index',
     // 支付失败
     error: '/pages/error/index',
+    // 物流信息
+    timeaxis: '/pages/timeaxis/index',
 }
 export default path

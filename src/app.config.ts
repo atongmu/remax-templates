@@ -2,8 +2,8 @@
  * @Author: codingfly
  * @Description: 配置文件
  * @Date: 2020-08-13 08:54:44
- * @LastEditTime: 2020-08-18 08:13:09
- * @FilePath: \remax-templates\src\app.config.ts
+ * @LastEditTime: 2020-08-20 16:08:10
+ * @FilePath: \templates-ts\src\app.config.ts
  */
 import { AppConfig } from "remax/wechat";
 const backgroundColor: string = '#28a745';
@@ -20,9 +20,11 @@ const pages: Array<string> = [
   'pages/order_list/index',
   'pages/order_info/index',
   'pages/order_submit/index',
+  'pages/order_detail/index',
   'pages/address/index',
   'pages/address_edit/index',
   'pages/success/index',
+  'pages/timeaxis/index',
   'pages/error/index',
 ]
 
