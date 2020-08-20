@@ -78,7 +78,7 @@ export default () => {
       </View>
 
       <View className="padding-lr-sm" style={{ marginTop: '-30rpx' }}>
-        <GroupRow items={orderItems} isRadius={true} type='icon' title="我的订单" isRight={true} rightText="查看全部订单" rightViod={() => toast("查看全部订单")} />
+        <GroupRow items={orderItems} isRadius={true} type='icon' title="我的订单" isRight={true} rightText="查看全部订单" rightViod={() => href(page_path.order_list)} />
       </View>
       {isLoading && (
         <PageLoading color="#28a745" topVal="0" />
