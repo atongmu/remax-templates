@@ -5,20 +5,21 @@ import { Cell, Icon, Button, Input } from 'anna-remax-ui';
 import './index.less';
 import { href } from '@/utils/common'
 import PageLoading from '@/components/page_loading';
+import OrderModel from '@/components/order_model';
 import page_path from '@/utils/page_path';
+import GoodsModel from '../../components/goods_model/index';
 
-export interface item {
+export interface GoodsModel {
   id: number,
   name: string,
   newPrice: string,
   content: string,
   changeGoods: { key: string, value: string, image: string },
-  sku: Array<{ key: string, value: string, image: string }>,
   num: number
 }
 export default () => {
   const [isLoading, setLoading] = useState(true)
-  const [orderItems, setOrderItems] = useState<item[]>([])
+  const [orderItems, setOrderItems] = useState<GoodsModel[]>([])
 
   useEffect(() => {
     const setFun = setTimeout(() => {
@@ -41,7 +42,7 @@ export default () => {
         <PageLoading color="#28a745" topVal="0" />
       ) : (
           <View className="margin-top-sm">
-            <View className="bg-white margin-bottom padding" style={{ position: 'relative' }}>
+            <View className="bg-white margin-bottom-sm padding" style={{ position: 'relative' }}>
               <View className="flex align-center">
                 <View className="flex-sub">
                   <View><Text>小仙雨</Text><Text className="margin-left-sm">129******11</Text></View>
@@ -61,21 +62,7 @@ export default () => {
                 {orderItems && (
                   orderItems.map((item, index) => {
                     return (
-                      <View className="flex solid-bottom" key={index}>
-                        <View style={{ width: '180', height: '180' }}>
-                          <Image style={{ width: '100%', height: '100%' }} src={item.changeGoods.image} />
-                        </View>
-                        <View className="flex-sub margin-left-xs flex padding-tb-xs">
-                          <View className="flex-sub">
-                            <View>{item.name}</View>
-                            <View className="text-gray">sku</View>
-                          </View>
-                          <View className="text-right text-gray">
-                            <View><Text className="text-price">{item.newPrice}</Text></View>
-                            <View>x {item.num}</View>
-                          </View>
-                        </View>
-                      </View>
+                      <OrderModel key={index} item={item} detail={() => console.log(item)} />
                     )
                   })
                 )}
