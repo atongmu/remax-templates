@@ -43,7 +43,7 @@ export default () => {
       ) : (
           <View className="margin-top-sm">
             <View className="bg-white margin-bottom-sm padding" style={{ position: 'relative' }}>
-              <View className="flex align-center">
+              <View className="flex align-center" onClick={() => href(page_path.address_list)}>
                 <View className="flex-sub">
                   <View><Text>小仙雨</Text><Text className="margin-left-sm">129******11</Text></View>
                   <View>广东省深圳市南山区高新科技园中区一路</View>
