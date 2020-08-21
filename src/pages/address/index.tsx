@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'remax/wechat';
-import { Card, Loading, Button } from 'anna-remax-ui';
+import { View, Text } from 'remax/wechat';
+import { Icon, Button } from 'anna-remax-ui';
 
-import styles from './index.css';
+import './index'
+import PageLoading from '@/components/page_loading';
 import { href } from '@/utils/common'
+import page_path from '@/utils/page_path'
 
 export default () => {
   const [isLoading, setLoading] = useState(true)
@@ -11,27 +13,32 @@ export default () => {
   useEffect(() => {
     const setFun = setTimeout(() => {
       setLoading(false)
-    }, 1500)
+    }, 1000)
     return () => {
       setFun
     }
   }, [])
   return (
-    <View className={styles.app}>
-      <View className="padding-sm">
-        {isLoading ? (
-          <Loading />
-        ) : (
-            <Card>
-              <View className="padding-bottom-sm">
-                <Button look="anna" block onTap={() => href(``)}>商城</Button>
+    <View className="address">
+      {isLoading ? (
+        <PageLoading color="#28a745" topVal="0" />
+      ) : (
+          <View className="margin-top-sm">
+            <View className="flex bg-white align-center solid-bottom padding-sm">
+              <View className="flex-sub">
+                <View>名字 139*******1</View>
+                <View className="padding-top-sm">111111</View>
               </View>
-              {/* <View className="padding-bottom-sm">
-                <Button look="warning" block onTap={() => href(``)}>库存管理</Button>
-              </View> */}
-            </Card>
-          )}
-      </View>
+              <Text onClick={() => href(page_path.address_edit)}><Icon type="edit" size="36" color="#8799a3" /></Text>
+            </View>
+
+            <View className="bg-white" style={{ position: 'fixed', bottom: '0', left: '0', width: '100%' }}>
+              <View className="padding-sm">
+                <Button block look="anna" onTap={() => href(page_path.order_submit)}>新增收货地址</Button>
+              </View>
+            </View>
+          </View>
+        )}
     </View>
   );
 };
