@@ -34,7 +34,7 @@ export default () => {
 
             <View className="bg-white" style={{ position: 'fixed', bottom: '0', left: '0', width: '100%' }}>
               <View className="padding-sm">
-                <Button block look="anna" onTap={() => href(page_path.order_submit)}>新增收货地址</Button>
+                <Button block look="anna" onTap={() => href(page_path.address_edit)}>新增收货地址</Button>
               </View>
             </View>
           </View>

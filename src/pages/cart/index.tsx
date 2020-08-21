@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, getStorageSync, Label } from 'remax/wechat';
-import { Cell, Button, Checkbox } from 'anna-remax-ui';
+import { View, Text, getStorageSync } from 'remax/wechat';
+import { Button, Checkbox } from 'anna-remax-ui';
 
 import { href, toast } from '@/utils/common'
 import PageLoading from '@/components/page_loading';
