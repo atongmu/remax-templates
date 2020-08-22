@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View } from 'remax/wechat';
 import { Card, Button, Input } from 'anna-remax-ui';
 
