@@ -1,25 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Switch } from 'remax/wechat';
-import { Card, Button, Input, Cell } from 'anna-remax-ui';
+import { View } from 'remax/wechat';
+import { Card, Button, Input } from 'anna-remax-ui';
 
-import { href } from '@/utils/common'
+import { toast } from '@/utils/common'
 
 export default () => {
-  const [isDetail, setDetail] = useState(true)
+  const [name, setName] = useState('')
 
   return (
     <View className="padding-sm">
       <Card>
         <View className="padding-bottom-sm">
-          <Input label="收货人" placeholder="Please enter" />
-          <Input label="手机号" placeholder="Please enter" />
-          <Cell label="所在城市" valueStyle={{ display: 'flex', justifyContent: 'flex-end', }} arrow>
-            <Text className="text-gray">选择城市</Text>
-          </Cell>
-          <Input label="收货地址" placeholder="Please enter" />
-          <Cell label="设为默认地址" valueStyle={{ display: 'flex', justifyContent: 'flex-end', }} >
-            <Switch checked={isDetail} onChange={v => setDetail(!v)} />
-          </Cell>
+          <Input label="物料名称" placeholder="请填写物料名称" value={name} onChange={(e) => setName(name => e.target.value)} />
+        </View>
+        <View className="padding-bottom-sm">
+          <Button look="secondary" block onTap={() => { setName(''); toast('添加成功') }}>添加物料</Button>
         </View>
       </Card>
     </View>
