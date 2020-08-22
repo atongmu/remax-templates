@@ -229,13 +229,15 @@ export default () => {
       <View className="bg-white padding-tb-xs solid-top" style={{ position: 'fixed', width: '100%', bottom: '0', left: '0' }}>
         <View className="flex align-center">
           <View className="flex-sub flex">
-            <View className="flex-sub text-center" onClick={() => reLaunch({ url: page_path.home })}>
+            <View className="flex-sub text-center">
               <View><Icon type="home_light" size="36" color="#8799a3" /></View>
               <View className="text-xs">首页</View>
             </View>
             <View className="flex-sub text-center" onClick={() => toast("客服")}>
-              <View><Icon type="service_light" size="36" color="#8799a3" /></View>
-              <View className="text-xs">客服</View>
+              <button open-type="contact" className="contact">
+                <View><Icon type="service_light" size="36" color="#8799a3" /></View>
+                <View className="text-xs">客服</View>
+              </button>
             </View>
             <View className="flex-sub text-center" onClick={() => href(page_path.cart)}>
               <View><Icon type="cart_light" size="36" color="#8799a3" /></View>
@@ -252,65 +254,69 @@ export default () => {
           </View>
         </View>
       </View>
-      {show && (
-        <Popup
-          position="bottom"
-          closeable
-          open={show}
-          onClose={() => {
-            setShow(false);
-          }}
-        >
-          <View style={{ padding: '48rpx', }} >
-            <View className="flex align-center padding-sm">
-              <View className="radius" style={{ width: '200rpx', height: '200rpx', overflow: 'hidden' }}>
-                <Image style={{ width: '100%', height: '100%' }} src={changeGoods.image} />
+      {
+        show && (
+          <Popup
+            position="bottom"
+            closeable
+            open={show}
+            onClose={() => {
+              setShow(false);
+            }}
+          >
+            <View style={{ padding: '48rpx', }} >
+              <View className="flex align-center padding-sm">
+                <View className="radius" style={{ width: '200rpx', height: '200rpx', overflow: 'hidden' }}>
+                  <Image style={{ width: '100%', height: '100%' }} src={changeGoods.image} />
+                </View>
+                <View className="flex-sub margin-left-sm">
+                  <View className="text-red">
+                    <Text className="text-price text-xl">{goodsInfo.newPrice}</Text>
+                  </View>
+                </View>
               </View>
-              <View className="flex-sub margin-left-sm">
-                <View className="text-red">
-                  <Text className="text-price text-xl">{goodsInfo.newPrice}</Text>
+
+              <View className="flex align-center padding-sm">
+                <View className="flex-sub">数量</View>
+                <View>
+                  <Stepper min={1} value={num} onChange={(val: any) => setNum(val)} />
+                </View>
+              </View>
+              {/* sku */}
+              <View className="margin-tb-sm">
+                {goodsInfo.sku.map((item, index) => {
+                  return (
+                    <View key={index} className="margin-bottom-sm">
+                      <View>
+                        <Text className="text-bold text-black">{item.key}</Text>
+                      </View>
+                      <View className="margin-top-sm">
+                        <Tag size="large" plain> {item.value}</Tag>
+                      </View>
+                    </View>
+                  )
+                })}
+              </View>
+              {/* sku 结束 */}
+
+              <View className="flex">
+                <View className="flex-sub">
+                  <Button look="orange" block onTap={() => { appendCart(); setShow(false) }}>加入购物车</Button>
+                </View>
+                <View className="flex-sub margin-left-sm">
+                  <Button look="anna" block onTap={() => toast("立即购买")}>立即购买</Button>
                 </View>
               </View>
             </View>
+          </Popup>
+        )
+      }
 
-            <View className="flex align-center padding-sm">
-              <View className="flex-sub">数量</View>
-              <View>
-                <Stepper min={1} value={num} onChange={(val: any) => setNum(val)} />
-              </View>
-            </View>
-            {/* sku */}
-            <View className="margin-tb-sm">
-              {goodsInfo.sku.map((item, index) => {
-                return (
-                  <View key={index} className="margin-bottom-sm">
-                    <View>
-                      <Text className="text-bold text-black">{item.key}</Text>
-                    </View>
-                    <View className="margin-top-sm">
-                      <Tag size="large" plain> {item.value}</Tag>
-                    </View>
-                  </View>
-                )
-              })}
-            </View>
-            {/* sku 结束 */}
-
-            <View className="flex">
-              <View className="flex-sub">
-                <Button look="orange" block onTap={() => { appendCart(); setShow(false) }}>加入购物车</Button>
-              </View>
-              <View className="flex-sub margin-left-sm">
-                <Button look="anna" block onTap={() => toast("立即购买")}>立即购买</Button>
-              </View>
-            </View>
-          </View>
-        </Popup>
-      )}
-
-      {isLoading && (
-        <PageLoading color="#28a745" topVal="0" />
-      )}
-    </View>
+      {
+        isLoading && (
+          <PageLoading color="#28a745" topVal="0" />
+        )
+      }
+    </View >
   );
 };
