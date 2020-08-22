@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: 页面路径管理
  * @Date: 2020-08-13 09:56:53
- * @LastEditTime: 2020-08-22 15:59:17
+ * @LastEditTime: 2020-08-22 16:23:57
  * @FilePath: \templates-ts\src\utils\page_path.ts
  */
 const path = {
@@ -38,5 +38,11 @@ const path = {
     error: '/pages/error/index',
     // 物流信息
     timeaxis: '/pages/timeaxis/index',
+    // 新增物料
+    materials_edit: '/pages/materials_edit/index',
+    // 物料管理
+    materials: '/pages/materials/index',
+    // 物料详情
+    materials_detail: '/pages/materials_detail/index',
 }
 export default path
