@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, Swiper, SwiperItem, getSystemInfo, getStorageSync, setStorageSync } from 'remax/wechat';
+import { View, Text, Image, Swiper, SwiperItem, getSystemInfo, getStorageSync, setStorageSync, onBackgroundAudioPause } from 'remax/wechat';
 import { Stepper, Popup, Button, Icon, Tag } from 'anna-remax-ui';
 
 import './index.less';
@@ -84,21 +84,33 @@ export default () => {
   }
   const appendCart = () => {
     const cartItems = getStorageSync("cart")
+    let goodsList = []
     if (cartItems) {
-      console.log(1)
-    } else {
-      const goods = [{
-        id: goodsInfo.id,
-        name: goodsInfo.title,
-        newPrice: goodsInfo.newPrice,
-        sku: goodsInfo.sku,
-        changeGoods: changeGoods,
-        num: num
-
-      }]
-      const storageGoods = JSON.stringify(goods)
-      setStorageSync("cart", storageGoods)
+      goodsList = JSON.parse(cartItems)
+      let inLine = false
+      for (const item of goodsList) {
+        if (item.id === goodsInfo.id && item.changeGoods.key === changeGoods.key) {
+          item.num += num
+          inLine = true
+          break;
+        }
+      }
+      if (inLine) {
+        setStorageSync("cart", JSON.stringify(goodsList))
+        return
+      }
     }
+    const goods = [{
+      id: goodsInfo.id,
+      name: goodsInfo.title,
+      newPrice: goodsInfo.newPrice,
+      sku: goodsInfo.sku,
+      changeGoods: changeGoods,
+      num: num
+
+    }]
+    const storageGoods = JSON.stringify(goodsList.concat(goods))
+    setStorageSync("cart", storageGoods)
   }
   return (
     <View className="goods-info">
