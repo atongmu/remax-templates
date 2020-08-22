@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, Swiper, SwiperItem, getSystemInfo, getStorageSync, setStorageSync, onBackgroundAudioPause } from 'remax/wechat';
+import { View, Text, Image, Swiper, SwiperItem, getSystemInfo, getStorageSync, setStorageSync, reLaunch } from 'remax/wechat';
 import { Stepper, Popup, Button, Icon, Tag } from 'anna-remax-ui';
 
 import './index.less';
@@ -229,16 +229,16 @@ export default () => {
       <View className="bg-white padding-tb-xs solid-top" style={{ position: 'fixed', width: '100%', bottom: '0', left: '0' }}>
         <View className="flex align-center">
           <View className="flex-sub flex">
+            <View className="flex-sub text-center" onClick={() => reLaunch({ url: page_path.home })}>
+              <View><Icon type="home_light" size="36" color="#8799a3" /></View>
+              <View className="text-xs">首页</View>
+            </View>
             <View className="flex-sub text-center" onClick={() => toast("客服")}>
-              <View><Icon type="service" size="36" /></View>
+              <View><Icon type="service_light" size="36" color="#8799a3" /></View>
               <View className="text-xs">客服</View>
             </View>
-            <View className="flex-sub text-center" onClick={() => toast("店铺")}>
-              <View><Icon type="shop" size="36" /></View>
-              <View className="text-xs">店铺</View>
-            </View>
             <View className="flex-sub text-center" onClick={() => href(page_path.cart)}>
-              <View><Icon type="cart_fill_light" size="36" /></View>
+              <View><Icon type="cart_light" size="36" color="#8799a3" /></View>
               <View className="text-xs">购物车</View>
             </View>
           </View>
