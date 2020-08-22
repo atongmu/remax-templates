@@ -21,7 +21,7 @@ export default () => {
     <View className="text-center">
       <View>
         <Cell label="商城类模板" border={false} onTap={() => href(page_path.mall)} arrow />
-        <Cell label="库存类模板" border={false} onTap={() => toast("正在研发中")} arrow />
+        <Cell label="库存类模板" border={false} onTap={() => href(page_path.cims)} arrow />
         <Cell label="新闻类模板" border={false} onTap={() => toast("正在研发中")} arrow />
       </View>
       {isLoading && (
