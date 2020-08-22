@@ -6,6 +6,7 @@ import SlideView from 'weui-miniprogram/miniprogram_dist/slideview/slideview';
 import './index.less'
 
 export interface Props {
+    buttonTap: (e?:any) => void;
     detail: () => void;
     onChange?: () => void;
     item: {
@@ -14,17 +15,16 @@ export interface Props {
         newPrice: string,
         content: string,
         checked: boolean,
-        swiper: boolean,
         changeGoods: { key: string, value: string, image: string },
         num: number
     };
 }
 
 const CartModel = (props: Props) => {
-    const { item, onChange, detail } = props
+    const { item, buttonTap,onChange, detail } = props
     return (
         <View className="cart-model">
-            <SlideView show={false} buttons={[{ text: '删除', type: 'warn' }]} bindbuttontap={() => console.log(1)}>
+            <SlideView buttons={[{ text: '删除', type: 'warn' }]} bindbuttontap={buttonTap}>
                 <View className="flex align-center padding-tb-xs">
                     <View style={{ margin: '0 20rpx' }}>
                         <Checkbox checked={item.checked} onChange={onChange} />
