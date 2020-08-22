@@ -112,6 +112,13 @@ export default () => {
     const storageGoods = JSON.stringify(goodsList.concat(goods))
     setStorageSync("cart", storageGoods)
   }
+  // 收藏
+  const packChange = () => {
+    const info = Object.assign({}, goodsInfo)
+    info.pack = !goodsInfo.pack
+    setGoodsInfo(e => info)
+  }
+
   return (
     <View className="goods-info">
       <View style={{ position: 'relative' }}>
@@ -134,27 +141,27 @@ export default () => {
       <View>
         <View className="flex align-center padding-sm bg-white">
           <View className="flex-sub">
-            <View className="text-red">
-              ￥<Text className="text-xxl">{goodsInfo.newPrice}</Text>
-            </View>
+            <Text className="text-price text-red">
+              <Text className="text-bold text-xxl">{goodsInfo.newPrice}</Text>
+            </Text>
+            <Text className="text-price text-through padding-left-sm">{goodsInfo.originalPrice}</Text>
           </View>
-          <View className="text-center">
+          <View className="text-center" onClick={packChange}>
             <View>
-              <Icon type="like" />
+              {goodsInfo.pack ? (<Icon type="like" color="red" />) : (<Icon type="like" />)}
             </View>
-            <View className="text-sm">收藏 </View>
+            <View className={`text-sm ${goodsInfo.pack && 'text-red'}`}>收藏 </View>
           </View>
-        </View>
-        <View className="text-gray padding-sm bg-white">
-          <Text className="text-price">{goodsInfo.originalPrice}</Text>
         </View>
         <View className="flex align-center padding-left-sm bg-white">
           <View className="flex-sub margin-right-sm">
             {goodsInfo.title}
           </View>
-          <View style={{ padding: '10rpx 6rpx 10rpx 20rpx', borderRadius: '50rpx 0 0 50rpx', backgroundColor: 'rgba(0,0,0,.1)' }}>
-            <Icon type="share_light" /> 分享
+          <button open-type="share" className="contact">
+            <View style={{ padding: '10rpx 6rpx 10rpx 20rpx', borderRadius: '50rpx 0 0 50rpx', backgroundColor: 'rgba(0,0,0,.1)' }}>
+              <Icon type="share_light" /> 分享
           </View>
+          </button>
         </View>
         <View className="text-gray  flex align-center padding-sm bg-white">
           <View className="flex-sub">快递：{goodsInfo.delivery}</View>
@@ -227,8 +234,8 @@ export default () => {
       </View>
 
       <View className="bg-white padding-tb-xs solid-top" style={{ position: 'fixed', width: '100%', bottom: '0', left: '0' }}>
-        <View className="flex align-center">
-          <View className="flex-sub flex">
+        <View className="flex align-center" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+          <View className="flex-sub flex" onClick={() => reLaunch({ url: page_path.home })}>
             <View className="flex-sub text-center">
               <View><Icon type="home_light" size="36" color="#8799a3" /></View>
               <View className="text-xs">首页</View>
