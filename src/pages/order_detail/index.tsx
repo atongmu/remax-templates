@@ -99,7 +99,7 @@ export default () => {
                 <Cell border={false}><View className="text-black">合计：<Text className="text-price text-red text-xl">111</Text></View></Cell>
               </View>
             </View>
-            <View style={{ position: 'fixed', bottom: '0', left: '0', width: '100%' }}>
+            <View style={{ position: 'fixed', bottom: '0', left: '0', width: '100%', paddingBottom: "env(safe-area-inset-bottom)" }}>
               <View className="text-right bg-white padding-sm">
                 <Space align="baseline">
                   <Button look="anna" onTap={() => href(page_path.succeess)}>删除订单</Button>

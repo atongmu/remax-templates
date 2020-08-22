@@ -32,7 +32,7 @@ export default () => {
               <Text onClick={() => href(page_path.address_edit)}><Icon type="edit" size="36" color="#8799a3" /></Text>
             </View>
 
-            <View className="bg-white" style={{ position: 'fixed', bottom: '0', left: '0', width: '100%' }}>
+            <View className="bg-white" style={{ position: 'fixed', bottom: '0', left: '0', width: '100%', paddingBottom: "env(safe-area-inset-bottom)" }}>
               <View className="padding-sm">
                 <Button block look="anna" onTap={() => href(page_path.address_edit)}>新增收货地址</Button>
               </View>

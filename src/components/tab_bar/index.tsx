@@ -10,7 +10,7 @@ export interface Props {
 const TabBar = (props: Props) => {
     const { items } = props
     return (
-        <View className="tab-bar solid-top bg-white" style={{paddingTop:'10rpx'}}>
+        <View className="tab-bar solid-top bg-white" style={{ paddingTop: '10rpx', paddingBottom: "env(safe-area-inset-bottom)" }}>
             <Row>
                 {items.map((item, index) => {
                     return (

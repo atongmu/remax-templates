@@ -76,7 +76,7 @@ export default () => {
                 <Cell border={false}><View className="text-black">合计：<Text className="text-price text-red text-xl">111</Text></View></Cell>
               </View>
             </View>
-            <View style={{ position: 'fixed', bottom: '0', left: '0', width: '100%' }}>
+            <View style={{ position: 'fixed', bottom: '0', left: '0', width: '100%', paddingBottom: "env(safe-area-inset-bottom)" }}>
               <View className="flex align-center bg-white">
                 <View className="flex-sub text-center">
                   实付金额：<Text className="text-price text-red text-xl">1111</Text>

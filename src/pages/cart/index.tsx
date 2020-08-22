@@ -125,7 +125,7 @@ export default () => {
               ))
             }
           </View>
-          <View style={{ position: 'fixed', bottom: '0', left: '0', width: '100%' }}>
+          <View style={{ position: 'fixed', bottom: '0', left: '0', width: '100%', paddingBottom: "env(safe-area-inset-bottom)" }}>
             <View className="flex align-center bg-white padding-lr-sm">
               <View className="flex-sub">
                 <View className="flex-sub flex align-center">
