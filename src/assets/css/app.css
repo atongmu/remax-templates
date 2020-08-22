@@ -1210,6 +1210,9 @@ image.loading::after {
 	font-size: 80%;
 	margin-right: 4rpx;
 }
+.text-through {
+	text-decoration:line-through
+}
 
 .text-cut {
 	text-overflow: ellipsis;
