@@ -72,7 +72,7 @@ export default () => {
           <View>
             {
               items.map((item, index) => (
-                <View key={index} className="padding-tb-xs solid-bottom bg-white margin-bottom-sm">
+                <View key={index} className="bg-white margin-bottom-sm">
                   <CartModel item={item} onChange={() => { item.checked = !item.checked; }} detail={() => console.log(item)} />
                 </View>
               ))

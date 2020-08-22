@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Icon, SwipeAction, Checkbox } from 'anna-remax-ui';
-import { View, Text, Image} from 'remax/wechat';
-import Badge from 'weui/es/badge';
+import { View, Text, Image } from 'remax/wechat';
+import SlideView from 'weui-miniprogram/miniprogram_dist/slideview/slideview';
 
 import './index.less'
 
@@ -24,8 +24,8 @@ const CartModel = (props: Props) => {
     const { item, onChange, detail } = props
     return (
         <View className="cart-model">
-            <SwipeAction open={item.swiper} options={[{ name: '删除', style: { backgroundColor: '#ff0000' }, onTap: () => console.log(1) }]}>
-                <View className="flex align-center">
+            <SlideView show={false} buttons={[{ text: '删除', type: 'warn' }]} bindbuttontap={() => console.log(1)}>
+                <View className="flex align-center padding-tb-xs">
                     <View style={{ margin: '0 20rpx' }}>
                         <Checkbox checked={item.checked} onChange={onChange} />
                     </View>
@@ -46,7 +46,7 @@ const CartModel = (props: Props) => {
                         </View>
                     </View>
                 </View>
-            </SwipeAction>
+            </SlideView>
         </View>
     );
 };

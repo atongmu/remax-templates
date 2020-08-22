@@ -11,6 +11,8 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "typeRoots": ["./typings"],
+    "experimentalDecorators": true,
     "lib": ["DOM", "ES2015"]
   },
   "include": ["src/**/*", "typings/**/*"]
