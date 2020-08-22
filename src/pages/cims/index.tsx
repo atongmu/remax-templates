@@ -3,19 +3,17 @@ import { View } from 'remax/wechat';
 import { Card, Button } from 'anna-remax-ui';
 
 import { href } from '@/utils/common'
+import page_path from '@/utils/page_path';
 
 export default () => {
   return (
     <View className="padding-sm">
       <Card>
         <View className="padding-bottom-sm">
-          <Button look="secure" block onTap={() => href(``)}>物料管理</Button>
+          <Button look="secure" block onTap={() => href(page_path.materials)}>物料管理</Button>
         </View>
         <View className="padding-bottom-sm">
-          <Button look="secondary" block onTap={() => href(``)}>添加物料</Button>
-        </View>
-        <View className="padding-bottom-sm">
-          <Button look="anna" block onTap={() => href(``)}>退出</Button>
+          <Button look="secondary" block onTap={() => href(page_path.materials_edit)}>添加物料</Button>
         </View>
       </Card>
     </View>
