@@ -44,7 +44,7 @@ export default () => {
       <View className="padding-bottom-sm">
         {/* 搜索栏 */}
         <View className="searchFixed">
-          <SearchModel text='搜索' color="#28a745" searchFun={() => href(page_path.search)} sortFun={() => href(page_path.sort)} />
+          <SearchModel text='搜索' showSort={true} color="#28a745" searchFun={() => href(page_path.search)} sortFun={() => href(page_path.sort)} />
         </View>
         {/* 搜索栏 结束 */}
 
