@@ -234,7 +234,7 @@ export default () => {
       </View>
 
       <View className="bg-white padding-tb-xs solid-top" style={{ position: 'fixed', width: '100%', bottom: '0', left: '0' }}>
-        <View className="flex align-center" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+        <View className="flex align-center padding-env">
           <View className="flex-sub flex" onClick={() => reLaunch({ url: page_path.home })}>
             <View className="flex-sub text-center">
               <View><Icon type="home_light" size="36" color="#8799a3" /></View>

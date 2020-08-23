@@ -719,6 +719,9 @@ image.loading::after {
 	padding-top: 50rpx;
 	padding-bottom: 50rpx;
 }
+.padding-env{
+	padding-bottom: env(safe-area-inset-bottom);
+}
 
 /* -- 浮动 --  */
 
