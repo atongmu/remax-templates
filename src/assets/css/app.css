@@ -1332,3 +1332,48 @@ image.loading::after {
 .lines-white {
 	color: var(--white);
 }
+
+.fixed,
+.nav.fixed {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 999;
+	box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+.foot {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	z-index: 999;
+	box-shadow: 0 -1rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+.tabbar {
+	padding: 0;
+	height: calc(100rpx + env(safe-area-inset-bottom) / 2);
+	padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+}
+
+.tabbar-height {
+	min-height: 100rpx;
+	height: calc(100rpx + env(safe-area-inset-bottom) / 2);
+}
+
+.tabbar.shadow {
+	box-shadow: 0 -1rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+.tabbar .action {
+	font-size: 22rpx;
+	position: relative;
+	flex: 1;
+	text-align: center;
+	padding: 0;
+	display: block;
+	height: auto;
+	line-height: 1;
+	margin: 0;
+	overflow: initial;
+}
