@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'remax/wechat';
-import { Card, Loading, Button } from 'anna-remax-ui';
+import { Card, Button, Input } from 'anna-remax-ui';
 
 import styles from './index.css';
 import { href } from '@/utils/common'
@@ -17,20 +17,26 @@ export default () => {
     }
   }, [])
   return (
-    <View className={styles.app}>
-      <View className="padding-sm">
-        {isLoading ? (
-          <Loading />
-        ) : (
-            <Card>
-              <View className="padding-bottom-sm">
-                <Button look="anna" block onTap={() => href(``)}>商城</Button>
-              </View>
-              {/* <View className="padding-bottom-sm">
-                <Button look="warning" block onTap={() => href(``)}>库存管理</Button>
-              </View> */}
-            </Card>
-          )}
+    <View className="padding-sm">
+      <Card >
+        <View>
+          <Input label="手机号：" placeholder="请输入手机号" />
+        </View>
+        <View>
+          <Input
+            label="验证码："
+            placeholder="请输入验证码"
+            border={false}
+            extra={
+              <Button type="primary" size="small">
+                获取验证码
+            </Button>
+            }
+          />
+        </View>
+      </Card>
+      <View className="margin-top">
+        <Button block look="secure">登录</Button>
       </View>
     </View>
   );

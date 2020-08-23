@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: 页面路径管理
  * @Date: 2020-08-13 09:56:53
- * @LastEditTime: 2020-08-22 16:23:57
+ * @LastEditTime: 2020-08-23 15:07:30
  * @FilePath: \templates-ts\src\utils\page_path.ts
  */
 const path = {
@@ -44,5 +44,7 @@ const path = {
     materials: '/pages/materials/index',
     // 物料详情
     materials_detail: '/pages/materials_detail/index',
+    // 下拉刷新
+    pull_down_refresh: '/pages/pull_down_refresh/index',
 }
 export default path
