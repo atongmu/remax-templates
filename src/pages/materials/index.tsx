@@ -1,27 +1,56 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Switch } from 'remax/wechat';
-import { Card, Button, Input, Cell } from 'anna-remax-ui';
+import { View, Text } from 'remax/wechat';
+import { Cell } from 'anna-remax-ui';
 
-import { href } from '@/utils/common'
+import './index.less'
+import { href, toast } from '@/utils/common'
+import SearchModel from '@/components/search_model/index';
+import page_path from '@/utils/page_path';
+import PageLoading from '@/components/page_loading';
+import { getMaterials } from '@/api/index'
 
+export interface MaterialsItem {
+  id: number,
+  name: string,
+  time: string,
+  num: number
+}
 export default () => {
-  const [isDetail, setDetail] = useState(true)
-
+  const [isLoading, setLoading] = useState(true)
+  const [materials, setMaterials] = useState<MaterialsItem[]>([])
+  useEffect(() => {
+    init()
+  }, [])
+  const init = () => {
+    const setFun = setTimeout(() => {
+      getData()
+      setLoading(false)
+    }, 1500)
+    return () => {
+      setFun
+    }
+  }
+  const getData = async () => {
+    const materialsResult: any = await getMaterials({})
+    if (materialsResult.status === 200) {
+      setMaterials(materialsResult.data)
+    }
+  }
   return (
-    <View className="padding-sm">
-      <Card>
-        <View className="padding-bottom-sm">
-          <Input label="收货人" placeholder="Please enter" />
-          <Input label="手机号" placeholder="Please enter" />
-          <Cell label="所在城市" valueStyle={{ display: 'flex', justifyContent: 'flex-end', }} arrow>
-            <Text className="text-gray">选择城市</Text>
+    <View className="materials padding-env">
+      <View className="nav fixed">
+        <SearchModel text="搜索物料" searchFun={() => href(page_path.search)} color="#28a745" />
+      </View>
+      {isLoading && (
+        <PageLoading color="#28a745" topVal="90rpx" />
+      )}
+      <View>
+        {materials.map((item, index) => (
+          <Cell key={index} label={item.name} arrow onTap={() => href(page_path.materials_detail)}>
+            <View>库存：{item.num}</View>
           </Cell>
-          <Input label="收货地址" placeholder="Please enter" />
-          <Cell label="设为默认地址" valueStyle={{ display: 'flex', justifyContent: 'flex-end', }} >
-            <Switch checked={isDetail} onChange={v => setDetail(!v)} />
-          </Cell>
-        </View>
-      </Card>
+        ))}
+      </View>
     </View>
   );
 };
