@@ -5,8 +5,8 @@ import { View, Text } from 'remax/wechat';
 import './index.less'
 
 export interface Props {
-    color: string;
-    topVal: string;
+    color?: string;
+    topVal?: string;
 }
 
 const PageLoading = (props: Props) => {
