@@ -77,7 +77,7 @@ export default () => {
               </View>
               <View className="safearea-bottom"></View>
             </View>
-            <View style={{ position: 'fixed', bottom: '0', left: '0', width: '100%'}}>
+            <View className="foot">
               <View className="flex align-center bg-white padding-env">
                 <View className="flex-sub text-center">
                   实付金额：<Text className="text-price text-red text-xl">1111</Text>

@@ -105,7 +105,7 @@ export default () => {
   return (
     <View>
       {items.length > 0 ? (
-        <View>
+        <View style={{ paddingBottom: '84rpx' }}>
           <View className="flex align-center padding-sm bg-green light text-sm">
             <View className="flex-sub">购物车共<Text className="text-red padding-lr-xs">{items.length}</Text>件商品</View>
             <View className="flex-sub text-right padding-tb-sm">
@@ -126,7 +126,7 @@ export default () => {
             }
           </View>
           <View className="safearea-bottom"></View>
-          <View style={{ position: 'fixed', bottom: '0', left: '0', width: '100%' }}>
+          <View className="foot">
             <View className="flex align-center bg-white padding-lr-sm padding-env">
               <View className="flex-sub">
                 <View className="flex-sub flex align-center">

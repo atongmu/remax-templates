@@ -22,6 +22,7 @@ const LoadingModel = (props: Props) => {
                         <Text className="title">已经到最低了~！</Text>
                     </View>
                 )}
+            <View className="safearea-bottom"></View>
         </View>
     );
 };
