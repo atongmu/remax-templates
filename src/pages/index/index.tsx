@@ -23,6 +23,7 @@ export default () => {
         <Cell label="商城类模板" border={false} onTap={() => href(page_path.mall)} arrow />
         <Cell label="库存类模板" border={false} onTap={() => href(page_path.cims)} arrow />
         <Cell label="登录模板" border={false} onTap={() => href(page_path.login)} arrow />
+        <Cell label="二维码生成" border={false} onTap={() => href(page_path.pull_down_refresh)} arrow />
         <Cell label="下拉刷新上拉加载" border={false} onTap={() => href(page_path.pull_down_refresh)} arrow />
         {/* <Cell label="上拉加载" border={false} onTap={() => href(page_path.login)} arrow /> */}
         {/* <Cell label="新闻类模板" border={false} onTap={() => toast("正在研发中")} arrow /> */}

@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: 页面路径管理
  * @Date: 2020-08-13 09:56:53
- * @LastEditTime: 2020-08-23 15:07:30
+ * @LastEditTime: 2020-08-24 15:03:17
  * @FilePath: \templates-ts\src\utils\page_path.ts
  */
 const path = {
@@ -46,5 +46,7 @@ const path = {
     materials_detail: '/pages/materials_detail/index',
     // 下拉刷新
     pull_down_refresh: '/pages/pull_down_refresh/index',
+    // 二维码
+    qrcode: '/pages/qrcode/index',
 }
 export default path
