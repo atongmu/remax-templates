@@ -40,7 +40,7 @@ export default () => {
     setLoading(false)
   }
   return (
-    <View className="app">
+    <View className="app padding-env">
       <View className="padding-bottom-sm">
         {/* 搜索栏 */}
         <View className="searchFixed">
