@@ -36,7 +36,7 @@ export default () => {
         </View>
       </Card>
       <View className="margin-top">
-        <Button block look="secure">登录</Button>
+        <Button block look="secure" size="large">登录</Button>
       </View>
     </View>
   );

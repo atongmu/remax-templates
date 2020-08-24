@@ -10,10 +10,10 @@ export default () => {
     <View className="padding-sm">
       <Card>
         <View className="padding-bottom-sm">
-          <Button look="secure" block onTap={() => href(page_path.materials)}>物料管理</Button>
+          <Button look="secure" block onTap={() => href(page_path.materials)} size="large">物料管理</Button>
         </View>
         <View className="padding-bottom-sm">
-          <Button look="secondary" block onTap={() => href(page_path.materials_edit)}>添加物料</Button>
+          <Button look="secondary" block onTap={() => href(page_path.materials_edit)} size="large">添加物料</Button>
         </View>
       </Card>
     </View>
