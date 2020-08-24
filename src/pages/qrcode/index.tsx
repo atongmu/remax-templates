@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react';
-import { View, Text, Canvas } from 'remax/wechat';
+import React, { useEffect, useState } from 'react';
+import { View } from 'remax/wechat';
 
-import './index.less'
 import QrcodeModel from '@/components/qrcode_model';
 import PageLoading from '@/components/page_loading';
 
