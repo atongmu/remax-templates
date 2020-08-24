@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, getStorageSync } from 'remax/wechat';
-import { Button, Checkbox } from 'anna-remax-ui';
+import { Button, Checkbox, Icon } from 'anna-remax-ui';
 
 import { href, toast } from '@/utils/common'
 import PageLoading from '@/components/page_loading';
@@ -125,7 +125,7 @@ export default () => {
               ))
             }
           </View>
-          <View style={{ position: 'fixed', bottom: '0', left: '0', width: '100%'}}>
+          <View style={{ position: 'fixed', bottom: '0', left: '0', width: '100%' }}>
             <View className="flex align-center bg-white padding-lr-sm padding-env">
               <View className="flex-sub">
                 <View className="flex-sub flex align-center">
@@ -148,8 +148,9 @@ export default () => {
           </View>
         </View>
       ) : (
-          <View>
-            去购买
+          <View className="padding-tb-xl text-center">
+            <View className="margin-top"><Icon type="taoxiaopu" size="120" color="#ff5555" /></View>
+            <View className="margin-top-sm text-xl text-bold" onClick={() => href(page_path.home)}>去逛逛</View>
           </View>
         )}
       {isLoading && (
