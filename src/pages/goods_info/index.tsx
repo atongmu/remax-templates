@@ -231,6 +231,7 @@ export default () => {
             <Text>{goodsInfo.content}</Text>
           </View>
         </View>
+        <View className="safearea-bottom"></View>
       </View>
 
       <View className="bg-white padding-tb-xs solid-top" style={{ position: 'fixed', width: '100%', bottom: '0', left: '0' }}>

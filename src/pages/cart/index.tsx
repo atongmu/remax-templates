@@ -125,6 +125,7 @@ export default () => {
               ))
             }
           </View>
+          <View className="safearea-bottom"></View>
           <View style={{ position: 'fixed', bottom: '0', left: '0', width: '100%' }}>
             <View className="flex align-center bg-white padding-lr-sm padding-env">
               <View className="flex-sub">

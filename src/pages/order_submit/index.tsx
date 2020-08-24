@@ -75,6 +75,7 @@ export default () => {
                 <Input label="订单备注" placeholder="选填：请先和商家协商一致" />
                 <Cell border={false}><View className="text-black">合计：<Text className="text-price text-red text-xl">111</Text></View></Cell>
               </View>
+              <View className="safearea-bottom"></View>
             </View>
             <View style={{ position: 'fixed', bottom: '0', left: '0', width: '100%'}}>
               <View className="flex align-center bg-white padding-env">
