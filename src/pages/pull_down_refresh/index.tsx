@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react';
-import { View, Text } from 'remax/wechat';
-import { Cell } from 'anna-remax-ui';
+import { View,} from 'remax/wechat';
+import { Cell, Loading } from 'anna-remax-ui';
 import { usePageEvent } from 'remax/macro';
 
 import './index.less'
@@ -18,7 +18,7 @@ export default () => {
   const defaultDataSource = useRef(null)
   const { initStatus, pageLoading, pageStatus, setInitStatus, setPageLoading, setPageStatus } = useReachBottom()
   const [dataSource, setDataSource] = useState<MaterialsItem[]>([])
-  const [params, setParams] = useState({ method: 'GET' })
+  const [baseImage, setBaseImage] = useState('')
   usePageEvent('onPullDownRefresh', () => {
     // 可以返回一个 promise，控制何时停止下来刷新行为
     setInitStatus(e => true)
@@ -39,6 +39,7 @@ export default () => {
       getDate()
     }
   });
+  const Loading = useMemo(() => <LoadingModel isLoading={pageLoading} />, [pageLoading]);
   const reault = useCallback((data) => {
     /**
      * 传入默认选项
@@ -69,7 +70,7 @@ export default () => {
           <Cell key={index} label={item.num}>{item.time}</Cell>
         </View>
       ))}
-      <LoadingModel isLoading={pageLoading} />
+      {Loading}
     </View>
   );
 };
