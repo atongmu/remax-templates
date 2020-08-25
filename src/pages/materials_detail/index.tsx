@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react';
 import { View, Text, Switch } from 'remax/wechat';
 import { Card, Button, Input, Icon, ActionSheet, Cell, Popup, Space } from 'anna-remax-ui';
+import { usePageEvent } from 'remax/macro';
 
 import './index.less'
 import { href, modal, toast } from '@/utils/common'
 import NavModel from '@/components/nar_model';
-import PageLoading from '@/components/page_loading';
+import LoadingModel from '@/components/loading_model';
+import useReachBottom from '@/hooks/useReachBottom'
 import { getMaterialsIn } from '@/api/index'
 export interface MaterialsItem {
   id: number,
@@ -13,7 +15,9 @@ export interface MaterialsItem {
   num: number
 }
 export default () => {
-  const [isLoading, setLoading] = useState(true)
+  const { initStatus, pageLoading, pageStatus, setInitStatus, setPageLoading, setPageStatus } = useReachBottom()
+  const [navActive, setNavActive] = useState(0)
+  const [pageNo, setPageNo] = useState(1)
   const [showActive, setShowActiven] = useState(false)
   const [shouPopup, setShowPopup] = useState(false)
   const [shouCimsPopup, setShowCimsPopup] = useState(false)
@@ -26,26 +30,55 @@ export default () => {
   ])
   const [itemNum, setItemNum] = useState('')
   const [itemName, setItemName] = useState('')
-  const [navActive, setNavActive] = useState(0)
   const [navItems] = useState(['出库记录', '入库记录'])
-  const [items, setItems] = useState<MaterialsItem[]>([])
+  const [dataSource, setDataSource] = useState<MaterialsItem[]>([])
+
+  const tabsActive = useRef<number>(navActive);
+
   useEffect(() => {
-    setItems([])
-    init()
-  }, [navActive])
-  const init = () => {
-    const setFun = setTimeout(() => {
-      getData()
-      setLoading(false)
-    }, 1500)
-    return () => {
-      setFun
+    const setFun = setTimeout(function () {
+      getData();
+    }, 500);
+    return (() => {
+      clearTimeout(setFun);
+    })
+  }, [navActive, pageNo])
+
+  usePageEvent('onReachBottom', () => {
+    if (pageStatus && pageLoading) {
+      console.log('onReachBottom')
+      setPageNo(e => pageNo + 1)
     }
-  }
+  });
+
+  const setActive = useCallback((data) => {
+    if (data !== tabsActive.current) {
+      setPageLoading(e => true)
+      setInitStatus(e => true)
+      setDataSource(e => [])
+      setPageNo(e => 1)
+    }
+    console.log(data)
+    console.log(tabsActive.current)
+    tabsActive.current = data
+    setNavActive(tabsActive.current)
+  }, [navActive])
+
   const getData = async () => {
-    const result: any = await getMaterialsIn({})
+    setPageStatus(e => false)
+    const result: any = await getMaterialsIn({ active: tabsActive.current, page_no: pageNo })
     if (result.status === 200) {
-      setItems(result.data)
+      const data = result.data
+      if (initStatus) {
+        setDataSource(items => data);
+      } else {
+        setDataSource(items => dataSource.concat(data));
+      }
+      if (data.length < 15) {
+        setPageLoading(e => false)
+      }
+      setPageStatus(e => true)
+      setInitStatus(e => false)
     }
   }
   const cimsEdit = () => { }
@@ -57,21 +90,24 @@ export default () => {
     setShowCimsPopup(e => false)
     setItemName(e => '')
   }
+  const Loading = useMemo(() => <LoadingModel isLoading={pageLoading} />, [pageLoading]);
   return (
     <View className="materials">
       <View className="nav fixed">
-        <NavModel className="text-green" active={navActive} items={navItems} detail={(o) => setNavActive(e => o)} />
+        <NavModel className="text-green" active={tabsActive.current} items={navItems} detail={(o) => setActive(o)} />
       </View>
-      {isLoading && (
-        <PageLoading color="#28a745" topVal="92rpx" />
-      )}
+
       <View className="content">
-        {items.map(item => (
+        {dataSource.map(item => (
           <Cell key={item.id} label={item.num}>
             {item.time}
           </Cell>
         ))}
+
+        {Loading}
+
       </View>
+
       <View className="foot bg-green light  padding-tb-sm">
         <View className="flex align-center padding-env padding-lr-sm">
           <View className="flex-sub align-center flex">
