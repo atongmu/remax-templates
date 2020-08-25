@@ -8,6 +8,7 @@ import { href, modal, toast } from '@/utils/common'
 import NavModel from '@/components/nar_model';
 import LoadingModel from '@/components/loading_model';
 import useReachBottom from '@/hooks/useReachBottom'
+import useRefState from '@/hooks/useRefState'
 import { getMaterialsIn } from '@/api/index'
 export interface MaterialsItem {
   id: number,
@@ -39,9 +40,9 @@ export default () => {
     const setFun = setTimeout(function () {
       getData();
     }, 500);
-    return (() => {
+    return () => {
       clearTimeout(setFun);
-    })
+    }
   }, [navActive, pageNo])
 
   usePageEvent('onReachBottom', () => {
@@ -50,7 +51,7 @@ export default () => {
       setPageNo(e => pageNo + 1)
     }
   });
-
+  
   const setActive = useCallback((data) => {
     if (data !== tabsActive.current) {
       setPageLoading(e => true)
