@@ -9,6 +9,7 @@ import page_path from '@/utils/page_path';
 import SearchModel from '@/components/search_model/index';
 import PageLoading from '@/components/page_loading';
 import { getMaterials } from '@/api/index'
+import { TodoContext } from '@/app';
 
 export interface MaterialsItem {
   id: number,
@@ -19,6 +20,7 @@ export interface MaterialsItem {
 export default () => {
   const [isLoading, setLoading] = useState(true)
   const [materials, setMaterials] = useState<MaterialsItem[]>([])
+  const todo: any = React.useContext(TodoContext);
   usePageEvent('onPullDownRefresh', () => {
     // 可以返回一个 promise，控制何时停止下来刷新行为
     return new Promise((resolve) => {
@@ -26,7 +28,7 @@ export default () => {
         showLoading({ title: "努力加载中", mask: true })
         refresh()
         resolve();
-      },100000000);
+      }, 100000000);
     })
   });
   useEffect(() => {
@@ -55,7 +57,7 @@ export default () => {
   return (
     <View className="materials padding-env">
       <View className="nav fixed">
-        <SearchModel text="搜索物料" searchFun={() => href(page_path.search)} color="#28a745" />
+        <SearchModel text={`${todo.bingItems.searchValue !== '' ? todo.bingItems.searchValue : '搜索物料'}`} searchFun={() => href(page_path.search)} color="#28a745" />
       </View>
       {isLoading && (
         <PageLoading color="#28a745" topVal="90rpx" />

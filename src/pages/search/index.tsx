@@ -4,10 +4,12 @@ import { Icon, SearchBar, Tag } from 'anna-remax-ui';
 
 import './index.less';
 import { toast, getStorage, setStorage } from '@/utils/common'
+import { TodoContext } from '@/app';
 
 export default () => {
   const [searchValue, setSearchValue] = useState('')
   const [storageArrty, setStorageArrty] = useState<string[]>([])
+  const todo: any = React.useContext(TodoContext);
   useEffect(() => {
     const list = getStorage('searchArrty')
     if (list) {
@@ -25,6 +27,10 @@ export default () => {
         setSearchValue('')
       }
     }
+    todo.setBingItems({
+      ...todo.bingItems,
+      searchValue: e
+    })
   }
   const removeHandle = () => {
     setStorageArrty(o => [])
