@@ -90,7 +90,7 @@ export default () => {
                   })
                 )}
               </View>
-              <View>
+              <View className="padding-env">
                 <Cell label="商品总额"><Text className="text-price">111</Text></Cell>
                 <Cell label="优惠券" arrow><Text className="text-red">满5减1</Text></Cell>
                 <Cell label="发票" arrow><Text className="text-red">不开发票</Text></Cell>
@@ -99,8 +99,8 @@ export default () => {
                 <Cell border={false}><View className="text-black">合计：<Text className="text-price text-red text-xl">111</Text></View></Cell>
               </View>
             </View>
-            <View style={{ position: 'fixed', bottom: '0', left: '0', width: '100%', paddingBottom: "env(safe-area-inset-bottom)" }}>
-              <View className="text-right bg-white padding-sm">
+            <View className="foot bg-white">
+              <View className="text-right padding-sm padding-env">
                 <Space align="baseline">
                   <Button look="anna" onTap={() => href(page_path.succeess)}>删除订单</Button>
                   <Button look="anna" onTap={() => href(page_path.succeess)}>立即支付</Button>
