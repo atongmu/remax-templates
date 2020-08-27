@@ -11,27 +11,27 @@ export default () => {
   const [isLoading, setLoading] = useState(true)
   const [orderItems] = useState([
     {
-      path: 'path',
+      path: page_path.order_list,
       title: '待付款',
       icon: 'pic'
     },
     {
-      path: 'path',
+      path: page_path.order_list,
       title: '待发货',
       icon: 'pic'
     },
     {
-      path: 'path',
+      path: page_path.order_list,
       title: '待收货',
       icon: 'pic'
     },
     {
-      path: 'path',
+      path: page_path.order_list,
       title: '待评论',
       icon: 'pic'
     },
     {
-      path: 'path',
+      path: page_path.order_list,
       title: '退款/售后',
       icon: 'pic'
     },

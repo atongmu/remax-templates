@@ -51,7 +51,7 @@ export default () => {
       setPageNo(e => pageNo + 1)
     }
   });
-  
+
   const setActive = useCallback((data) => {
     if (data !== tabsActive.current) {
       setPageLoading(e => true)
@@ -128,7 +128,6 @@ export default () => {
           actions={options}
           onCancel={() => setShowActiven(false)}
           onChange={(o: any) => {
-            setShowActiven(false);
             if (o.value == 0) {
               setShowPopup(e => true)
               setIsEdit(e => true)
@@ -145,42 +144,39 @@ export default () => {
                 console.log(e)
               })
             }
+            setShowActiven(false);
           }}
         />
       )}
 
-      {shouPopup && (
-        <Popup closeable position="bottom" open={shouPopup} onClose={PopupClose}>
-          <View className="padding-sm padding-env">
-            <Card title={isEdit ? '物料入库' : '物料出库'}>
-              <View className="solid"><Input label="数量：" type="number" placeholder="输入数量" value={itemNum} border={false}
-                onChange={(e) => setItemNum(e.target.value)} /></View>
-              <View className="margin-top text-center">
-                <Space size="middle">
-                  <Button look="secure" >确定</Button>
-                  <Button onTap={PopupClose}>取消</Button>
-                </Space>
-              </View>
-            </Card>
-          </View>
-        </Popup>
-      )}
-      {shouCimsPopup && (
-        <Popup closeable position="bottom" open={shouCimsPopup} onClose={PopupCimsClose}>
-          <View className="padding-sm padding-env">
-            <Card title="物料修改">
-              <View className="solid"><Input label="物料名称：" placeholder="输入名称" value={itemName} border={false}
-                onChange={(e) => setItemName(e.target.value)} /></View>
-              <View className="margin-top text-center">
-                <Space size="middle">
-                  <Button look="secure" >确定</Button>
-                  <Button onTap={PopupCimsClose}>取消</Button>
-                </Space>
-              </View>
-            </Card>
-          </View>
-        </Popup>
-      )}
+      <Popup closeable position="center" open={shouPopup} onClose={PopupClose} style={{ width: '80%' }}>
+        <View className="padding-sm">
+          <Card title={isEdit ? '物料入库' : '物料出库'}>
+            <View className="solid"><Input label="数量：" type="number" placeholder="输入数量" value={itemNum} border={false}
+              onChange={(e) => setItemNum(e.target.value)} /></View>
+            <View className="margin-top text-center">
+              <Space size="middle">
+                <Button look="secure" >确定</Button>
+                <Button onTap={PopupClose}>取消</Button>
+              </Space>
+            </View>
+          </Card>
+        </View>
+      </Popup>
+      <Popup closeable position="center" open={shouCimsPopup} onClose={PopupCimsClose} style={{ width: '80%' }}>
+        <View className="padding-sm">
+          <Card title="物料修改">
+            <View className="solid"><Input label="物料名称：" placeholder="输入名称" value={itemName} border={false}
+              onChange={(e) => setItemName(e.target.value)} /></View>
+            <View className="margin-top text-center">
+              <Space size="middle">
+                <Button look="secure" >确定</Button>
+                <Button onTap={PopupCimsClose}>取消</Button>
+              </Space>
+            </View>
+          </Card>
+        </View>
+      </Popup>
     </View>
   );
 };

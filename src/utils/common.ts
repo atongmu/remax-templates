@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: api工具类
  * @Date: 2020-07-22 16:37:08
- * @LastEditTime: 2020-08-24 09:07:42
+ * @LastEditTime: 2020-08-27 13:39:13
  * @FilePath: \templates-ts\src\utils\common.ts
  */
 import { request, showToast, showModal, showLoading, hideLoading, setStorageSync, getStorageSync, clearStorageSync, redirectTo, navigateTo } from 'remax/wechat';
@@ -36,6 +36,13 @@ export function setUserInfo(mobile: string, token: any) {
     const storageMobile = JSON.stringify(token)
     setStorageSync("token", token)
     setStorageSync("mobile", storageMobile)
+}
+export function getStorage(name: string) {
+    return getStorageSync(name)
+}
+export function setStorage(name: string, data: any) {
+    const storage = JSON.stringify(data)
+    return setStorageSync(name, storage)
 }
 export function getToken() {
     return getStorageSync("token")

@@ -1,16 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'remax/wechat';
-import { Icon, SearchBar, Cell, Tag } from 'anna-remax-ui';
+import { View } from 'remax/one';
+import { Icon, SearchBar, Tag } from 'anna-remax-ui';
 
 import './index.less';
-import { href, toast } from '@/utils/common'
+import { toast, getStorage, setStorage } from '@/utils/common'
 
 export default () => {
   const [searchValue, setSearchValue] = useState('')
-
+  const [storageArrty, setStorageArrty] = useState<string[]>([])
   useEffect(() => {
-    console.log('searchValeu')
-  }, [searchValue])
+    const list = getStorage('searchArrty')
+    if (list) {
+      setStorageArrty(e => JSON.parse(list))
+    }
+  }, [])
+
+  const searchChange = (e: any) => {
+    if (storageArrty.indexOf(e) === -1) {
+      if (storageArrty.length < 7) {
+        const newArrty = Object.assign([], storageArrty)
+        newArrty.push(e)
+        setStorageArrty(o => newArrty)
+        setStorage('searchArrty', newArrty)
+        setSearchValue('')
+      }
+    }
+  }
+  const removeHandle = () => {
+    setStorageArrty(o => [])
+    setStorage('searchArrty', [])
+  }
   return (
     <View className="serach">
       <View className="padding-sm bg-white">
@@ -19,11 +38,12 @@ export default () => {
           onInput={(e) => setSearchValue(e)}
           onClear={() => setSearchValue('')}
           onActionClick={() => setSearchValue('')}
-          onSubmit={() => toast("搜索")}
-          placeholder="搜索"
+          onSubmit={searchChange}
           inputStyle={{
             backgroundColor: '#d7f0db',
           }}
+          focus={true}
+          placeholder="搜索"
         />
       </View>
       <View className="padding-top-lg bg-white">
@@ -31,15 +51,14 @@ export default () => {
           <View className="padding">
             <View className="flex">
               <View>搜索历史</View>
-              <View className="flex-sub text-right" onClick={() => toast("删除")}>
+              <View className="flex-sub text-right" onTap={removeHandle}>
                 <Icon type="delete" color="#999" size="36rpx" />
               </View>
             </View>
             <View className="padding-top">
-              <Tag color="blue">blue</Tag>
-              <Tag color="green">green</Tag>
-              <Tag color="yellow">yellow</Tag>
-              <Tag color="red">red</Tag>
+              {storageArrty.map(itme => (
+                <Tag key={itme} color="green">{itme}</Tag>
+              ))}
             </View>
           </View>
         ) : (

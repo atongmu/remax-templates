@@ -83,7 +83,7 @@ export default () => {
                   实付金额：<Text className="text-price text-red text-xl">1111</Text>
                 </View>
                 <View className="padding-xs">
-                  <Button look="anna" onTap={() => href(page_path.succeess)}>确认支付宝</Button>
+                  <Button look="anna" onTap={() => href(page_path.succeess)}>确认支付</Button>
                 </View>
               </View>
             </View>
