@@ -20,13 +20,13 @@ export default () => {
   const [isLoading, setLoading] = useState(true)
   const [materials, setMaterials] = useState<MaterialsItem[]>([])
   usePageEvent('onPullDownRefresh', () => {
-    showLoading({ title: "努力加载中", mask: true })
-    refresh()
     // 可以返回一个 promise，控制何时停止下来刷新行为
     return new Promise((resolve) => {
       setTimeout(() => {
+        showLoading({ title: "努力加载中", mask: true })
+        refresh()
         resolve();
-      });
+      },100000000);
     })
   });
   useEffect(() => {
