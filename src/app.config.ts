@@ -2,12 +2,12 @@
  * @Author: codingfly
  * @Description: 配置文件
  * @Date: 2020-08-13 08:54:44
- * @LastEditTime: 2020-08-27 09:06:22
+ * @LastEditTime: 2020-08-27 16:01:27
  * @FilePath: \templates-ts\src\app.config.ts
  */
 import { AppConfig } from "remax/wechat";
 const backgroundColor: string = '#28a745';
-const title: string = 'remax小程序模板';
+const title: string = '微信小程序模板';
 const pages: Array<string> = [
   'pages/index/index',
   'pages/login/index',
