@@ -121,33 +121,31 @@ export default () => {
         </View>
       </View>
 
-      {showActive && (
-        <ActionSheet
-          cancelText="取消"
-          open={showActive}
-          actions={options}
-          onCancel={() => setShowActiven(false)}
-          onChange={(o: any) => {
-            if (o.value == 0) {
-              setShowPopup(e => true)
-              setIsEdit(e => true)
-            }
-            if (o.value == 1) {
-              setShowPopup(e => true)
-              setIsEdit(e => false)
-            }
-            if (o.value == 2) {
-              setShowCimsPopup(e => true)
-            }
-            if (o.value == 3) {
-              modal("危险操作", "确定要删除吗？", (e: any) => {
-                console.log(e)
-              })
-            }
-            setShowActiven(false);
-          }}
-        />
-      )}
+      <ActionSheet
+        cancelText="取消"
+        open={showActive}
+        actions={options}
+        onCancel={() => setShowActiven(false)}
+        onChange={(o: any) => {
+          if (o.value == 0) {
+            setShowPopup(e => true)
+            setIsEdit(e => true)
+          }
+          if (o.value == 1) {
+            setShowPopup(e => true)
+            setIsEdit(e => false)
+          }
+          if (o.value == 2) {
+            setShowCimsPopup(e => true)
+          }
+          if (o.value == 3) {
+            modal("危险操作", "确定要删除吗？", (e: any) => {
+              console.log(e)
+            })
+          }
+          setShowActiven(false);
+        }}
+      />
 
       <Popup closeable position="center" open={shouPopup} onClose={PopupClose} style={{ width: '80%' }}>
         <View className="padding-sm">
