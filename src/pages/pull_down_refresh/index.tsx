@@ -75,15 +75,11 @@ export default () => {
       }, 1000);
     })
   });
-  usePageEvent('onLoad', () => {
-    // load()
-  });
   usePageEvent('onReachBottom', () => {
     console.log(hasMore)
     if (hasMore && pageStatus) {
       console.log('onReachBottom')
       setPageNo(pageNo => pageNo + 1)
-      // load()
     }
   });
   const Loading = useMemo(() => <LoadingModel isLoading={hasMore} />, [hasMore]);
@@ -98,7 +94,7 @@ export default () => {
     }
   }
   return (
-    <View className="padding-env">
+    <View>
       {list.map((item, index: number) => (
         <View key={index} className="padding-tb-xl bg-white margin-bottom-xs">
           <View className="flex padding-lr-sm">

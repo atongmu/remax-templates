@@ -1379,3 +1379,7 @@ image.loading::after {
   margin: 0;
   overflow: initial;
 }
+
+.anna-popup-container-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
