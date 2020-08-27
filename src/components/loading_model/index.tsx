@@ -11,7 +11,7 @@ export interface Props {
 }
 
 const LoadingModel = (props: Props) => {
-    const { color, type, isLoading } = props
+    const { color, type = 'wave', isLoading } = props
 
     return (
         <View className="loading-model padding-sm text-center">
