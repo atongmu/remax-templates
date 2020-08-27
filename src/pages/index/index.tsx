@@ -21,10 +21,18 @@ export default () => {
   return (
     <View>
       <View>
+      <View className="padding-sm margin-bottom-sm bg-white" onClick={() => href(page_path.form)}>
+          <View className="flex align-center">
+            <View className="flex-sub">form组件</View>
+            <View className="flex-sub text-right">
+              <Icon type="qr_code_light" size="36" color="#999" />
+            </View>
+          </View>
+        </View>
 
         <View className="padding-sm margin-bottom-sm bg-white" onClick={() => href(page_path.qrcode)}>
           <View className="flex align-center">
-            <View className="flex-sub">二维码生成</View>
+            <View className="flex-sub">二维码生成组件</View>
             <View className="flex-sub text-right">
               <Icon type="qr_code_light" size="36" color="#999" />
             </View>
@@ -33,7 +41,7 @@ export default () => {
 
         <View className="padding-sm margin-bottom-sm bg-white" onClick={() => href(page_path.pull_down_refresh)}>
           <View className="flex align-center">
-            <View className="flex-sub">下拉刷新上拉加载</View>
+            <View className="flex-sub">下拉刷新上拉加载组件</View>
             <View className="flex-sub text-right">
               <Icon type="refresh" size="36" color="#999" />
             </View>

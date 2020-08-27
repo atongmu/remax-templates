@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: 配置文件
  * @Date: 2020-08-13 08:54:44
- * @LastEditTime: 2020-08-24 15:03:25
+ * @LastEditTime: 2020-08-27 09:06:22
  * @FilePath: \templates-ts\src\app.config.ts
  */
 import { AppConfig } from "remax/wechat";
@@ -31,6 +31,7 @@ const pages: Array<string> = [
   'pages/materials_detail/index',
   'pages/pull_down_refresh/index',
   'pages/qrcode/index',
+  'pages/form/index',
 ]
 
 const config: AppConfig = {
