@@ -5,7 +5,7 @@ import { Button, Checkbox, Icon } from 'anna-remax-ui';
 import { href, toast } from '@/utils/common'
 import PageLoading from '@/components/page_loading';
 import page_path from '@/utils/page_path'
-import CartModel from '../../components/cart_model/index';
+import CartModel from '@/components/cart_model/index';
 export interface Goods {
   id: number,
   name: string,

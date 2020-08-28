@@ -2,8 +2,8 @@
  * @Author: codingfly
  * @Description: 接口
  * @Date: 2020-07-30 17:27:03
- * @LastEditTime: 2020-08-22 16:58:11
- * @FilePath: \templates-ts\src\api\index.ts
+ * @LastEditTime: 2020-08-28 20:11:04
+ * @FilePath: \remax-templates\src\api\index.ts
  */
 import { ajax } from '@/utils/common'
 const api = {
@@ -17,6 +17,7 @@ const api = {
     materials_in: '/materials_in',
     materials_out: '/materials_out',
     materials_detail: '/materials_detail',
+    template_status: '/template_status',
 }
 export default api
 
@@ -59,4 +60,8 @@ export function getMaterialsOut(data: any) {
 //  获取物料详情
 export function getMaterialsDetail(data: any) {
     return ajax(api.materials_detail, 'GET', data, false, true, true)
+}
+//  模板显示状态
+export function getTemplateStatus(data: any) {
+    return ajax(api.template_status, 'GET', data, false, true, true)
 }

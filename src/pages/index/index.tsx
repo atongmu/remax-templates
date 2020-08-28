@@ -5,14 +5,23 @@ import { Cell, Icon, } from 'anna-remax-ui';
 import { href, toast } from '@/utils/common'
 import PageLoading from '@/components/page_loading';
 import page_path from '@/utils/page_path'
+import { getTemplateStatus } from '@/api/index'
 
 export default () => {
   const [isLoading, setLoading] = useState(true)
   const [active, setActive] = useState(false)
+  const [templateStatus, setTemplateStatus] = useState(false)
 
   useEffect(() => {
     const setFun = setTimeout(() => {
-      setLoading(false)
+      getTemplateStatus({}).then((res: any) => {
+        const { data, message, status } = res
+        if (status === 200) {
+          setTemplateStatus(() => data)
+        }
+        setLoading(false)
+      })
+
     }, 1500)
     return () => {
       setFun
@@ -21,11 +30,20 @@ export default () => {
   return (
     <View>
       <View>
-      <View className="padding-sm margin-bottom-sm bg-white" onClick={() => href(page_path.form)}>
+        <View className="padding-sm margin-bottom-sm bg-white" onClick={() => href(page_path.form)}>
           <View className="flex align-center">
             <View className="flex-sub">form组件</View>
             <View className="flex-sub text-right">
-              <Icon type="qr_code_light" size="36" color="#999" />
+              <Icon type="edit" size="36" color="#999" />
+            </View>
+          </View>
+        </View>
+
+        <View className="padding-sm margin-bottom-sm bg-white" onClick={() => href(page_path.slide)}>
+          <View className="flex align-center">
+            <View className="flex-sub">滑动组件</View>
+            <View className="flex-sub text-right">
+              <Icon type="round_transfer" size="36" color="#999" />
             </View>
           </View>
         </View>
@@ -47,22 +65,23 @@ export default () => {
             </View>
           </View>
         </View>
-        
-        <View className="padding-sm margin-bottom-sm bg-white" onClick={() => setActive(e => !active)}>
-          <View className="flex align-center">
-            <View className="flex-sub">模板</View>
-            <View className="flex-sub text-right">
-              <Icon type="copy" size="36" color="#999" />
+        {templateStatus && (
+          <View className="padding-sm margin-bottom-sm bg-white" onClick={() => setActive(e => !active)}>
+            <View className="flex align-center">
+              <View className="flex-sub">模板</View>
+              <View className="flex-sub text-right">
+                <Icon type="copy" size="36" color="#999" />
+              </View>
             </View>
+            {active && (
+              <View className="solids-top margin-top-sm">
+                <Cell label="购物模板" onTap={() => href(page_path.mall)} arrow />
+                <Cell label="库存模板" onTap={() => href(page_path.cims)} arrow />
+                <Cell label="登录模板" onTap={() => href(page_path.login)} arrow />
+              </View>
+            )}
           </View>
-          {active && (
-            <View className="solids-top margin-top-sm">
-              <Cell label="购物模板" onTap={() => href(page_path.mall)} arrow />
-              <Cell label="库存模板" onTap={() => href(page_path.cims)} arrow />
-              <Cell label="登录模板" onTap={() => href(page_path.login)} arrow />
-            </View>
-          )}
-        </View>
+        )}
       </View>
       {isLoading && (
         <PageLoading color="#28a745" topVal="0" />

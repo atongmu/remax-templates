@@ -2,8 +2,8 @@
  * @Author: codingfly
  * @Description: 页面路径管理
  * @Date: 2020-08-13 09:56:53
- * @LastEditTime: 2020-08-27 09:05:12
- * @FilePath: \templates-ts\src\utils\page_path.ts
+ * @LastEditTime: 2020-08-28 20:38:56
+ * @FilePath: \remax-templates\src\utils\page_path.ts
  */
 const path = {
     // 首页
@@ -48,7 +48,9 @@ const path = {
     pull_down_refresh: '/pages/pull_down_refresh/index',
     // 二维码
     qrcode: '/pages/qrcode/index',
-    // 二维码
+    // 表单
     form: '/pages/form/index',
+    // 滑动
+    slide: '/pages/slide/index',
 }
 export default path
