@@ -57,7 +57,7 @@ export default () => {
           </View>
           {active && (
             <View className="solids-top margin-top-sm">
-              <Cell label="商城模板" onTap={() => href(page_path.mall)} arrow />
+              <Cell label="购物模板" onTap={() => href(page_path.mall)} arrow />
               <Cell label="库存模板" onTap={() => href(page_path.cims)} arrow />
               <Cell label="登录模板" onTap={() => href(page_path.login)} arrow />
             </View>

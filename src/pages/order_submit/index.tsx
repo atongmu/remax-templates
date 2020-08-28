@@ -80,10 +80,10 @@ export default () => {
             <View className="foot">
               <View className="flex align-center bg-white padding-env">
                 <View className="flex-sub text-center">
-                  实付金额：<Text className="text-price text-red text-xl">1111</Text>
+                  实付：<Text className="text-price text-red text-xl">1111</Text>
                 </View>
                 <View className="padding-xs">
-                  <Button look="anna" onTap={() => href(page_path.succeess)}>确认支付</Button>
+                  <Button look="anna" onTap={() => href(page_path.succeess)}>下单</Button>
                 </View>
               </View>
             </View>

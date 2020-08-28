@@ -91,7 +91,7 @@ export default () => {
         <View className="bar">
           <TabBar items={[
             { image: 'http://dummyimage.com/200x200', title: '首页', path: `/pages/mall/index` },
-            { image: 'http://dummyimage.com/200x200', title: '购物车', path: `/pages/cart/index` },
+            { image: 'http://dummyimage.com/200x200', title: '篮子', path: `/pages/cart/index` },
             { image: 'http://dummyimage.com/200x200', title: '我的', path: `/pages/my/index` },
           ]} />
         </View>

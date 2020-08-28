@@ -63,7 +63,7 @@ export default () => {
               {items.map((item, index) => (
                 <View className="bg-white margin-bottom-sm" key={index}>
                   <View className="flex padding-sm solids-bottom">
-                    <View className="flex-sub">订单号：{item.id}</View>
+                    <View className="flex-sub">单号：{item.id}</View>
                     <View className="text-gray">{filterStatus(item.status)}</View>
                   </View>
                   <View className="solid-bottom padding-sm" onClick={() => href(page_path.order_detail)}>
