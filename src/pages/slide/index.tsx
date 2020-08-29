@@ -10,8 +10,8 @@ export default () => {
   const [isLoading, setLoading] = useState(true)
   const [buttons] = useState([{ text: '删除', type: 'warn' }])
   const [list] = useState([
-    { id: 1, name: '11' },
-    { id: 2, name: '22' },
+    { id: 1, name: '11', show: false },
+    { id: 2, name: '22', show: false },
   ])
 
   useEffect(() => {
@@ -27,9 +27,14 @@ export default () => {
       <Card>
         {list.map((item: any) => (
           <View key={item.id} className="solid-bottom">
-            <SlideModel buttons={buttons} extra={
+            <SlideModel 
+            show={item.show} 
+            buttons={buttons} 
+            extra={
               <View className="padding-sm ">{item.name}</View>
-            } />
+            }
+            onShow={()=>console.log(item)}
+             />
           </View>
         ))}
       </Card>
