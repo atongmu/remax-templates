@@ -79,7 +79,7 @@ export default () => {
             </View>
             <View className="bg-white">
               <View className="padding solid-bottom">
-                商品信息
+                信息
               </View>
               <View className="padding">
                 {orderItems && (
@@ -91,7 +91,7 @@ export default () => {
                 )}
               </View>
               <View className="padding-env">
-                <Cell label="商品总额"><Text className="text-price">111</Text></Cell>
+                <Cell label="总额"><Text className="text-price">111</Text></Cell>
                 <Cell label="优惠券" arrow><Text className="text-red">满5减1</Text></Cell>
                 <Cell label="发票" arrow><Text className="text-red">不开发票</Text></Cell>
                 <Cell label="配送费"><Text className="text-price">0/00</Text></Cell>

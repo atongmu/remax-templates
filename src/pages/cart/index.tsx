@@ -112,7 +112,7 @@ export default () => {
               {isEdit ? (
                 <Text className="padding-tb-sm padding-lr radius-shape bg-cyan text-white" onClick={() => setIsEdit(false)}>完成</Text>
               ) : (
-                  <Text className="padding-tb-sm padding-lr radius-shape bg-green text-white" onClick={() => setIsEdit(true)}>编辑商品</Text>
+                  <Text className="padding-tb-sm padding-lr radius-shape bg-green text-white" onClick={() => setIsEdit(true)}>编辑</Text>
                 )}
             </View>
           </View>
