@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'remax/wechat';
-import { Card, Button, Input } from 'anna-remax-ui';
+import { Card, Button } from 'anna-remax-ui';
 
-import styles from './index.css';
 import { href } from '@/utils/common'
+import InputModel from '@/components/input_model';
 
 export default () => {
   const [isLoading, setLoading] = useState(true)
@@ -20,10 +20,10 @@ export default () => {
     <View className="padding-sm">
       <Card >
         <View>
-          <Input label="手机号：" placeholder="请输入手机号" />
+          <InputModel label="手机号：" placeholder="请输入手机号" />
         </View>
         <View>
-          <Input
+          <InputModel
             label="验证码："
             placeholder="请输入验证码"
             border={false}

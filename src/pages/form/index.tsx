@@ -13,6 +13,18 @@ export default () => {
     <View className="padding-sm">
       <Card>
         <View className="solid-bottom">
+          <InputModel placeholder="请输入" />
+        </View>
+        <View className="solid-bottom">
+          <InputModel label="对齐：" placeholder="请输入" align="center" />
+        </View>
+        <View className="solid-bottom">
+          <InputModel label="金额：" placeholder="请输入" extra="元" />
+        </View>
+        <View className="solid-bottom">
+          <InputModel label="必填：" placeholder="请输入" required />
+        </View>
+        <View className="solid-bottom">
           <InputModel label="手机号：" placeholder="请输入"
             border={false}
             value={inputValue}

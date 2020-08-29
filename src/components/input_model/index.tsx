@@ -2,18 +2,22 @@ import * as React from 'react';
 import { View, Input } from 'remax/one';
 export interface InputProps {
     label?: React.ReactNode;
+    style?: React.CSSProperties;
+    className?: string;
+    defaultValue?: string;
+    value?: string;
     name?: string;
     type?: 'text' | 'number';
-    placeholder?: string;
-    value?: string;
-    defaultValue?: string;
-    className?: string;
-    inputAlign?: string;
-    icon?: string;
-    disabled?: boolean;
     password?: boolean;
-    border?: boolean;
+    placeholder?: string;
+    placeholderStyle?: React.CSSProperties;
+    disabled?: boolean;
+    maxlength?: number;
     focus?: boolean;
+    align?: 'left' | 'center' | 'right';
+    icon?: string;
+    required?: boolean;
+    border?: boolean;
     extra?: React.ReactNode;
     onInput?: (e: any) => void;
     onConfirm?: (e: any) => void;
@@ -22,12 +26,15 @@ export interface InputProps {
 }
 
 const InputModel = (props: InputProps) => {
-    const { label, name, value, type, border = true, className, defaultValue, password, disabled, focus, placeholder, extra, onInput, onConfirm, onFocus, onBlur } = props
+    const { label, name, value, type, border = true, maxlength, required = false, align = 'left', className, defaultValue, password, disabled, focus, placeholder, placeholderStyle, extra, onInput, onConfirm, onFocus, onBlur } = props
     return (
         <View className={`input-model flex align-center padding-sm ${border && 'solid-bottom'}`}>
             {label && (
-                <View className="margin-right-sm" style={{ width: '190rpx' }}>
-                    {label}
+                <View className="margin-right-sm flex align-center" style={{ width: '5.63rem' }}>
+                    {required && (
+                        <View className="text-red">*</View>
+                    )}
+                    <View className={`flex-sub text-${align}`}>{label}</View>
                 </View>
             )}
             <View className="flex-sub">
@@ -40,7 +47,9 @@ const InputModel = (props: InputProps) => {
                     defaultValue={defaultValue}
                     password={password}
                     focus={focus}
+                    maxLength={maxlength}
                     placeholder={placeholder}
+                    placeholderStyle={placeholderStyle}
                     onInput={onInput}
                     onConfirm={onConfirm}
                     onFocus={onFocus}

@@ -8,7 +8,10 @@ export default () => {
   return (
     <View>
       <Toptips show={show} type="error" msg={"顶部消息"} />
-      <View>
+      <View className="margin-top-xl">
+        type:'info' | 'error' | 'success'
+      </View>
+      <View className="foot">
         <Button block onTap={() => setShow(!show)} >显示</Button>
       </View>
     </View>
