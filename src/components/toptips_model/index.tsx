@@ -10,9 +10,9 @@ export interface Props {
 }
 
 const ToptipsModel = (props: Props) => {
-    const { extClass, type, show, msg, delay = 1000, bindhide } = props
+    const { extClass, type, show, msg, delay = 2000, bindhide } = props
     return (
-        <Toptips ext-class={`text-df ${extClass}`} type={type} show={show} msg={msg} delay={delay} bindhide={bindhide}>
+        <Toptips ext-class={`text-df ${extClass}`} type={type} show={show} msg={msg} delay={delay} bindHide={bindhide}>
         </Toptips>
     );
 };
