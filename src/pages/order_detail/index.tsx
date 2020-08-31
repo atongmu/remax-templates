@@ -95,14 +95,14 @@ export default () => {
                 <Cell label="优惠券" arrow><Text className="text-red">满5减1</Text></Cell>
                 <Cell label="发票" arrow><Text className="text-red">不开发票</Text></Cell>
                 <Cell label="配送费"><Text className="text-price">0/00</Text></Cell>
-                <Input label="订单备注" placeholder="选填：请先和商家协商一致" />
+                <Input label="备注" placeholder="选填：请先和商家协商一致" />
                 <Cell border={false}><View className="text-black">合计：<Text className="text-price text-red text-xl">111</Text></View></Cell>
               </View>
             </View>
-            <View className="foot bg-white">
-              <View className="text-right padding-sm padding-env">
+            <View className="foot bg-white padding-env">
+              <View className="text-right padding-sm">
                 <Space align="baseline">
-                  <Button look="anna" onTap={() => href(page_path.succeess)}>删除订单</Button>
+                  <Button look="anna" onTap={() => href(page_path.succeess)}>删除单子</Button>
                   <Button look="anna" onTap={() => href(page_path.succeess)}>下单</Button>
                 </Space>
               </View>

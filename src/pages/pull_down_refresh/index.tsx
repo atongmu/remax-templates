@@ -98,9 +98,8 @@ export default () => {
       {list.map((item, index: number) => (
         <View key={index} className="padding-tb-xl bg-white margin-bottom-xs">
           <View className="flex padding-lr-sm">
-            <View>【{index + 1}】</View>
             <View className="flex-sub text-bold">{item.time}</View>
-            <View className="flex-sub text-gray text-right">{item.num}</View>
+            <View className="flex-sub text-gray text-right">数量：{item.num}</View>
           </View>
         </View>
       ))}

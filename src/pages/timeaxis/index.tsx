@@ -20,7 +20,7 @@ export default () => {
     <View>
       <Card>
         <View className="padding-sm solid-bottom">
-          <Text>订单编号：</Text><Text>9136257866</Text>
+          <Text>编号：</Text><Text>9136257866</Text>
         </View>
         <View className="padding-sm solid-bottom">
           <Text>国内承运人：</Text><Text>华南众包站</Text>
