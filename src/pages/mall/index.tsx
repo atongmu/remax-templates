@@ -24,19 +24,117 @@ export default () => {
     init()
   }, [])
   const init = async () => {
-    const categoryResult: any = await getCategorys()
-    const productResult: any = await getProducts({})
     setBanners([
       { id: 1, image: '/image/mall/banner/1.jpg' },
       { id: 2, image: '/image/mall/banner/2.jpg' },
       { id: 3, image: '/image/mall/banner/3.jpg' },
     ])
-    if (categoryResult.status === 200) {
-      setAtegorys(categoryResult.data)
-    }
-    if (productResult.status === 200) {
-      setItems(productResult.data)
-    }
+    setAtegorys([
+      {
+        image: '/image/mall/category/1.jpg',
+        title: '短袖T恤'
+      },
+      {
+        image: '/image/mall/category/2.jpg',
+        title: '足球'
+      },
+      {
+        image: '/image/mall/category/3.jpg',
+        title: '运动鞋'
+      },
+      {
+        image: '/image/mall/category/4.png',
+        title: '中老年'
+      },
+      {
+        image: '/image/mall/category/5.png',
+        title: '甜美风'
+      },
+      {
+        image: '/image/mall/category/6.jpg',
+        title: '鱼尾裙'
+      },
+      {
+        image: '/image/mall/category/7.jpg',
+        title: '相机配件'
+      },
+      {
+        image: '/image/mall/category/8.jpg',
+        title: '护肤套装'
+      },
+    ])
+    setItems([
+      {
+        image: '/image/mall/product/1.jpg',
+        name: '欧莱雅（LOREAL）奇焕光彩粉嫩透亮修颜霜 30ml（欧莱雅彩妆 BB霜 粉BB 遮瑕疵 隔离）',
+        sale: 599,
+        factory: 899,
+        payNum: 2342
+      },
+      {
+        image: '/image/mall/product/2.jpg',
+        name: '德国DMK进口牛奶  欧德堡（Oldenburger）超高温处理全脂纯牛奶1L*12盒',
+        sale: 29,
+        factory: 69,
+        payNum: 999
+      },
+      {
+        image: '/image/mall/product/3.jpg',
+        name: '【第2支1元】柔色尽情丝柔口红唇膏女士不易掉色保湿滋润防水 珊瑚红',
+        sale: 299,
+        factory: 699,
+        payNum: 666
+      },
+      {
+        image: '/image/mall/product/4.jpg',
+        name: '百雀羚套装女补水保湿护肤品',
+        sale: 1599,
+        factory: 2899,
+        payNum: 236
+      },
+      {
+        image: '/image/mall/product/5.jpg',
+        name: '百草味 肉干肉脯 休闲零食 靖江精制猪肉脯200g/袋',
+        sale: 599,
+        factory: 899,
+        payNum: 2399
+      },
+      {
+        image: '/image/mall/product/6.jpg',
+        name: '短袖睡衣女夏季薄款休闲家居服短裤套装女可爱韩版清新学生两件套 短袖粉色长颈鹿 M码75-95斤',
+        sale: 599,
+        factory: 899,
+        payNum: 2399
+      },
+      {
+        image: '/image/mall/product/1.jpg',
+        name: '欧莱雅（LOREAL）奇焕光彩粉嫩透亮修颜霜',
+        sale: 599,
+        factory: 899,
+        payNum: 2342
+      },
+      {
+        image: '/image/mall/product/2.jpg',
+        name: '德国DMK进口牛奶',
+        sale: 29,
+        factory: 69,
+        payNum: 999
+      },
+      {
+        image: '/image/mall/product/3.jpg',
+        name: '【第2支1元】柔色尽情丝柔口红唇膏女士不易掉色保湿滋润防水 珊瑚红',
+        sale: 299,
+        factory: 699,
+        payNum: 666
+      },
+      {
+        image: '/image/mall/product/4.jpg',
+        name: '百雀羚套装女补水保湿护肤品',
+        sale: 1599,
+        factory: 2899,
+        payNum: 236
+      }
+    ])
     setLoading(false)
   }
   return (

@@ -8,9 +8,9 @@ export interface Props {
     detail: () => void;
     item: {
         image: string,
-        title: string,
-        newPrice: string,
-        originalPrice: string,
+        name: string,
+        sale: string,
+        factory: string,
     };
 }
 
@@ -23,10 +23,10 @@ const GoodsModel = (props: Props) => {
                 <Image className="image" src={item.image} mode="widthFix" />
             </View>
             <View className="content">
-                <View className="title">{item.title}</View>
+                <View className="title">{item.name}</View>
                 <View className="price margin-tb-sm">
-                    <Text className="text-red text-price text-lg">{item.newPrice}</Text>
-                    <Text className="original margin-left-sm text-gray text-price text-sm">{item.originalPrice}</Text>
+                    <Text className="text-red text-price text-lg">{item.sale}</Text>
+                    <Text className="original margin-left-sm text-gray text-price text-sm">{item.factory}</Text>
                 </View>
             </View>
         </View>
