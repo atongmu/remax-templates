@@ -5,7 +5,6 @@ import { Stepper, Popup, Button, Icon, Tag } from 'anna-remax-ui';
 import './index.less';
 import { href } from '@/utils/common'
 import page_path from '@/utils/page_path';
-import { getProduct } from '@/api/index'
 import GroupTitle from '@/components/group_title/index';
 import PageLoading from '@/components/page_loading';
 import { toast } from '../../utils/common';
@@ -35,18 +34,22 @@ export default () => {
   const [bannerIndex, setBannerIndex] = useState(0)
   const [scrollH, setScrollH] = useState<number>(0)
   const [changeGoods, setChangeGoods] = useState<GoodsSku>({
-    key: '',
-    value: '',
-    image: ''
+    key: '1',
+    value: '1',
+    image: '/image/mall/banner/11.jpg'
   })
   const [num, setNum] = React.useState(1);
   const [goodsInfo, setGoodsInfo] = useState<Info>({
     id: 0,
-    banners: [],
-    title: '',
+    banners: [
+      { image: '/image/mall/banner/11.jpg' },
+      { image: '/image/mall/banner/33.jpg' },
+      { image: '/image/mall/banner/55.jpg' },
+    ],
+    title: '谈判官明星同款耳坠韩国气质简约显脸瘦的耳环女百搭个性长款耳钉 个性水滴耳环【A2】',
     pack: false,
-    newPrice: '',
-    originalPrice: '',
+    newPrice: '99.00',
+    originalPrice: '199.00',
     content: '',
     sku: [],
     commont: [],
@@ -60,26 +63,7 @@ export default () => {
   }, [])
   const init = async () => {
     const { windowWidth } = await getSystemInfo()
-    const result: any = await getProduct({})
     setScrollH(windowWidth)
-    if (result.status === 200) {
-      const data = {
-        id: result.data.id,
-        banners: result.data.banners,
-        title: result.data.title,
-        pack: result.data.pack,
-        newPrice: result.data.newPrice,
-        originalPrice: result.data.originalPrice,
-        content: result.data.content,
-        sku: result.data.sku,
-        commont: result.data.commont,
-        sales: result.data.sales,
-        delivery: result.data.delivery,
-        city: result.data.city,
-      }
-      setChangeGoods({ key: result.data.sku[0].key, value: result.data.sku[0].value, image: result.data.sku[0].image })
-      setGoodsInfo(data)
-    }
     setLoading(false)
   }
   const appendCart = () => {
@@ -247,7 +231,8 @@ export default () => {
                 <View className="text-xs">客服</View>
               </button>
             </View>
-            <View className="flex-sub text-center" onClick={() => href(page_path.cart)}>
+            {/* <View className="flex-sub text-center" onClick={() => href(page_path.cart)}> */}
+            <View className="flex-sub text-center" onClick={() => toast("篮子")}>
               <View><Icon type="cart_light" size="36" color="#8799a3" /></View>
               <View className="text-xs">篮子</View>
             </View>

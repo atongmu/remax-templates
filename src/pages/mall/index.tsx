@@ -188,9 +188,9 @@ export default () => {
         {/* 底部导航 */}
         <View className="bar">
           <TabBar items={[
-            { image: 'http://dummyimage.com/200x200', title: '首页', path: `/pages/mall/index` },
-            { image: 'http://dummyimage.com/200x200', title: '篮子', path: `/pages/cart/index` },
-            { image: 'http://dummyimage.com/200x200', title: '我的', path: `/pages/my/index` },
+            { image: '/image/share/icon_wechat.png', title: '首页', path: page_path.mall },
+            { image: '/image/tabbar/extend_active.png', title: '篮子', path: page_path.cart },
+            { image: '/image/mall/pay/icon_pay_weixin.png', title: '我的', path: page_path.mall },
           ]} />
         </View>
         {/* 热门推荐 结束 */}

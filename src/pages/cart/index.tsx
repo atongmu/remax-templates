@@ -133,7 +133,7 @@ export default () => {
                   <View><Checkbox checked={checkedAll} onChange={() => onCheckedAllChange(checkedAll)} style={{ color: '#28a745' }} >全选</Checkbox></View>
                   {!isEdit && (
                     <Text className="flex-sub text-right margin-right-sm">
-                      合计：<Text className="text-price text-bold text-red">{total}</Text>
+                      合计：<Text className="text-price text-bold text-red">{parseFloat(total).toFixed(2)}</Text>
                     </Text>
                   )}
                 </View>
