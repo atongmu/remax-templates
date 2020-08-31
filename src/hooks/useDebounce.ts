@@ -1,8 +1,8 @@
 /*
  * @Author: codingfly
- * @Description: 
+ * @Description: 当某些状态变化时，它会延迟执行某些操作
  * @Date: 2020-08-25 11:01:15
- * @LastEditTime: 2020-08-25 11:23:13
+ * @LastEditTime: 2020-08-31 09:42:30
  * @FilePath: \templates-ts\src\hooks\useDebounce.ts
  */
 import React, { useEffect, useCallback, useRef } from 'react'

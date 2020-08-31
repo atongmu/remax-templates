@@ -1,13 +1,13 @@
 /*
  * @Author: codingfly
- * @Description: 
+ * @Description: 获取state的最新值
  * @Date: 2020-08-25 08:44:54
- * @LastEditTime: 2020-08-25 09:10:54
+ * @LastEditTime: 2020-08-31 13:51:30
  * @FilePath: \templates-ts\src\hooks\useRefState.ts
  */
 import React, { useState, useRef } from 'react'
 
-export default function useRefState(initialState: any) {
+export default (initialState: any) => {
     const ins = useRef();
     const [state, setValue] = useState(() => {
         // 初始化
