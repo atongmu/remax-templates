@@ -2,8 +2,8 @@
  * @Author: codingfly
  * @Description: 页面路径管理
  * @Date: 2020-08-13 09:56:53
- * @LastEditTime: 2020-08-30 07:25:10
- * @FilePath: \remax-templates\src\utils\page_path.ts
+ * @LastEditTime: 2020-08-31 08:08:38
+ * @FilePath: \templates-ts\src\utils\page_path.ts
  */
 const path = {
     // 首页
@@ -52,8 +52,6 @@ const path = {
     form: '/pages/form/index',
     // 滑动
     slide: '/pages/slide/index',
-    // 顶部提示
-    toptips: '/pages/toptips/index',
     // 搜索组件
     searchbar: '/pages/searchbar/index',
 }
