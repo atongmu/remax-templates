@@ -12,25 +12,25 @@ import GoodsModel from '@/components/goods_model/index';
 import CategoryModel from '@/components/category_model/index';
 import TabBar from '@/components/tab_bar';
 import page_path from '@/utils/page_path';
-
-import { getBanners, getCategorys, getProducts } from '@/api/index'
+import { getCategorys, getProducts } from '@/api/index'
 
 
 export default () => {
   const [isLoading, setLoading] = useState(true)
-  const [banners, setBanners] = useState([])
+  const [banners, setBanners] = useState<any[]>([])
   const [ategorys, setAtegorys] = useState<any[]>([])
   const [items, setItems] = useState<any[]>([])
   useEffect(() => {
     init()
   }, [])
   const init = async () => {
-    const bannerResult: any = await getBanners()
     const categoryResult: any = await getCategorys()
     const productResult: any = await getProducts({})
-    if (bannerResult.status === 200) {
-      setBanners(bannerResult.data)
-    }
+    setBanners([
+      { id: 1, image: '/image/mall/banner/1.jpg' },
+      { id: 2, image: '/image/mall/banner/2.jpg' },
+      { id: 3, image: '/image/mall/banner/3.jpg' },
+    ])
     if (categoryResult.status === 200) {
       setAtegorys(categoryResult.data)
     }
