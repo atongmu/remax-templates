@@ -1,22 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { View } from 'remax/wechat';
+import React, { useEffect, useState, useCallback } from 'react';
+import { View,navigateBack } from 'remax/wechat';
 import SearchbarModel from '@/components/searchbar_model';
+import useRefState from '@/hooks/useRefState'
 
 export default () => {
-  const [show, setShow] = useState(false)
-  const search = (value: any) => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve([{ text: '搜索结果', value: 1 }, { text: '搜索结果2', value: 2 }])
-      }, 200)
-    })
-  }
-  const selectResult = (e: any) => {
-    console.log('select result', e.detail)
+  const [searchValue, setSearchValue, searchRef] = useRefState('')
+  const handleValue = useCallback((e) => {
+    setSearchValue(searchRef.current = e)
+  }, [])
+  const cancel=()=>{
+    handleValue('')
+    navigateBack()
   }
   return (
     <View className="padding-sm bg-white">
-      <SearchbarModel />
+      <SearchbarModel value={searchValue} onInput={(e) => handleValue(e)} onActionClick={cancel} onClear={() => handleValue('')} />
     </View>
   );
 };
