@@ -43,7 +43,7 @@ export default () => {
           <View>
             <View className="flex align-center padding-tb-xl padding-lr-sm bg-red">
               <View className="flex-sub">
-                <View className="text-xl">等待您付款</View>
+                <View className="text-xl">等待</View>
               </View>
               <View>
                 <Icon type="card_fill" size="48" color="#ffffff" />
@@ -103,7 +103,7 @@ export default () => {
               <View className="text-right padding-sm padding-env">
                 <Space align="baseline">
                   <Button look="anna" onTap={() => href(page_path.succeess)}>删除订单</Button>
-                  <Button look="anna" onTap={() => href(page_path.succeess)}>立即支付</Button>
+                  <Button look="anna" onTap={() => href(page_path.succeess)}>下单</Button>
                 </Space>
               </View>
             </View>

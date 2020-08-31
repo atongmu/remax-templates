@@ -13,7 +13,7 @@ export default () => {
         <Result
           height="600rpx"
           status="error"
-          title="订单支付失败"
+          title="失败"
           subTitle="非常感谢您购买我们的产品"
           extra={
             <View>
@@ -27,7 +27,7 @@ export default () => {
       </Card>
       <View className="padding-xl">
         <View className="padding-tb-xs">温馨提示:</View>
-        <View className="text-gray">付款成功后，请勿泄露银行卡号、手机验证码，否则会造成钱款损失！谨防电话诈骗！</View>
+        {/* <View className="text-gray">付款成功后，请勿泄露银行卡号、手机验证码，否则会造成钱款损失！谨防电话诈骗！</View> */}
       </View>
     </View>
   );

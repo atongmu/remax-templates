@@ -7,5 +7,5 @@
  */
 
 module.exports = {
-  navigationBarTitleText: '支付成功'
+  navigationBarTitleText: '成功'
 };
