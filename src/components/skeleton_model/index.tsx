@@ -6,6 +6,7 @@ export interface SkeletonParagraphProps {
     width?: number | string | number[] | string[];
 }
 export interface Props {
+    fixed?: boolean;
     title?: boolean;
     titleColor?: string;
     avatar?: boolean;
@@ -20,9 +21,9 @@ export interface Props {
 }
 
 const SkeletonModel = (props: Props) => {
-    const { title, titleColor, avatar, image, paragraph, repetitions, space, style, fade = false, loading = true,customize } = props
+    const { fixed = false, title, titleColor, avatar, image, paragraph, repetitions, space, style, fade = false, loading = true, customize } = props
     return (
-        <View className="skeleton-model padding-tb bg-white" style={{ position: 'fixed', top: 0, left: 0, width: '100vw' }}>
+        <View className={`skeleton-model padding-tb bg-white ${fixed && 'fixed'}`}>
             <Skeleton
                 title={title}
                 titleColor={titleColor}
