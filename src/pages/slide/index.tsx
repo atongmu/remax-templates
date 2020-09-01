@@ -47,8 +47,15 @@ export default () => {
 
     setItems(items => items = newList);
   };
+  const handleHide = () => {
+    setItems(s =>
+      s.map(i => {
+        return { ...i, show: false };
+      }),
+    );
+  };
   return (
-    <View>
+    <View onClick={handleHide}>
       <Card>
         {list.map((item: any) => (
           <View key={item.id} className="solid-bottom">
