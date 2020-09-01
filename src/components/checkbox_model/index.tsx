@@ -11,14 +11,17 @@ export interface CheckboxProps {
     /** (default: #09BB07) checkbox的颜色，同css的color 1.0.0  */
     color?: string;
     extra?: React.ReactNode;
+    onChange?: () => void;
 }
 
 const CheckboxModel = (props: CheckboxProps) => {
-    const { color, name, value, checked = true, disabled, extra } = props
+    const { color, name, value, checked = true, disabled, extra, onChange } = props
     return (
         <View className="checkbox-model padding-sm">
-            <Label className="flex align-center">
-                <Checkbox value={value} checked={checked} disabled={disabled} color={color} name={name} />
+            <Label className="flex align-center" onClick={onChange}>
+                <View className={`${!extra && 'flex-sub'}`}>
+                    <Checkbox value={value} checked={checked} disabled={disabled} color={color} name={name} />
+                </View>
                 {extra && (
                     <View className="margin-left-sm flex-sub">
                         {extra}
