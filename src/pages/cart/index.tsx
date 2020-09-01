@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, getStorageSync } from 'remax/wechat';
-import { Button, Checkbox, Icon } from 'anna-remax-ui';
+import { Button, Icon } from 'anna-remax-ui';
 
 import { href, toast } from '@/utils/common'
 import page_path from '@/utils/page_path'
 import SlideModel from '@/components/slide_model';
 import SkeletonModel from '@/components/skeleton_model';
+import CheckboxModel from '@/components/checkbox_model';
 
 export interface Goods {
   id: number,
@@ -22,21 +23,15 @@ export interface Goods {
 const customizeSkeleton = (
   <View className="bg-white flex align-center">
     <View className="flex align-center padding-tb-xs">
-      <View style={{ margin: '0 20rpx' }}>
-        
-      </View>
-      <View style={{ width: '220', height: '220' }}>
-        <View style={{ width: '100%', height: '100%' }}></View>
-      </View>
+      <View className="bg-gray" style={{ margin: '0 20rpx', width: '58', height: '58', lineHeight: '58rpx', borderRadius: '10000' }}></View>
+      <View className="bg-gray" style={{ width: '220', height: '220', lineHeight: '220' }}></View>
       <View className="flex-sub flex">
         <View className="flex-sub margin-lr-sm">
-          <View className="title margin-bottom text-sm"></View>
-          <Text className="bg-gray padding-xs text-sm">
-            <Icon type="unfold" />
-          </Text>
-          <View className="flex padding-top">
-            <View className="flex-sub text-red"><Text className="text-price"></Text></View>
-            <View><Text>x</Text></View>
+          <View className="margin-bottom-sm bg-gray" style={{ width: '380', height: '28', lineHeight: '1' }}></View>
+          <View className="bg-gray padding-xs text-sm" style={{ width: '100', height: '28', lineHeight: '1' }}></View>
+          <View className="flex justify-between padding-top">
+            <View className="bg-gray" style={{ width: '80', height: '28', lineHeight: '1' }}></View>
+            <View className="bg-gray" style={{ width: '120', height: '28', lineHeight: '1' }}></View>
           </View>
         </View>
       </View>
@@ -58,15 +53,11 @@ export default () => {
       const cartItems = getStorageSync("cart")
       if (cartItems) {
         const cartGoods = JSON.parse(cartItems)
-        cartGoods.map((item: Goods) => {
-          item.checked = true
-          item.show = false
-          return item
-        })
+        console.log(cartGoods)
         setItems(items => items = cartGoods)
       }
       setLoading(false)
-    }, 9500)
+    }, 1500)
   }
 
   // 数据更新的时候操作
@@ -142,8 +133,16 @@ export default () => {
       }),
     );
   };
+
+  const handleHide = () => {
+    setItems(s =>
+      s.map(i => {
+        return { ...i, show: false };
+      }),
+    );
+  };
   return (
-    <View>
+    <View onClick={handleHide}>
       {items.length > 0 ? (
         <View style={{ paddingBottom: '84rpx' }}>
           <View className="flex align-center padding-sm bg-green light text-sm">
@@ -172,8 +171,8 @@ export default () => {
                     handleOpen={() => handleOpen(item)}
                     extra={
                       <View className="flex align-center padding-tb-xs">
-                        <View style={{ margin: '0 20rpx' }}>
-                          <Checkbox checked={item.checked} onChange={() => onchange(item)} />
+                        <View>
+                          <CheckboxModel checked={item.checked} onChange={() => onchange(item)} />
                         </View>
                         <View style={{ width: '220', height: '220' }}>
                           <Image style={{ width: '100%', height: '100%' }} src={item.changeGoods.image} />
@@ -203,7 +202,7 @@ export default () => {
             <View className="flex align-center bg-white padding-lr-sm padding-env">
               <View className="flex-sub">
                 <View className="flex-sub flex align-center">
-                  <View><Checkbox checked={checkedAll} onChange={() => onCheckedAllChange(checkedAll)} style={{ color: '#28a745' }} >全选</Checkbox></View>
+                  <View><CheckboxModel checked={checkedAll} onChange={() => onCheckedAllChange(checkedAll)} color='#28a745' extra={'全选'} /></View>
                   {!isEdit && (
                     <Text className="flex-sub text-right margin-right-sm">
                       合计：<Text className="text-price text-bold text-red">{parseFloat(total).toFixed(2)}</Text>
@@ -228,7 +227,7 @@ export default () => {
           </View>
         )}
       {isLoading && (
-        <SkeletonModel loading={isLoading} customize={customizeSkeleton} repetitions={2} space={50} />
+        <SkeletonModel fixed={true} loading={isLoading} customize={customizeSkeleton} repetitions={5} space={50} />
       )}
     </View>
   );
