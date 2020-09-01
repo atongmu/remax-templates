@@ -90,8 +90,9 @@ export default () => {
       newPrice: goodsInfo.newPrice,
       sku: goodsInfo.sku,
       changeGoods: changeGoods,
-      num: num
-
+      num: num,
+      checked: true,
+      show: false
     }]
     const storageGoods = JSON.stringify(goodsList.concat(goods))
     setStorageSync("cart", storageGoods)
@@ -220,8 +221,8 @@ export default () => {
 
       <View className="bg-white padding-tb-xs solid-top" style={{ position: 'fixed', width: '100%', bottom: '0', left: '0' }}>
         <View className="flex align-center padding-env">
-          <View className="flex-sub flex" onClick={() => reLaunch({ url: page_path.home })}>
-            <View className="flex-sub text-center">
+          <View className="flex-sub flex">
+            <View className="flex-sub text-center" onClick={() => reLaunch({ url: page_path.home })}>
               <View><Icon type="home_light" size="36" color="#8799a3" /></View>
               <View className="text-xs">首页</View>
             </View>
@@ -231,8 +232,7 @@ export default () => {
                 <View className="text-xs">客服</View>
               </button>
             </View>
-            {/* <View className="flex-sub text-center" onClick={() => href(page_path.cart)}> */}
-            <View className="flex-sub text-center" onClick={() => toast("篮子")}>
+            <View className="flex-sub text-center" onClick={() => href(page_path.cart)}>
               <View><Icon type="cart_light" size="36" color="#8799a3" /></View>
               <View className="text-xs">篮子</View>
             </View>

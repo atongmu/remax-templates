@@ -163,7 +163,7 @@ export default () => {
           <View className=" padding-tb">
             <GroupTitle text="热门推荐" icon={false} />
           </View>
-          <View className="product-list">
+          <View className="product-list padding-env">
             <View className="product-container">
               {items.map((item, index) => {
                 return (
@@ -190,7 +190,7 @@ export default () => {
           <TabBar items={[
             { image: '/image/share/icon_wechat.png', title: '首页', path: page_path.mall },
             { image: '/image/tabbar/extend_active.png', title: '篮子', path: page_path.cart },
-            { image: '/image/mall/pay/icon_pay_weixin.png', title: '我的', path: page_path.mall },
+            { image: '/image/mall/pay/icon_pay_weixin.png', title: '我的', path: page_path.my },
           ]} />
         </View>
         {/* 热门推荐 结束 */}

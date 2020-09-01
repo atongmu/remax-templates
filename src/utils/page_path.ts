@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: 页面路径管理
  * @Date: 2020-08-13 09:56:53
- * @LastEditTime: 2020-08-31 08:08:38
+ * @LastEditTime: 2020-09-01 14:53:20
  * @FilePath: \templates-ts\src\utils\page_path.ts
  */
 const path = {
@@ -22,6 +22,8 @@ const path = {
     goods_info: '/pages/goods_info/index',
     // 购物车
     cart: '/pages/cart/index',
+    // 个人中心
+    my: '/pages/my/index',
     // 订单列表
     order_list: '/pages/order_list/index',
     // 订单详情
