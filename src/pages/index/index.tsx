@@ -48,6 +48,15 @@ export default () => {
           </View>
         </View>
 
+        <View className="padding-sm margin-bottom-sm bg-white" onClick={() => href(page_path.picker)}>
+          <View className="flex align-center">
+            <View className="flex-sub">选择器组件</View>
+            <View className="flex-sub text-right">
+              <Icon type="right" size="36" color="#999" />
+            </View>
+          </View>
+        </View>
+
         <View className="padding-sm margin-bottom-sm bg-white" onClick={() => href(page_path.qrcode)}>
           <View className="flex align-center">
             <View className="flex-sub">二维码生成组件</View>

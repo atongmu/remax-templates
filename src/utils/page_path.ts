@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: 页面路径管理
  * @Date: 2020-08-13 09:56:53
- * @LastEditTime: 2020-09-01 14:53:20
+ * @LastEditTime: 2020-09-01 15:19:45
  * @FilePath: \templates-ts\src\utils\page_path.ts
  */
 const path = {
@@ -56,5 +56,7 @@ const path = {
     slide: '/pages/slide/index',
     // 搜索组件
     searchbar: '/pages/searchbar/index',
+    // 选择器组件
+    picker: '/pages/picker/index',
 }
 export default path

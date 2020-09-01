@@ -34,6 +34,7 @@ const pages: Array<string> = [
   'pages/form/index',
   'pages/slide/index',
   'pages/searchbar/index',
+  'pages/picker/index',
 ]
 
 const config: AppConfig = {
