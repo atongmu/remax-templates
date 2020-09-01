@@ -1,22 +1,48 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, getStorageSync } from 'remax/wechat';
+import { View, Text, Image, getStorageSync } from 'remax/wechat';
 import { Button, Checkbox, Icon } from 'anna-remax-ui';
 
 import { href, toast } from '@/utils/common'
-import PageLoading from '@/components/page_loading';
 import page_path from '@/utils/page_path'
-import CartModel from '@/components/cart_model/index';
+import SlideModel from '@/components/slide_model';
+import SkeletonModel from '@/components/skeleton_model';
+
 export interface Goods {
   id: number,
   name: string,
   newPrice: string,
   content: string,
   checked: boolean,
+  show: boolean,
   swiper: boolean,
   changeGoods: { key: string, value: string, image: string },
   sku: Array<{ key: string, value: string, image: string }>,
   num: number
 }
+const customizeSkeleton = (
+  <View className="bg-white flex align-center">
+    <View className="flex align-center padding-tb-xs">
+      <View style={{ margin: '0 20rpx' }}>
+        
+      </View>
+      <View style={{ width: '220', height: '220' }}>
+        <View style={{ width: '100%', height: '100%' }}></View>
+      </View>
+      <View className="flex-sub flex">
+        <View className="flex-sub margin-lr-sm">
+          <View className="title margin-bottom text-sm"></View>
+          <Text className="bg-gray padding-xs text-sm">
+            <Icon type="unfold" />
+          </Text>
+          <View className="flex padding-top">
+            <View className="flex-sub text-red"><Text className="text-price"></Text></View>
+            <View><Text>x</Text></View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+);
 export default () => {
   const [isLoading, setLoading] = useState<boolean>(true)
   const [isEdit, setIsEdit] = useState<boolean>(false)
@@ -28,13 +54,19 @@ export default () => {
     init()
   }, [])
   const init = () => {
-    const cartItems = getStorageSync("cart")
-    if (cartItems) {
-      const cartGoods = JSON.parse(cartItems)
-      cartGoods.map((item: Goods) => (item.checked = true))
-      setItems(e => cartGoods)
-    }
-    setLoading(false)
+    setTimeout(() => {
+      const cartItems = getStorageSync("cart")
+      if (cartItems) {
+        const cartGoods = JSON.parse(cartItems)
+        cartGoods.map((item: Goods) => {
+          item.checked = true
+          item.show = false
+          return item
+        })
+        setItems(items => items = cartGoods)
+      }
+      setLoading(false)
+    }, 9500)
   }
 
   // 数据更新的时候操作
@@ -46,7 +78,7 @@ export default () => {
     } else {
       setCheckedAll(false)
     }
-    setTotal(e => String(totalPrice))
+    setTotal(e => e = String(totalPrice))
   }, [items])
 
 
@@ -56,7 +88,7 @@ export default () => {
     newCart.forEach(cartItem => {
       cartItem.checked = !newCheckedAll
     })
-    setItems(items => newCart)
+    setItems(items => items = newCart)
     setCheckedAll(!newCheckedAll)
   }
 
@@ -77,7 +109,7 @@ export default () => {
         break
       }
     }
-    setItems(items => newCart)
+    setItems(items => items = newCart)
   }
   // 删除所选商品
   const removeChangeGoods = () => {
@@ -88,7 +120,7 @@ export default () => {
         newCart.splice(i, 1)
       }
     }
-    setItems(items => newCart)
+    setItems(items => items = newCart)
   }
   // 选择商品
   const onchange = (e: Goods) => {
@@ -100,8 +132,16 @@ export default () => {
         break
       }
     }
-    setItems(items => newCart)
+    setItems(items => items = newCart)
   }
+  const handleOpen = (e: any) => {
+    console.log('handleOpen', e);
+    setItems(s =>
+      s.map(i => {
+        return { ...i, show: e.id === i.id ? true : false };
+      }),
+    );
+  };
   return (
     <View>
       {items.length > 0 ? (
@@ -120,7 +160,40 @@ export default () => {
             {
               items.map((item, index) => (
                 <View key={index} className="bg-white margin-bottom-sm">
-                  <CartModel item={item} buttonTap={() => removeGoods(item)} onChange={() => onchange(item)} detail={() => console.log(item)} />
+                  <SlideModel
+                    show={item.show}
+                    buttons={[{
+                      name: '删除',
+                      style: {
+                        backgroundColor: '#ff0000',
+                      },
+                      onTap: () => removeGoods(item),
+                    }]}
+                    handleOpen={() => handleOpen(item)}
+                    extra={
+                      <View className="flex align-center padding-tb-xs">
+                        <View style={{ margin: '0 20rpx' }}>
+                          <Checkbox checked={item.checked} onChange={() => onchange(item)} />
+                        </View>
+                        <View style={{ width: '220', height: '220' }}>
+                          <Image style={{ width: '100%', height: '100%' }} src={item.changeGoods.image} />
+                        </View>
+                        <View className="flex-sub flex" onClick={() => console.log(item)}>
+                          <View className="flex-sub margin-lr-sm">
+                            <View className="title margin-bottom text-sm">{item.name}</View>
+                            <Text className="bg-gray padding-xs text-sm">
+                              {item.changeGoods.value}
+                              <Icon type="unfold" />
+                            </Text>
+                            <View className="flex padding-top">
+                              <View className="flex-sub text-red"><Text className="text-price">{item.newPrice}</Text></View>
+                              <View><Text>x</Text> {item.num}</View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    }
+                  />
                 </View>
               ))
             }
@@ -155,7 +228,7 @@ export default () => {
           </View>
         )}
       {isLoading && (
-        <PageLoading color="#28a745" topVal="0" />
+        <SkeletonModel loading={isLoading} customize={customizeSkeleton} repetitions={2} space={50} />
       )}
     </View>
   );

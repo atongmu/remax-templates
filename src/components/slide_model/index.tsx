@@ -1,21 +1,30 @@
 import * as React from 'react';
 import { View } from 'remax/wechat';
-import SlideView from 'weui-miniprogram/miniprogram_dist/slideview/slideview';
+import { SwipeAction } from 'anna-remax-ui';
 export interface SlideProps {
     show?: boolean;
-    buttons: Array<any>;
+    buttons:
+    [{
+        name: React.ReactNode,
+        style: React.CSSProperties,
+        onTap: () => void
+    }];
     extra?: React.ReactNode;
-    onChange?: (e: any) => void;
-    onShow?: () => void;
+    handleOpen?: (e: any) => void;
+    handleClose?: (e: any) => void;
 }
 
 const SlideModel = (props: SlideProps) => {
-    const { show,buttons, extra, onChange,onShow } = props
+    const { show, buttons, extra, handleOpen, handleClose } = props
     return (
         <View className="slide-model">
-            <SlideView show={show} buttons={buttons} bindbuttontap={onChange} bindshow={onShow}>
+            <SwipeAction open={show}
+                onOpened={handleOpen}
+                onClosed={handleClose}
+                options={buttons}
+            >
                 {extra}
-            </SlideView>
+            </SwipeAction>
         </View>
     );
 };

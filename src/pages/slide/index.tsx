@@ -8,8 +8,8 @@ import SlideModel from '@/components/slide_model';
 
 export default () => {
   const [isLoading, setLoading] = useState(true)
-  const [buttons] = useState([{ text: '删除', type: 'warn' }])
-  const [list] = useState([
+  const [buttons] = useState([{ name: 'Delete', type: 'warn' }])
+  const [list, setItems] = useState([
     { id: 1, name: '11', show: false },
     { id: 2, name: '22', show: false },
   ])
@@ -22,19 +22,50 @@ export default () => {
       setFun
     }
   }, [])
+  const handleOpen = (e: any) => {
+    console.log('handleOpen', e);
+    setItems(s =>
+      s.map(i => {
+        return { ...i, show: e.id === i.id ? true : false };
+      }),
+    );
+  };
+
+  const handleClose = (e: any) => {
+    console.log('handleClose', e);
+  };
+  const handleDelete = (e: any) => {
+    const newList: any[] = Object.assign([], list);
+    for (let i = newList.length - 1; i >= 0; i--) {
+      const item = newList[i];
+      if (item.id === e.id) {
+        item.show = false;
+        break;
+      }
+    }
+    console.log('newList', newList);
+
+    setItems(items => items = newList);
+  };
   return (
     <View>
       <Card>
         {list.map((item: any) => (
           <View key={item.id} className="solid-bottom">
-            <SlideModel 
-            show={item.show} 
-            buttons={buttons} 
-            extra={
-              <View className="padding-sm ">{item.name}</View>
-            }
-            onShow={()=>console.log(item)}
-             />
+            <SlideModel
+              show={item.show}
+              buttons={[{
+                name: 'Delete',
+                style: {
+                  backgroundColor: '#ff0000',
+                }, onTap: () => handleDelete(item),
+              }]}
+              extra={
+                <View className="padding-sm ">{item.name}</View>
+              }
+              handleOpen={() => handleOpen(item)}
+              handleClose={() => handleClose(item)}
+            />
           </View>
         ))}
       </Card>
