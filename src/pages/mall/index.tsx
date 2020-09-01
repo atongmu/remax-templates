@@ -163,7 +163,7 @@ export default () => {
           <View className=" padding-tb">
             <GroupTitle text="热门推荐" icon={false} />
           </View>
-          <View className="product-list padding-env">
+          <View className="product-list">
             <View className="product-container">
               {items.map((item, index) => {
                 return (
@@ -184,6 +184,7 @@ export default () => {
             </View>
           </View>
         </View>
+        <View className="safearea-bottom"></View>
         {/* 热门推荐 结束 */}
         {/* 底部导航 */}
         <View className="bar">
