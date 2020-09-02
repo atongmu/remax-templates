@@ -19,7 +19,7 @@ const NavModel = (props: Props) => {
                 {items.map((item, index) => {
                     return (
                         <View key={index} className={`nav-item flex-sub ${active == index && `${className} active`}`} onClick={() => detail(index)}>
-                            <View className="text-sm">{item}</View>
+                            <View className="title">{item}</View>
                         </View>
                     )
                 })}
