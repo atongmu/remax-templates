@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: 页面路径管理
  * @Date: 2020-08-13 09:56:53
- * @LastEditTime: 2020-09-01 15:19:45
+ * @LastEditTime: 2020-09-02 09:22:19
  * @FilePath: \templates-ts\src\utils\page_path.ts
  */
 const path = {
@@ -58,5 +58,7 @@ const path = {
     searchbar: '/pages/searchbar/index',
     // 选择器组件
     picker: '/pages/picker/index',
+    // 视频组件
+    video: '/pages/video/index',
 }
 export default path

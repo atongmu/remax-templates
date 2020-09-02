@@ -65,6 +65,14 @@ export default () => {
             </View>
           </View>
         </View>
+        <View className="padding-sm margin-bottom-sm bg-white" onClick={() => href(page_path.video)}>
+          <View className="flex align-center">
+            <View className="flex-sub">video组件</View>
+            <View className="flex-sub text-right">
+              <Icon type="video" size="36" color="#999" />
+            </View>
+          </View>
+        </View>
 
         <View className="padding-sm margin-bottom-sm bg-white" onClick={() => href(page_path.pull_down_refresh)}>
           <View className="flex align-center">
