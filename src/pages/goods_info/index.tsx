@@ -219,7 +219,7 @@ export default () => {
         <View className="safearea-bottom"></View>
       </View>
 
-      <View className="bg-white padding-tb-xs solid-top fixed">
+      <View className="bg-white padding-tb-xs solid-top foot">
         <View className="flex align-center padding-env">
           <View className="flex-sub flex">
             <View className="flex-sub text-center" onClick={() => reLaunch({ url: page_path.home })}>
