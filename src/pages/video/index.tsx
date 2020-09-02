@@ -23,11 +23,10 @@ export default () => {
         id="myVideo"
         src="https://1251542705.vod2.myqcloud.com/4a8d9c67vodtransgzp1251542705/f7b5199b5285890805797463637/v.f100820.mp4"
         onError={videoErrorCallback}
-        enableDanmu
         autoplay
-        danmuBtn
-        showCenterPlayBtn={false}
-        showPlayBtn={true}
+        loop
+        showCenterPlayBtn
+        showPlayBtn
       ></Video>
       {/* <View >弹幕内容</View> */}
       {/* <input bindblur="bindInputBlur" class="weui-input" type="text" placeholder="在此处输入弹幕内容" /> */}
