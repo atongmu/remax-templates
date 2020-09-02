@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Row, Col } from 'anna-remax-ui';
 import { View, Image } from 'remax/wechat';
-import { href } from '@/utils/common';
+import { href, toast } from '@/utils/common';
 export interface Props {
     items: Array<any>
 }
@@ -15,7 +15,8 @@ const TabBar = (props: Props) => {
                     return (
                         <View key={index} className="flex-sub">
                             <View className="text-center">
-                                <View onClick={() => href(item.path)}>
+                                {/* <View onClick={() => href(item.path)}> */}
+                                <View onClick={() => toast(item.title)}>
                                     <Image style={{ width: '60rpx', height: '60rpx', margin: '0 auto' }} src={item.image} />
                                 </View>
                                 <View className="text-sm">{item.title}</View>

@@ -3,7 +3,7 @@ import { View, Image } from 'remax/wechat';
 import { Grid } from 'anna-remax-ui';
 
 import './index.less';
-import { href } from '@/utils/common'
+import { href, toast } from '@/utils/common'
 import SearchModel from '@/components/search_model/index';
 import SwiperModel from '@/components/swiper_model/index';
 import PageLoading from '@/components/page_loading';
@@ -142,7 +142,7 @@ export default () => {
       <View className="padding-bottom-sm">
         {/* 搜索栏 */}
         <View className="searchFixed">
-          <SearchModel text='搜索' showSort={true} color="#28a745" searchFun={() => href(page_path.search)} sortFun={() => href(page_path.sort)} />
+          <SearchModel text='搜索' showSort={true} color="#28a745" searchFun={() => toast("搜索")} sortFun={() => toast("分类")} />
         </View>
         {/* 搜索栏 结束 */}
 
@@ -168,7 +168,7 @@ export default () => {
               {items.map((item, index) => {
                 return (
                   ((index + 1) % 2 != 0) && (
-                    <GoodsModel key={index} item={item} detail={() => href(page_path.goods_info)} />
+                    <GoodsModel key={index} item={item} detail={() => toast("详情")} />
                   )
                 )
               })}
@@ -177,7 +177,7 @@ export default () => {
               {items.map((item, index) => {
                 return (
                   ((index + 1) % 2 === 0) && (
-                    <GoodsModel key={index} item={item} detail={() => href(page_path.goods_info)} />
+                    <GoodsModel key={index} item={item} detail={() => toast("详情")} />
                   )
                 )
               })}

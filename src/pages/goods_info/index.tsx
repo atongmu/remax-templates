@@ -222,7 +222,8 @@ export default () => {
       <View className="bg-white padding-tb-xs solid-top foot">
         <View className="flex align-center padding-env">
           <View className="flex-sub flex">
-            <View className="flex-sub text-center" onClick={() => reLaunch({ url: page_path.home })}>
+            {/* <View className="flex-sub text-center" onClick={() => reLaunch({ url: page_path.home })}> */}
+            <View className="flex-sub text-center" onClick={() =>toast('首页')}>
               <View><Icon type="home_light" size="36" color="#8799a3" /></View>
               <View className="text-xs">首页</View>
             </View>
@@ -232,7 +233,7 @@ export default () => {
                 <View className="text-xs">客服</View>
               </button>
             </View>
-            <View className="flex-sub text-center" onClick={() => href(page_path.cart)}>
+            <View className="flex-sub text-center" onClick={() => toast('篮子')}>
               <View><Icon type="cart_light" size="36" color="#8799a3" /></View>
               <View className="text-xs">篮子</View>
             </View>
@@ -242,7 +243,7 @@ export default () => {
               <Button look="orange" block onTap={() => setShow(true)}>加入篮子</Button>
             </View>
             <View className="flex-sub margin-left-sm">
-              <Button look="anna" block onTap={() => href(page_path.order_submit)}>下单</Button>
+              <Button look="anna" block onTap={() => toast('下单')}>下单</Button>
             </View>
           </View>
         </View>

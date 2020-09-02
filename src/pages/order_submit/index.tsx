@@ -3,7 +3,7 @@ import { View, Text, Image, getStorageSync } from 'remax/wechat';
 import { Cell, Icon, Button, Input } from 'anna-remax-ui';
 
 import './index.less';
-import { href } from '@/utils/common'
+import { href, toast } from '@/utils/common'
 import PageLoading from '@/components/page_loading';
 import OrderModel from '@/components/order_model';
 import page_path from '@/utils/page_path';
@@ -43,7 +43,7 @@ export default () => {
       ) : (
           <View className="margin-top-sm">
             <View className="bg-white margin-bottom-sm padding" style={{ position: 'relative' }}>
-              <View className="flex align-center" onClick={() => href(page_path.address_list)}>
+              <View className="flex align-center" onClick={() => toast('地址列表')}>
                 <View className="flex-sub">
                   <View><Text>小仙雨</Text><Text className="margin-left-sm">129******11</Text></View>
                   <View>广东省深圳市南山区高新科技园中区一路</View>
@@ -83,7 +83,7 @@ export default () => {
                   实付：<Text className="text-price text-red text-xl">1111</Text>
                 </View>
                 <View className="padding-xs">
-                  <Button look="anna" onTap={() => href(page_path.succeess)}>下单</Button>
+                  <Button look="anna" onTap={() => toast("下单")}>下单</Button>
                 </View>
               </View>
             </View>

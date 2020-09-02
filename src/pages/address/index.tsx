@@ -4,7 +4,7 @@ import { Icon, Button } from 'anna-remax-ui';
 
 import './index'
 import PageLoading from '@/components/page_loading';
-import { href } from '@/utils/common'
+import { href, toast } from '@/utils/common'
 import page_path from '@/utils/page_path'
 
 export default () => {
@@ -34,7 +34,7 @@ export default () => {
 
             <View className="foot padding-sm bg-white">
               <View className="padding-env">
-                <Button block look="anna" onTap={() => href(page_path.address_edit)}>新增收货地址</Button>
+                <Button block look="anna" onTap={() => toast("新增收货地址")}>新增收货地址</Button>
               </View>
             </View>
           </View>
