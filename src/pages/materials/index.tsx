@@ -4,7 +4,7 @@ import { View } from 'remax/one';
 import { usePageEvent } from 'remax/macro';
 import { Cell } from 'anna-remax-ui';
 
-import { href } from '@/utils/common'
+import { href, toast } from '@/utils/common'
 import page_path from '@/utils/page_path';
 import SearchModel from '@/components/search_model/index';
 import PageLoading from '@/components/page_loading';
@@ -57,7 +57,7 @@ export default () => {
   return (
     <View className="materials padding-env">
       <View className="nav fixed">
-        <SearchModel text={`${todo.bingItems.searchValue !== '' ? todo.bingItems.searchValue : '搜索物料'}`} searchFun={() => href(page_path.search)} color="#28a745" />
+        <SearchModel text={`${todo.bingItems.searchValue !== '' ? todo.bingItems.searchValue : '搜索物料'}`} searchFun={() => toast("搜索")} color="#28a745" />
       </View>
       {isLoading && (
         <PageLoading color="#28a745" topVal="90rpx" />
@@ -65,7 +65,7 @@ export default () => {
       <View style={{ height: '100', background: '#28a745' }}></View>
       <View>
         {materials.map((item, index) => (
-          <Cell key={index} label={item.name} arrow onTap={() => href(page_path.materials_detail)}>
+          <Cell key={index} label={item.name} arrow onTap={() => toast("详情")}>
             <View>库存：{item.num}</View>
           </Cell>
         ))}

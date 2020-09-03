@@ -27,9 +27,9 @@ export default () => {
             <View className="flex bg-white align-center solid-bottom padding-sm">
               <View className="flex-sub">
                 <View>名字 139*******1</View>
-                <View className="padding-top-sm">111111</View>
+                <View className="padding-top-sm">山东省青岛市</View>
               </View>
-              <Text onClick={() => href(page_path.address_edit)}><Icon type="edit" size="36" color="#8799a3" /></Text>
+              <Text onClick={() => toast("编辑地址")}><Icon type="edit" size="36" color="#8799a3" /></Text>
             </View>
 
             <View className="foot padding-sm bg-white">
