@@ -10,6 +10,7 @@ export default () => {
   const [isLoading, setLoading] = useState(true)
   const [mallStatus, setMallStatus] = useState(false)
   const [cimsStatus, setCimsStatus] = useState(false)
+  const [mediaStatus, setMediaStatus] = useState(false)
   const [operationsStatus, setOperationsStatus] = useState(false)
 
   useEffect(() => {
@@ -29,7 +30,7 @@ export default () => {
           </View>
           <View className="text-xxl text-black text-bold" >CUI 模板库</View>
         </View>
-        <View className="text-center text-gray text-xs">Remax 开发微信小程序代码片段</View>
+        <View className="text-center text-gray text-xs">Remax 开发微信小程序<Text className="text-bold padding-left-xs text-green">代码片段</Text></View>
       </View>
       <View>
         <View className="padding-lr-sm padding-tb margin-bottom-sm bg-white" onClick={() => href(page_path.form)}>
@@ -76,14 +77,6 @@ export default () => {
             </View>
           </View>
         </View>
-        <View className="padding-lr-sm padding-tb margin-bottom-sm bg-white" onClick={() => href(page_path.video)}>
-          <View className="flex align-center">
-            <View className="flex-sub">video组件</View>
-            <View className="flex-sub text-right">
-              <Icon type="video" size="36" color="#999" />
-            </View>
-          </View>
-        </View>
 
         <View className="padding-lr-sm padding-tb margin-bottom-sm bg-white" onClick={() => href(page_path.pull_down_refresh)}>
           <View className="flex align-center">
@@ -92,6 +85,21 @@ export default () => {
               <Icon type="refresh" size="36" color="#999" />
             </View>
           </View>
+        </View>
+
+        <View className="padding-lr-sm padding-tb margin-bottom-sm bg-white">
+          <View className="flex align-center" onClick={() => setMediaStatus((o) => o = true)}>
+            <View className="flex-sub">媒体组件</View>
+            <View className="flex-sub text-right">
+              <Icon type="video" size="36" color="#999" />
+            </View>
+          </View>
+          {mediaStatus && (
+            <View className="solids-top margin-top-sm">
+              <Cell label="轮播图" onTap={() => href(page_path.swiper)} arrow />
+              <Cell label="video" onTap={() => href(page_path.video)} arrow />
+            </View>
+          )}
         </View>
 
         <View className="padding-lr-sm padding-tb margin-bottom-sm bg-white">

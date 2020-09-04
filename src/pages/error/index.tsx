@@ -14,7 +14,7 @@ export default () => {
           height="600rpx"
           status="error"
           title="失败"
-          subTitle="非常感谢您购买我们的产品"
+          subTitle="非常感谢"
           extra={
             <View>
               {/* <Button danger square bloc style={{ marginRight: '24px' }} onTap={() => href(page_path.order_list)}>

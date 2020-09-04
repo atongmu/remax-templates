@@ -140,29 +140,29 @@ export default () => {
   return (
     <View className="app padding-env">
       <View className="padding-bottom-sm">
-        {/* 搜索栏 */}
+        {/* 搜索栏 
         <View className="searchFixed">
           <SearchModel text='搜索' showSort={true} color="#28a745" searchFun={() => toast("搜索")} sortFun={() => toast("分类")} />
         </View>
-        {/* 搜索栏 结束 */}
+         搜索栏 结束 */}
 
-        {/* 轮播图 */}
+        {/* 轮播图 
         <View>
           <SwiperModel items={banners} autoplay={true} indicatorDots={true} indicatorColor="#ffffff" indicatorActiveColor="#28a745" />
         </View>
-        {/* 轮播图 结束 */}
+         轮播图 结束 */}
 
-        {/* 分类导航 */}
+        {/* 分类导航 
         <View >
           <CategoryModel items={ategorys} detail={() => console.log(ategorys)} />
         </View>
-        {/* 分类导航 结束 */}
+         分类导航 结束 */}
 
         {/* 热门推荐 */}
         <View>
-          <View className=" padding-tb">
+          {/* <View className=" padding-tb">
             <GroupTitle text="热门推荐" icon={false} />
-          </View>
+          </View> */}
           <View className="product-list">
             <View className="product-container">
               {items.map((item, index) => {
