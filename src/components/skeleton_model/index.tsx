@@ -20,8 +20,8 @@ export interface Props {
     customize?: React.ReactNode;
 }
 
-const SkeletonModel = (props: Props) => {
-    const { fixed = false, title, titleColor, avatar, image, paragraph, repetitions, space, style, fade = false, loading = true, customize } = props
+const SkeletonModel = ({ fixed = false, title, titleColor, avatar, image, paragraph, repetitions, space, style, fade = false, loading = true, customize }: React.PropsWithChildren<Props>) => {
+    
     return (
         <View className={`skeleton-model padding-tb bg-white ${fixed && 'fixed'}`}>
             <Skeleton

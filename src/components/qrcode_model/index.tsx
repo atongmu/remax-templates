@@ -10,8 +10,7 @@ export interface Props {
 
 }
 
-const QrcodeModel = (props: Props) => {
-    const { text, width, heght, colorDark, colorLight } = props
+const QrcodeModel = ({ text, width, heght, colorDark, colorLight }: React.PropsWithChildren<Props>) => {
     useEffect(() => {
         setTimeout(() => {
             couponQrCode()

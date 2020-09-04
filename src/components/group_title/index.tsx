@@ -7,8 +7,7 @@ export interface Props {
     icon: boolean,
 }
 
-const GroupTitle = (props: Props) => {
-    const { text, icon } = props
+const GroupTitle = ({ text, icon }: React.PropsWithChildren<Props>) => {
 
     return (
         <View className="group-title text-center padding-tb-sm">

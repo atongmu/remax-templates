@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, Checkbox, Label } from 'remax/wechat';
-export interface CheckboxProps {
+export interface Props {
     name?: string;
     /** checkbox标识，选中时触发checkbox-group的 change 事件，并携带 checkbox 的 value 1.0.0  */
     value?: string;
@@ -14,8 +14,8 @@ export interface CheckboxProps {
     onChange?: () => void;
 }
 
-const CheckboxModel = (props: CheckboxProps) => {
-    const { color, name, value, checked = true, disabled, extra, onChange } = props
+const CheckboxModel = ({ color, name, value, checked = true, disabled, extra, onChange }: React.PropsWithChildren<Props>) => {
+
     return (
         <View className="checkbox-model padding-sm">
             <Label className="flex align-center" onClick={onChange}>

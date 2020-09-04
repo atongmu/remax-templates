@@ -21,8 +21,8 @@ export interface Props {
     onSubmit?: (value: string) => void;
 }
 
-const SearchbarModel = (props: Props) => {
-    const { style, inputStyle, value, placeholder = '搜索', focus, actionName, keepShowActionButton, hideActionButton, size, shape, onInput, onClear, onActionClick, onFocus, onBlur, onSubmit } = props
+const SearchbarModel = ({ style, inputStyle, value, placeholder = '搜索', focus, actionName, keepShowActionButton, hideActionButton, size, shape, onInput, onClear, onActionClick, onFocus, onBlur, onSubmit }: React.PropsWithChildren<Props>) => {
+    
     return (
         <View className="searchbar-model">
             <SearchBar

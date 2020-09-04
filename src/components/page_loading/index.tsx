@@ -9,8 +9,7 @@ export interface Props {
     topVal?: string;
 }
 
-const PageLoading = (props: Props) => {
-    const { color, topVal } = props
+const PageLoading = ({ color, topVal }: React.PropsWithChildren<Props>) => {
 
     return (
         <View className="loading" style={{ top: topVal }}>

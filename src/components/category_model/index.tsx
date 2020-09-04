@@ -9,8 +9,7 @@ export interface Props {
     detail: () => void,
 }
 
-const CategoryModel = (props: Props) => {
-    const { items, detail } = props
+const CategoryModel = ({ items, detail }: React.PropsWithChildren<Props>) => {
     const renderGridItem = (items: any, index?: number) => (
         <View className="text-center margin-bottom-sm" onClick={detail}>
             <Image className="category-image" src={items.image} mode="widthFix" />

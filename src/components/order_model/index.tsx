@@ -16,8 +16,7 @@ export interface Props {
     };
 }
 
-const OrderModel = (props: Props) => {
-    const { item, detail } = props
+const OrderModel = ({ item, detail }: React.PropsWithChildren<Props>) => {
 
     return (
         <View className="order-model flex" onClick={detail}>

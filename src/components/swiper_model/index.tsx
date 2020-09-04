@@ -9,8 +9,8 @@ export interface Props {
     indicatorActiveColor: string,
 }
 
-const SwiperModel = (props: Props) => {
-    const { items, autoplay, indicatorDots, indicatorColor, indicatorActiveColor } = props
+const SwiperModel = ({ items, autoplay, indicatorDots, indicatorColor, indicatorActiveColor }: React.PropsWithChildren<Props>) => {
+    
     return (
         <View className="swiper">
             <Swiper autoplay={autoplay} indicatorDots={indicatorDots} indicatorActiveColor={indicatorActiveColor} indicatorColor={indicatorColor} circular={true}>

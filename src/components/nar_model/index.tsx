@@ -11,8 +11,7 @@ export interface Props {
     detail: (e: number) => void;
 }
 
-const NavModel = (props: Props) => {
-    const { items, active, detail, style, className } = props
+const NavModel = ({ items, active, detail, style, className }: React.PropsWithChildren<Props>) => {
     return (
         <ScrollView scroll-x className="nav-model solid-top bg-white text-center" style={style}>
             <View className="flex align-center">

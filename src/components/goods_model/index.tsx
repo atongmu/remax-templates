@@ -14,8 +14,7 @@ export interface Props {
     };
 }
 
-const GoodsModel = (props: Props) => {
-    const { item, detail } = props
+const GoodsModel = ({ item, detail }: React.PropsWithChildren<Props>) => {
 
     return (
         <View className="goods-model" onClick={detail}>

@@ -6,8 +6,7 @@ export interface Props {
     items: Array<any>
 }
 
-const TabBar = (props: Props) => {
-    const { items } = props
+const TabBar = ({ items }: React.PropsWithChildren<Props>) => {
     return (
         <View className="tab-bar solid-top bg-white" style={{ paddingTop: '10rpx' }}>
             <View className="flex align-center padding-env">

@@ -12,8 +12,7 @@ export interface Props {
     searchFun: () => void;
 }
 
-const SearchModel = (props: Props) => {
-    const { text, color, showSort, sortFun, searchFun } = props
+const SearchModel = ({ text, color, showSort, sortFun, searchFun }: React.PropsWithChildren<Props>) => {
 
     return (
         <View className="search flex align-center" style={{ background: color, height: '100rpx' }}>

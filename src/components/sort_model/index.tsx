@@ -16,8 +16,7 @@ export interface Props {
     onChangeParentOption?: (e: any) => void;
 }
 let currentParent: any = null;
-const SortModel = (props: Props) => {
-    const { options, onChange, onChangeParentOption } = props
+const SortModel = ({ options, onChange, onChangeParentOption }: React.PropsWithChildren<Props>) => {
     const [parentData, setParentData] = useState<OptionProps[]>([]);
     const [childrenData, setChildrenData] = useState<OptionProps[]>([]);
     const [activeParent, setActiveParent] = useState('');

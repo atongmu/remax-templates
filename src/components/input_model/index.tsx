@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, Input } from 'remax/one';
-export interface InputProps {
+export interface Props {
     label?: React.ReactNode;
     style?: React.CSSProperties;
     className?: string;
@@ -25,8 +25,8 @@ export interface InputProps {
     onBlur?: (e: any) => void;
 }
 
-const InputModel = (props: InputProps) => {
-    const { label, name, value, type, border = true, maxlength, required = false, align = 'left', className, defaultValue, password, disabled, focus, placeholder, placeholderStyle, extra, onInput, onConfirm, onFocus, onBlur } = props
+const InputModel = ({ label, name, value, type, border = true, maxlength, required = false, align = 'left', className, defaultValue, password, disabled, focus, placeholder, placeholderStyle, extra, onInput, onConfirm, onFocus, onBlur }: React.PropsWithChildren<Props>) => {
+
     return (
         <View className={`input-model flex align-center padding-sm ${border && 'solid-bottom'}`}>
             {label && (

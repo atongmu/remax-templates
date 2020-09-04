@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View } from 'remax/wechat';
 import { SwipeAction } from 'anna-remax-ui';
-export interface SlideProps {
+export interface Props {
     show?: boolean;
     buttons:
     [{
@@ -14,8 +14,7 @@ export interface SlideProps {
     handleClose?: (e: any) => void;
 }
 
-const SlideModel = (props: SlideProps) => {
-    const { show, buttons, extra, handleOpen, handleClose } = props
+const SlideModel = ({ show, buttons, extra, handleOpen, handleClose }: React.PropsWithChildren<Props>) => {
     return (
         <View className="slide-model">
             <SwipeAction open={show}

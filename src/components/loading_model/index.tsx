@@ -10,8 +10,7 @@ export interface Props {
     color?: string;
 }
 
-const LoadingModel = (props: Props) => {
-    const { color, type = 'wave', isLoading } = props
+const LoadingModel = ({ color, type = 'wave', isLoading }: React.PropsWithChildren<Props>) => {
 
     return (
         <View className="loading-model padding-sm text-center">

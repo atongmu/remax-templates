@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, Switch, Label } from 'remax/wechat';
-export interface CheckboxProps {
+export interface Props {
     name?: string;
     /** (default: false) 是否选中 1.0.0 */
     checked?: boolean;
@@ -13,8 +13,8 @@ export interface CheckboxProps {
     extra?: React.ReactNode;
 }
 
-const SwitchModel = (props: CheckboxProps) => {
-    const { color, name, checked = true, disabled, extra, onChange } = props
+const SwitchModel = ({ color, name, checked = true, disabled, extra, onChange }: React.PropsWithChildren<Props>) => {
+    
     return (
         <View className="switch-model padding-sm">
             <Label className="flex align-center">
