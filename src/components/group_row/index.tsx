@@ -13,8 +13,7 @@ export interface Props {
     rightText?: String,
     rightViod?: () => void,
 }
-const GroupRow = (props: Props) => {
-    const { items, title, type, isRight, rightText, rightViod, isRadius } = props
+const GroupRow = ({ items, title, type, isRight, rightText, rightViod, isRadius }: React.PropsWithChildren<Props>) => {
     return (
         <View className="group-row">
             <View className={`bg-white ${isRadius && 'radius'}`}>
