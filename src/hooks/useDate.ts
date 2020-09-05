@@ -2,60 +2,70 @@
  * @Author: codingfly
  * @Description: 分页封装
  * @Date: 2020-08-18 15:27:27
- * @LastEditTime: 2020-09-04 15:59:32
+ * @LastEditTime: 2020-09-05 17:02:20
  * @FilePath: \templates-ts\src\hooks\useDate.ts
  */
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import { ajax } from '@/utils/common'
 import useRefState from '@/hooks/useRefState'
 export interface Props {
-    pageSize: number,
-    url: string,
-    method: string,
-    data?: any,
-    isDelay?: boolean,
-    isForm?: boolean,
-    hideLoad?: boolean,
+    url: string;
+    method: any;
+    isDelay?: boolean;
+    isForm?: boolean;
+    hideLoad?: boolean;
+    pageSize?: number;
 }
 
-export default ({ url, method, data, isDelay, isForm, hideLoad, pageSize = 20 }: Props) => {
-    const [isLoading, setLoading] = useState<boolean>(true);
-    const [pageStatus, setPageStatus] = useState<boolean>(true)
-    const [params, setParams] = useState<any>()
+export default <T>({ url, method,  isDelay, isForm, hideLoad, pageSize = 20 }: Props) => {
+    const [pageStatus, setPageStatus, statusRef] = useRefState(true)
+    // 列表是否全部加载完毕
     const [hasMore, setHasMore, hasMoreRef] = useRefState(true)
-    const [list, setList] = useState<any[]>([])
-    const [isError, setError] = useState<boolean>(false)
+    // 列表是否为空
+    const [empty, setEmpty] = useState(false)
+    const [list, setList] = useState<T[]>([])
+    // const [pageNo, setPageNo, pageRef] = useRefState(1)
 
-    const getData = useCallback(() => {
-        const fetchData = async () => {
-            try {
-                let res: any = await ajax(url, method, data, isDelay, isForm, hideLoad)
-                if (res.status === 200) {
-                    return res.data
-                }
-            } catch (err) {
-                setError(o => o = true)
+    const getData = useCallback(async (data) => {
+        try {
+            setPageStatus((o: boolean) => o = statusRef.current = false)
+            let res: any = await ajax(url, method, {...data}, isDelay, isForm, hideLoad)
+            if (res.status === 200) {
+                return res.data
             }
-        }
-        return () => {
-            fetchData()
+        } finally {
+            setPageStatus((o: boolean) => o = statusRef.current = true)
         }
     }, [])
-    const load = useCallback(async () => {
-        if (!hasMoreRef.current) {
+    const load = useCallback(async (data) => {
+        if (!pageStatus) {
             return
         }
-        const res: any = await getData()
+        const res: any = await getData(data)
         if (res.length < pageSize) {
-            setHasMore(false)
+            setHasMore((o: boolean) => o = hasMoreRef.current = false)
         }
         setList(l => {
             if (res.length === 0 && l.length === 0) {
-                setError(true)
+                setEmpty(o => o = true)
             }
-
             return [...l, ...res]
         })
     }, [])
-    return { isLoading, isError, pageStatus, list, setParams, load }
+
+    // 清空列表
+    const clean = useCallback(() => {
+        setList(o => o = [])
+        setHasMore((o: boolean) => o = hasMoreRef.current = true)
+        setEmpty(o => o = false)
+    }, [])
+
+    // 刷新列表
+    const refresh = useCallback((o) => {
+        clean()
+        setTimeout(() => {
+            load(o)
+        })
+    }, [])
+    return { empty, hasMore, list, load, refresh, clean }
 }

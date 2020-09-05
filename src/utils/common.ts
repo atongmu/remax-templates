@@ -2,12 +2,11 @@
  * @Author: codingfly
  * @Description: api工具类
  * @Date: 2020-07-22 16:37:08
- * @LastEditTime: 2020-09-01 16:45:24
+ * @LastEditTime: 2020-09-05 16:12:37
  * @FilePath: \templates-ts\src\utils\common.ts
  */
 import { request, showToast, showModal, showLoading, hideLoading, setStorageSync, getStorageSync, clearStorageSync, redirectTo, navigateTo } from 'remax/wechat';
 export function interfaceUrl() {
-    console.log(process.env)
     return process.env.REMAX_APP_BASE_UR
 }
 export function toast(content: string, success?: any, duration?: any) {
