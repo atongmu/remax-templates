@@ -7,5 +7,5 @@
  */
 
 module.exports = {
-  navigationBarTitleText: '详情'
+  navigationBarTitleText: '模板'
 };

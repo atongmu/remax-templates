@@ -76,7 +76,7 @@ export default () => {
                       共计 {item.products.length} 合计：<Text className="text-price">11</Text>
                     </View>
                     <View className="padding-top-sm">
-                      <Button size="small" onTap={() => toast("再次购买")}>下单</Button>
+                      <Button size="small" onTap={() => toast("按钮")}>按钮</Button>
                     </View>
                   </View>
                 </View>

@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Video } from 'remax/wechat';
-import { Card, Button, Icon, Steps } from 'anna-remax-ui';
+import { View, Text, Image, Swiper, SwiperItem, getSystemInfo } from 'remax/wechat';
+import { Card, Button, Icon } from 'anna-remax-ui';
 import SwiperModel from '@/components/swiper_model/index';
 export default () => {
+  const [scrollH, setScrollH] = useState<number>(0)
+  const [bannerIndex, setBannerIndex] = useState(0)
   const [isLoading, setLoading] = useState(true)
   const [banners, setBanners] = useState<any[]>([])
-
+  useEffect(() => {
+    init()
+  }, [])
+  const init = async () => {
+    const { windowWidth } = await getSystemInfo()
+    setScrollH(windowWidth)
+    setLoading(false)
+  }
   useEffect(() => {
     const setFun = setTimeout(() => {
       setBanners([
@@ -21,7 +30,18 @@ export default () => {
   }, [])
   return (
     <View className="swiper-container">
-      <SwiperModel items={banners} autoplay={true} indicatorDots={true} indicatorColor="#ffffff" indicatorActiveColor="#28a745" />
+      <View>
+        <SwiperModel items={banners} autoplay={true} indicatorDots={true} indicatorColor="#ffffff" indicatorActiveColor="#28a745" />
+      </View>
+
+      <View className="margin-top">
+        <Swiper autoplay={true} circular={true} onChange={(e) => setBannerIndex(e.detail.current)} style={{ height: `${scrollH * 2}` }}>
+          {banners.map((item, index) => (<SwiperItem key={index}>
+            <Image src={item.image} style={{ width: "100%", height: "100%" }} />
+          </SwiperItem>)
+          )}
+        </Swiper>
+      </View>
     </View>
   );
 };

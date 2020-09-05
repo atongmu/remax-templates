@@ -29,7 +29,6 @@ export interface GoodsSku {
   image: string
 }
 export default () => {
-  const [isLoading, setLoading] = useState(true)
   const [show, setShow] = useState(false)
   const [bannerIndex, setBannerIndex] = useState(0)
   const [scrollH, setScrollH] = useState<number>(0)
@@ -50,7 +49,7 @@ export default () => {
     pack: false,
     newPrice: '99.00',
     originalPrice: '199.00',
-    content: '',
+    content: '内容',
     sku: [],
     commont: [],
     sales: 0,
@@ -64,7 +63,6 @@ export default () => {
   const init = async () => {
     const { windowWidth } = await getSystemInfo()
     setScrollH(windowWidth)
-    setLoading(false)
   }
   const appendCart = () => {
     const cartItems = getStorageSync("cart")
@@ -106,7 +104,7 @@ export default () => {
 
   return (
     <View className="goods-info">
-      <View style={{ position: 'relative' }}>
+      {/* <View style={{ position: 'relative' }}>
         <View>
           <Swiper autoplay={true} circular={true} onChange={(e) => setBannerIndex(e.detail.current)} style={{ height: `${scrollH * 2}` }}>
             {goodsInfo.banners.map((item, index) => {
@@ -122,7 +120,7 @@ export default () => {
         <View style={{ position: 'absolute', bottom: '30', left: 'calc(50% - 20rpx)' }}>
           <Icon type="video" color="#fe4f4f" size="42" />
         </View>
-      </View>
+      </View> */}
       <View>
         <View className="flex align-center padding-sm bg-white">
           <View className="flex-sub">
@@ -153,7 +151,7 @@ export default () => {
           <View className="flex-sub">月销:{goodsInfo.sales}</View>
           <View className="flex-sub">{goodsInfo.city}</View>
         </View>
-        <View className="radius bg-white margin-tb-sm">
+        <View className="radius bg-white margin-tb-sm" style={{ display: 'none' }}>
           <View className="padding-sm solid-bottom">
             <View className="flex align-center">
               <View><Text className="text-bold text-black">已选</Text></View>
@@ -176,7 +174,7 @@ export default () => {
             </View>
           </View>
         </View>
-        <View className="padding-sm bg-white">
+        <View className="padding-sm bg-white" style={{ display: 'none' }}>
           <View className="flex">
             <View className="flex-sub">
               <Text className="text-bold text-black">评论</Text>
@@ -209,8 +207,8 @@ export default () => {
         </View>
 
         <View>
-          <View className="padding">
-            <GroupTitle text="宝贝详情" icon={false} />
+          <View className="padding-tb-sm">
+            <GroupTitle text="详情" icon={false} />
           </View>
           <View className="bg-white padding-sm">
             <Text>{goodsInfo.content}</Text>
@@ -223,7 +221,7 @@ export default () => {
         <View className="flex align-center padding-env">
           <View className="flex-sub flex">
             {/* <View className="flex-sub text-center" onClick={() => reLaunch({ url: page_path.home })}> */}
-            <View className="flex-sub text-center" onClick={() =>toast('首页')}>
+            <View className="flex-sub text-center" onClick={() => toast('首页')}>
               <View><Icon type="home_light" size="36" color="#8799a3" /></View>
               <View className="text-xs">首页</View>
             </View>
@@ -233,17 +231,17 @@ export default () => {
                 <View className="text-xs">客服</View>
               </button>
             </View>
-            <View className="flex-sub text-center" onClick={() => toast('篮子')}>
+            <View className="flex-sub text-center" onClick={() => toast('按钮')}>
               <View><Icon type="cart_light" size="36" color="#8799a3" /></View>
-              <View className="text-xs">篮子</View>
+              <View className="text-xs">按钮</View>
             </View>
           </View>
           <View className="flex-sub flex margin-right-sm">
             <View className="flex-sub">
-              <Button look="orange" block onTap={() => setShow(true)}>加入篮子</Button>
+              <Button look="orange" block onTap={() => setShow(true)}>按钮</Button>
             </View>
             <View className="flex-sub margin-left-sm">
-              <Button look="anna" block onTap={() => toast('下单')}>下单</Button>
+              <Button look="anna" block onTap={() => toast('按钮')}>按钮</Button>
             </View>
           </View>
         </View>
@@ -295,10 +293,10 @@ export default () => {
 
               <View className="flex">
                 <View className="flex-sub">
-                  <Button look="orange" block onTap={() => { appendCart(); setShow(false) }}>加入篮子</Button>
+                  <Button look="orange" block onTap={() => { appendCart(); setShow(false) }}>按钮</Button>
                 </View>
                 <View className="flex-sub margin-left-sm">
-                  <Button look="anna" block onTap={() => toast("下单")}>下单</Button>
+                  <Button look="anna" block onTap={() => toast("按钮")}>按钮</Button>
                 </View>
               </View>
             </View>
@@ -306,11 +304,6 @@ export default () => {
         )
       }
 
-      {
-        isLoading && (
-          <PageLoading color="#28a745" topVal="0" />
-        )
-      }
     </View >
   );
 };

@@ -130,7 +130,7 @@ export default () => {
               <Cell label="首页模板" onTap={() => href(page_path.mall)} arrow />
               <Cell label="分类模板" onTap={() => href(page_path.sort)} arrow />
               <Cell label="购物车模板" onTap={() => href(page_path.cart)} arrow />
-              <Cell label="详情模板" onTap={() => href(page_path.goods_info)} arrow />
+              <Cell label="详情模板" onTap={() => href(page_path.goods_detail)} arrow />
               <Cell label="地址模板" onTap={() => href(page_path.address_edit)} arrow />
               <Cell label="地址列表模板" onTap={() => href(page_path.address_list)} arrow />
               <Cell label="订单模板" onTap={() => href(page_path.order_detail)} arrow />

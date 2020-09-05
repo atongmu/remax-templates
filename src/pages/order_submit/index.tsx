@@ -83,7 +83,7 @@ export default () => {
                   实付：<Text className="text-price text-red text-xl">1111</Text>
                 </View>
                 <View className="padding-xs">
-                  <Button look="anna" onTap={() => toast("下单")}>下单</Button>
+                  <Button look="anna" onTap={() => toast("按钮")}>按钮</Button>
                 </View>
               </View>
             </View>

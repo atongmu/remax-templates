@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: 配置文件
  * @Date: 2020-08-13 08:54:44
- * @LastEditTime: 2020-09-05 09:49:40
+ * @LastEditTime: 2020-09-05 10:07:05
  * @FilePath: \templates-ts\src\app.config.ts
  */
 import { AppConfig } from "remax/wechat";

@@ -102,8 +102,8 @@ export default () => {
             <View className="foot bg-white padding-env">
               <View className="text-right padding-sm">
                 <Space align="baseline">
-                  <Button look="anna" onTap={() => toast("删除单子")}>删除单子</Button>
-                  <Button look="anna" onTap={() => toast("下单")}>下单</Button>
+                  <Button look="anna" onTap={() => toast("按钮")}>按钮</Button>
+                  <Button look="anna" onTap={() => toast("按钮")}>按钮</Button>
                 </Space>
               </View>
             </View>
