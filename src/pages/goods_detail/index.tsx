@@ -5,7 +5,7 @@ import { Stepper, Popup, Button, Icon, Tag } from 'anna-remax-ui';
 import './index.less';
 import { href } from '@/utils/common'
 import page_path from '@/utils/page_path';
-import GroupTitle from '@/components/group_title/index';
+import GroupTitle from '@/components/group_title';
 import PageLoading from '@/components/page_loading';
 import { toast } from '../../utils/common';
 
