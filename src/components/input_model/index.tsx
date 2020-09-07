@@ -28,7 +28,7 @@ export interface Props {
 const InputModel = ({ label, name, value, type, border = true, maxlength, required = false, align = 'left', className, defaultValue, password, disabled, focus, placeholder, placeholderStyle, extra, onInput, onConfirm, onFocus, onBlur }: React.PropsWithChildren<Props>) => {
 
     return (
-        <View className={`input-model flex align-center padding-sm ${border && 'solid-bottom'}`}>
+        <View className={`input-model flex align-center ${border && 'solid-bottom'}`}>
             {label && (
                 <View className="margin-right-sm flex align-center" style={{ width: '5.63rem' }}>
                     {required && (
@@ -37,7 +37,7 @@ const InputModel = ({ label, name, value, type, border = true, maxlength, requir
                     <View className={`flex-sub text-${align}`}>{label}</View>
                 </View>
             )}
-            <View className="flex-sub">
+            <View className="flex-sub padding-sm">
                 <Input
                     name={name}
                     disabled={disabled}
