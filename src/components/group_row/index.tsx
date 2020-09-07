@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { Row, Col, Icon } from 'anna-remax-ui';
+import { Icon } from 'anna-remax-ui';
 import { View, Image, Text } from 'remax/wechat';
 import { href } from '@/utils/common';
 
 export interface Props {
-    items: Array<any>,
-    type: String,
-    title: String,
-    isRadius?: Boolean,
-    isRight?: Boolean,
-    rightPath?: String,
-    rightText?: String,
-    rightViod?: () => void,
+    items: Array<any>;
+    type: String;
+    title: String;
+    isRadius?: Boolean;
+    isRight?: Boolean;
+    rightPath?: String;
+    rightText?: String;
+    rightViod?: () => void;
 }
 const GroupRow = ({ items, title, type, isRight, rightText, rightViod, isRadius }: React.PropsWithChildren<Props>) => {
     return (

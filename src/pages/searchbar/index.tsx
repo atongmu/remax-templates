@@ -11,10 +11,10 @@ export default () => {
   const handleValue = useCallback((e) => {
     setSearchValue(searchRef.current = e)
   }, [])
-  const cancel = () => {
+  const cancel = useCallback(() => {
     handleValue('')
     navigateBack()
-  }
+  }, [])
   return (
     <View className="bg-white">
       <View className="padding-lr-sm padding-tb solid-bottom">

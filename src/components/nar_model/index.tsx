@@ -6,12 +6,12 @@ import './index.less'
 export interface Props {
     items: Array<string>;
     active: number;
-    className?: string,
+    className?: string;
     style?: object;
     detail: (e: number) => void;
 }
 
-const NavModel = ({ items, active, detail, style, className }: React.PropsWithChildren<Props>) => {
+const NavModel = ({ items, active, style, className, detail }: React.PropsWithChildren<Props>) => {
     return (
         <ScrollView scroll-x className="nav-model solid-top bg-white text-center" style={style}>
             <View className="flex align-center">

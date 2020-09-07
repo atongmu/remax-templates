@@ -5,8 +5,8 @@ import { View, Image } from 'remax/wechat';
 import './index.less'
 
 export interface Props {
-    items: Array<any>,
-    detail: () => void,
+    items: Array<any>;
+    detail: () => void;
 }
 
 const CategoryModel = ({ items, detail }: React.PropsWithChildren<Props>) => {

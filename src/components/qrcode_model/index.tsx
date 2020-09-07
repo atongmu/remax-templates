@@ -12,10 +12,12 @@ export interface Props {
 
 const QrcodeModel = ({ text, width, heght, colorDark, colorLight }: React.PropsWithChildren<Props>) => {
     useEffect(() => {
-        setTimeout(() => {
+        const setFun = setTimeout(() => {
             couponQrCode()
         }, 60);
-
+        return () => {
+            clearTimeout(setFun)
+        }
     }, [])
     const couponQrCode = () => {
         new qrCode("couponQrcode", {

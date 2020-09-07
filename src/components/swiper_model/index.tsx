@@ -3,10 +3,10 @@ import { View, Swiper, SwiperItem, Image } from 'remax/wechat';
 
 export interface Props {
     items: Array<any>;
-    indicatorDots: boolean,
-    autoplay: boolean,
-    indicatorColor: string,
-    indicatorActiveColor: string,
+    indicatorDots: boolean;
+    autoplay: boolean;
+    indicatorColor: string;
+    indicatorActiveColor: string;
 }
 
 const SwiperModel = ({ items, autoplay, indicatorDots, indicatorColor, indicatorActiveColor }: React.PropsWithChildren<Props>) => {

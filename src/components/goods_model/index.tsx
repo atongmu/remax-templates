@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Icon } from 'anna-remax-ui';
 import { View, Text, Image } from 'remax/wechat';
 
 import './index.less'
