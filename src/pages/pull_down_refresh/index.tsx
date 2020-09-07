@@ -4,6 +4,7 @@ import { usePageEvent } from 'remax/macro';
 
 import { toast } from '@/utils/common'
 import LoadingModel from '@/components/loading_model';
+import PageLoading from '@/components/page_loading';
 import useDate from '@/hooks/useDate'
 import useRefState from '@/hooks/useRefState'
 
@@ -13,44 +14,44 @@ export interface MaterialsItem {
   num: number
 }
 export default () => {
-  const [pageNo, setPageNo, pageRef] = useRefState(1)
-  const [pageStatus, setPageStatus, statusRef] = useRefState(true)
-  const { empty, hasMore, list, load, refresh, clean } = useDate<MaterialsItem>({
+  const [isLoading, setIsLoading] = useRefState(true)
+  const [pageNo, setPageNo] = useState(1)
+  const { pageStatus, empty, hasMore, list, load, clean } = useDate<MaterialsItem>({
     url: '/materials_in',
     method: 'GET'
   })
   usePageEvent('onReachBottom', () => {
-    console.log(pageStatus)
-    if (pageStatus) {
-      setPageStatus((o: boolean) => o = statusRef.current = false)
-      setPageNo((o: number) => o = pageRef.current + 1)
+    if (pageStatus && hasMore) {
+      setPageNo((x: number) => x + 1)
     }
   });
   usePageEvent('onPullDownRefresh', () => {
     // 可以返回一个 promise，控制何时停止下来刷新行为
     return new Promise((resolve) => {
+      clean()
       if (pageNo !== 1) {
-        clean()
+        setPageNo((o: number) => 1)
+      } else {
+        load({ page_no: pageNo });
       }
-      setPageNo((o: number) => o = pageRef.current = 1)
       setTimeout(() => {
-        // refresh({ page_no: pageNo })
         toast('刷新成功')
         resolve();
       }, 1000);
     })
   });
-
   useEffect(() => {
-    const getData = setTimeout(function () {
-      load({ page_no: pageNo });
-      setPageStatus((o: boolean) => o = statusRef.current = true)
-    }, 1500);
-    return () => {
-      clearTimeout(getData);
-    }
+    load({ page_no: pageNo });
   }, [pageNo])
-  const Loading = useMemo(() => <LoadingModel isLoading={!hasMore} />, [hasMore]);
+  useEffect(() => {
+    setIsLoading((x: boolean) => false)
+  }, [])
+  const Loading = useMemo(() => <LoadingModel isLoading={hasMore} empty={empty} />, [hasMore]);
+  if (isLoading) {
+    return (
+      <PageLoading color="#28a745" topVal="0" />
+    )
+  }
   return (
     <View>
       {list.map((item: MaterialsItem, index: number) => (

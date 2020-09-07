@@ -2,14 +2,14 @@
  * @Author: codingfly
  * @Description: 超时修改状态
  * @Date: 2020-08-25 08:59:16
- * @LastEditTime: 2020-08-31 09:28:50
+ * @LastEditTime: 2020-09-07 15:33:59
  * @FilePath: \templates-ts\src\hooks\useTimeout.ts
  */
 import React, { useState, useCallback, useRef } from 'react'
 import useOnUnmount from '@/hooks/useOnUnmount'
 
 export default (ms: number) => {
-    const [ready, setReady] = useState(false)
+    const [ready, setReady] = useState<boolean>(false)
     const timerRef = useRef<number>()
 
     const start = useCallback(() => {
