@@ -5,7 +5,7 @@ import { usePageEvent } from 'remax/macro';
 import { toast } from '@/utils/common'
 import LoadingModel from '@/components/loading_model';
 import PageLoading from '@/components/page_loading';
-import useDate from '@/hooks/useDate'
+import useData from '@/hooks/useData'
 import useRefState from '@/hooks/useRefState'
 
 export interface MaterialsItem {
@@ -16,7 +16,7 @@ export interface MaterialsItem {
 export default () => {
   const [isLoading, setIsLoading] = useRefState(true)
   const [pageNo, setPageNo] = useState(1)
-  const { pageStatus, empty, hasMore, list, load, clean } = useDate<MaterialsItem>({
+  const { pageStatus, empty, hasMore, list, load, clean } = useData<MaterialsItem>({
     url: '/materials_in',
     method: 'GET'
   })

@@ -2,8 +2,8 @@
  * @Author: codingfly
  * @Description: 分页封装
  * @Date: 2020-08-18 15:27:27
- * @LastEditTime: 2020-09-07 15:09:01
- * @FilePath: \templates-ts\src\hooks\useDate.ts
+ * @LastEditTime: 2020-09-08 10:17:51
+ * @FilePath: \templates-ts\src\hooks\useData.ts
  */
 import React, { useState, useCallback } from 'react'
 import { ajax } from '@/utils/common'
