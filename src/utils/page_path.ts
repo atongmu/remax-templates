@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: 页面路径管理
  * @Date: 2020-08-13 09:56:53
- * @LastEditTime: 2020-09-05 10:02:34
+ * @LastEditTime: 2020-09-10 14:47:25
  * @FilePath: \templates-ts\src\utils\page_path.ts
  */
 const path = {
@@ -18,6 +18,8 @@ const path = {
     search: '/pages/search/index',
     // 分类
     sort: '/pages/sort/index',
+    // 商品分类
+    goods_sort: '/pages/goods_sort/index',
     // 详情
     goods_detail: '/pages/goods_detail/index',
     // 购物车

@@ -129,6 +129,7 @@ export default () => {
             <View className="solids-top margin-top-sm">
               <Cell label="首页模板" onTap={() => href(page_path.mall)} arrow />
               <Cell label="分类模板" onTap={() => href(page_path.sort)} arrow />
+              <Cell label="物品分类模板" onTap={() => href(page_path.goods_sort)} arrow />
               <Cell label="购物车模板" onTap={() => href(page_path.cart)} arrow />
               <Cell label="详情模板" onTap={() => href(page_path.goods_detail)} arrow />
               <Cell label="地址模板" onTap={() => href(page_path.address_edit)} arrow />
@@ -152,6 +153,7 @@ export default () => {
             <View className="solids-top margin-top-sm">
               <Cell label="首页模板" onTap={() => href(page_path.cims)} arrow />
               <Cell label="库存列表模板" onTap={() => href(page_path.materials)} arrow />
+              <Cell label="物料详情模板" onTap={() => href(page_path.materials_detail)} arrow />
               <Cell label="添加物料模板" onTap={() => href(page_path.materials_edit)} arrow />
             </View>
           )}

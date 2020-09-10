@@ -1,0 +1,43 @@
+.goods-sort {
+  .sort-left {
+    position: fixed;
+    width: 200rpx;
+    height: 100%;
+    left: 0;
+    z-index: 10;
+    .sort-item {
+      width: 200px;
+      height: 110rpx;
+      line-height: 110rpx;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26rpx;
+      color: #444;
+      font-weight: 400;
+    }
+  }
+  .sort-right {
+    position: fixed;
+    width: calc(100% - 200rpx);
+    height: 100%;
+    right: 0;
+    z-index: 10;
+    padding: 20rpx;
+    background-color: #ffffff;
+  }
+  .active {
+    position: relative;
+    color: #000;
+    font-size: 30rpx;
+    font-weight: 600;
+    background: #fcfcfc;
+    &:before {
+      content: "";
+      position: absolute;
+      border-left: 6rpx solid #e41f19;
+      height: 40rpx;
+      left: 0;
+    }
+  }
+}
