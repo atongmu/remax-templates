@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, getStorageSync } from 'remax/wechat';
-import { Button, Icon } from 'anna-remax-ui';
+import { Button, Icon, Stepper } from 'anna-remax-ui';
 
 import { href, toast } from '@/utils/common'
 import page_path from '@/utils/page_path'
@@ -53,7 +53,6 @@ export default () => {
       const cartItems = getStorageSync("cart")
       if (cartItems) {
         const cartGoods = JSON.parse(cartItems)
-        console.log(cartGoods)
         setItems(items => items = cartGoods)
       }
       setLoading(false)
@@ -115,18 +114,13 @@ export default () => {
   }
   // 选择商品
   const onchange = (e: Goods) => {
-    const newCart: Goods[] = Object.assign([], items)
-    for (let i = newCart.length - 1; i >= 0; i--) {
-      const item = newCart[i]
-      if (item.id === e.id) {
-        item.checked = !item.checked
-        break
-      }
-    }
-    setItems(items => items = newCart)
+    setItems(s =>
+      s.map(i => {
+        return { ...i, checked: e.id === i.id ? !i.checked : i.checked };
+      }),
+    );
   }
   const handleOpen = (e: any) => {
-    console.log('handleOpen', e);
     setItems(s =>
       s.map(i => {
         return { ...i, show: e.id === i.id ? true : false };
@@ -141,6 +135,14 @@ export default () => {
       }),
     );
   };
+  // 商品数量操作
+  const handleNum = (n: any, e: any) => {
+    setItems(s =>
+      s.map(i => {
+        return { ...i, num: e.id === i.id ? n : i.num };
+      }),
+    );
+  }
   return (
     <View onClick={handleHide}>
       {items.length > 0 ? (
@@ -174,19 +176,23 @@ export default () => {
                         <View>
                           <CheckboxModel checked={item.checked} onChange={() => onchange(item)} />
                         </View>
-                        <View style={{ width: '220', height: '220' }}>
+                        <View style={{ width: '220', height: '220' }} onClick={() => console.log(item)}>
                           <Image style={{ width: '100%', height: '100%' }} src={item.changeGoods.image} />
                         </View>
-                        <View className="flex-sub flex" onClick={() => console.log(item)}>
+                        <View className="flex-sub flex">
                           <View className="flex-sub margin-lr-sm">
-                            <View className="title margin-bottom text-sm">{item.name}</View>
-                            <Text className="bg-gray padding-xs text-sm">
-                              {item.changeGoods.value}
-                              <Icon type="unfold" />
-                            </Text>
-                            <View className="flex padding-top">
+                            <View className="title margin-bottom-xs text-sm">{item.name}</View>
+                            <View>
+                              <Text className="padding-tb-xs padding-lr-sm bg-gray text-sm">
+                                <Text className="margin-right-sm text-gray">{item.changeGoods.value}</Text>
+                                <Icon type="unfold" />
+                              </Text>
+                            </View>
+                            <View className="flex margin-top-xs">
                               <View className="flex-sub text-red"><Text className="text-price">{item.newPrice}</Text></View>
-                              <View><Text>x</Text> {item.num}</View>
+                              <View>
+                                <Stepper size="small" min={1} value={item.num} onChange={(val: any) => handleNum(val, item)} />
+                              </View>
                             </View>
                           </View>
                         </View>
