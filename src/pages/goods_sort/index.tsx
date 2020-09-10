@@ -3,8 +3,9 @@ import { View, Image, ScrollView } from 'remax/wechat';
 import { Grid } from 'anna-remax-ui';
 
 import './index.less';
-import { href } from '@/utils/common'
+import { href,toast } from '@/utils/common'
 import PageLoading from '@/components/page_loading';
+import SearchModel from '@/components/search_model/index';
 import { getSorts } from '@/api/index'
 
 
@@ -44,6 +45,9 @@ export default () => {
 
   return (
     <View className="app">
+      <View className="nav fixed">
+          <SearchModel text='搜索' showSort={false} color="#28a745" searchFun={() => toast("搜索")} sortFun={() => toast("分类")} />
+        </View>
       <View className="goods-sort">
         <View className="sort-left">
           <ScrollView scrollY={true} style={{ height: '100%' }} onScrollToLower={() => console.log('onScrollToLower')} >
