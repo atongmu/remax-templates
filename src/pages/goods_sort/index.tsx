@@ -66,7 +66,7 @@ export default () => {
           </ScrollView>
         </View>
         <View className="sort-right">
-          <ScrollView scrollY={true} style={{ height: '100%' }} onScrollToLower={() => console.log('onScrollToLower')} >
+          <ScrollView scrollY={true} style={{ height: '100%' }} enableBackToTop>
             {childrenData.map((item, index) => {
               return (
                 <View
