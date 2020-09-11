@@ -21,6 +21,7 @@ export default () => {
       setFun
     }
   }, [])
+
   return (
     <View className="padding-env">
       <View className="padding-lr-sm padding-tb bg-white margin-bottom-sm ">
@@ -74,6 +75,15 @@ export default () => {
             <View className="flex-sub">二维码生成组件</View>
             <View className="flex-sub text-right">
               <Icon type="qr_code_light" size="36" color="#999" />
+            </View>
+          </View>
+        </View>
+
+        <View className="padding-lr-sm padding-tb margin-bottom-sm bg-white" onClick={() => href(page_path.remind)}>
+          <View className="flex align-center">
+            <View className="flex-sub">倒计时组件</View>
+            <View className="flex-sub text-right">
+              <Icon type="remind" size="36" color="#999" />
             </View>
           </View>
         </View>

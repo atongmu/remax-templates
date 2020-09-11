@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: 页面路径管理
  * @Date: 2020-08-13 09:56:53
- * @LastEditTime: 2020-09-10 14:47:25
+ * @LastEditTime: 2020-09-11 13:39:47
  * @FilePath: \templates-ts\src\utils\page_path.ts
  */
 const path = {
@@ -64,5 +64,7 @@ const path = {
     video: '/pages/video/index',
     // 轮播图组件
     swiper: '/pages/swiper/index',
+    // 轮播图组件
+    remind: '/pages/remind/index',
 }
 export default path

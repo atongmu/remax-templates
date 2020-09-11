@@ -2,8 +2,8 @@
  * @Author: codingfly
  * @Description: 接口
  * @Date: 2020-07-30 17:27:03
- * @LastEditTime: 2020-08-28 20:11:04
- * @FilePath: \remax-templates\src\api\index.ts
+ * @LastEditTime: 2020-09-11 13:16:50
+ * @FilePath: \templates-ts\src\api\index.ts
  */
 import { ajax } from '@/utils/common'
 const api = {
@@ -18,9 +18,13 @@ const api = {
     materials_out: '/materials_out',
     materials_detail: '/materials_detail',
     template_status: '/template_status',
+    user: '/user',
 }
 export default api
-
+//  获取轮播图
+export function getUser() {
+    return ajax(api.user, 'GET', null, false, true, true)
+}
 //  获取轮播图
 export function getBanners() {
     return ajax(api.banners, 'GET', null, false, true, true)
