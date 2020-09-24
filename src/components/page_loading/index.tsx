@@ -9,7 +9,7 @@ export interface Props {
     topVal?: number;
 }
 
-const PageLoading = ({ color="28a745", topVal=0 }: React.PropsWithChildren<Props>) => {
+const PageLoading = ({ color="#28a745", topVal=0 }: React.PropsWithChildren<Props>) => {
 
     return (
         <View className="loading" style={{ top: `${topVal}px` }}>
