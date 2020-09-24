@@ -10,7 +10,7 @@ export interface Props {
 const GroupTitle = ({ text, icon }: React.PropsWithChildren<Props>) => {
 
     return (
-        <View className="group-title text-center padding-tb-sm">
+        <View className="group-title text-center padding-tb-xs">
             <Text className="text-lg text-bold">{text}</Text>
             {icon && (
                 <Icon type="right" size="32" color="#333" />
