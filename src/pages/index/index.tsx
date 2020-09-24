@@ -170,7 +170,7 @@ export default () => {
         </View>
       </View>
       {isLoading && (
-        <PageLoading color="#28a745" topVal="0" />
+        <PageLoading />
       )}
     </View>
   );
