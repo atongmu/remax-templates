@@ -3,8 +3,8 @@ import { View, } from 'remax/wechat';
 import { usePageEvent } from 'remax/macro';
 
 import { toast } from '@/utils/common'
+import { deepClone } from '@/utils/util'
 import LoadingModel from '@/components/loading_model';
-import PageLoading from '@/components/page_loading';
 import useData from '@/hooks/useData'
 import useRefState from '@/hooks/useRefState'
 
@@ -14,44 +14,38 @@ export interface MaterialsItem {
   num: number
 }
 export default () => {
-  const [isLoading, setIsLoading] = useRefState(true)
-  const [pageNo, setPageNo] = useState(1)
+  const [params, setParams] = useState({
+    page_no: 1,
+    page_size: 20
+  })
   const { pageStatus, empty, hasMore, list, load, clean } = useData<MaterialsItem>({
     url: '/materials_in',
     method: 'GET'
   })
+
+  useEffect(() => {
+    const new_page = deepClone(params)
+    load(new_page);
+  }, [params])
   usePageEvent('onReachBottom', () => {
     if (pageStatus && hasMore) {
-      setPageNo((x: number) => x + 1)
+      setParams({ ...params, page_no: params.page_no + 1 })
     }
   });
   usePageEvent('onPullDownRefresh', () => {
     // 可以返回一个 promise，控制何时停止下来刷新行为
     return new Promise((resolve) => {
       clean()
-      if (pageNo !== 1) {
-        setPageNo((o: number) => 1)
-      } else {
-        load({ page_no: pageNo });
-      }
+      const new_params = deepClone(params)
+      setParams(new_params)
       setTimeout(() => {
         toast('刷新成功')
         resolve();
       }, 1000);
     })
   });
-  useEffect(() => {
-    load({ page_no: pageNo });
-  }, [pageNo])
-  useEffect(() => {
-    setIsLoading((x: boolean) => false)
-  }, [])
+
   const Loading = useMemo(() => <LoadingModel isLoading={hasMore} empty={empty} />, [hasMore]);
-  if (isLoading) {
-    return (
-      <PageLoading color="#28a745" topVal="0" />
-    )
-  }
   return (
     <View>
       {list.map((item: MaterialsItem, index: number) => (

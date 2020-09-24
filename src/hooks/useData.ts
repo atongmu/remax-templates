@@ -2,7 +2,7 @@
  * @Author: codingfly
  * @Description: 分页封装
  * @Date: 2020-08-18 15:27:27
- * @LastEditTime: 2020-09-08 10:17:51
+ * @LastEditTime: 2020-09-24 21:52:36
  * @FilePath: \templates-ts\src\hooks\useData.ts
  */
 import React, { useState, useCallback } from 'react'
@@ -14,10 +14,9 @@ export interface Props {
     isDelay?: boolean;
     isForm?: boolean;
     hideLoad?: boolean;
-    pageSize?: number;
 }
 
-export default <T>({ url, method, isDelay, isForm, hideLoad = true, pageSize = 20 }: Props) => {
+export default <T>({ url, method, isDelay, isForm, hideLoad = true }: Props) => {
     const [pageStatus, setPageStatus, statusRef] = useRefState(true)
     // 列表是否全部加载完毕
     const [hasMore, setHasMore, hasMoreRef] = useRefState(true)
@@ -39,19 +38,23 @@ export default <T>({ url, method, isDelay, isForm, hideLoad = true, pageSize = 2
         if (!pageStatus) {
             return
         }
-        setPageStatus((o: boolean) => statusRef.current = false)
+        setPageStatus((x: boolean) => statusRef.current = false)
         const setFun = setTimeout(async () => {
             const res: any = await getData(data)
-            if (res.length < pageSize) {
-                setHasMore((o: boolean) => hasMoreRef.current = false)
+            if (res.length < data.page_size) {
+                setHasMore((x: boolean) => hasMoreRef.current = false)
             }
             setList(l => {
                 if (res.length === 0 && l.length === 0) {
-                    setEmpty(o => true)
+                    setEmpty(true)
                 }
-                return [...l, ...res]
+                if (data.page_no === 1) {
+                    return [...res]
+                } else {
+                    return [...l, ...res]
+                }
             })
-        }, 1000);
+        }, 800);
         return () => {
             clearTimeout(setFun)
         }
@@ -59,9 +62,9 @@ export default <T>({ url, method, isDelay, isForm, hideLoad = true, pageSize = 2
 
     // 清空列表
     const clean = useCallback(() => {
-        setList(o => [])
-        setHasMore((o: boolean) => hasMoreRef.current = true)
-        setEmpty(o => false)
+        setList([])
+        setHasMore((x: boolean) => hasMoreRef.current = true)
+        setEmpty(false)
     }, [])
 
     // 刷新列表
