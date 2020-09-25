@@ -38,7 +38,7 @@ export default () => {
         <SortModel options={ReturnDeliveryWay} value={selector.value} />
       </View>
       {isLoading && (
-        <PageLoading color="#28a745" topVal="0" />
+        <PageLoading />
       )}
     </View>
   );

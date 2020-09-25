@@ -38,7 +38,7 @@ export default () => {
   return (
     <View>
       {isLoading ? (
-        <PageLoading color="#28a745" topVal="0" />
+        <PageLoading />
       ) : (
           <View>
             <View className="flex align-center padding-tb-xl padding-lr-sm bg-red">

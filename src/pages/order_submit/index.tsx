@@ -39,7 +39,7 @@ export default () => {
   return (
     <View>
       {isLoading ? (
-        <PageLoading color="#28a745" topVal="0" />
+        <PageLoading />
       ) : (
           <View className="margin-top-sm">
             <View className="bg-white margin-bottom-sm padding" style={{ position: 'relative' }}>

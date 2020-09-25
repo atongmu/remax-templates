@@ -53,7 +53,7 @@ export default () => {
   return (
     <View className="order_list" style={{ paddingTop: '90rpx' }}>
       {isLoading ? (
-        <PageLoading color="#28a745" topVal="0" />
+        <PageLoading />
       ) : (
           <View className="padding-env">
             <View className="nav fixed">

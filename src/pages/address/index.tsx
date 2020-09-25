@@ -21,7 +21,7 @@ export default () => {
   return (
     <View className="address">
       {isLoading ? (
-        <PageLoading color="#28a745" topVal="0" />
+        <PageLoading />
       ) : (
           <View className="margin-top-sm">
             <View className="flex bg-white align-center solid-bottom padding-sm">

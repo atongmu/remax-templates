@@ -196,7 +196,7 @@ export default () => {
         {/* 热门推荐 结束 */}
       </View>
       {isLoading && (
-        <PageLoading color="#28a745" topVal="90rpx" />
+        <PageLoading topVal={90} />
       )
       }
     </View >

@@ -81,7 +81,7 @@ export default () => {
         <GroupRow items={orderItems} isRadius={true} type='icon' title="我的单子" isRight={true} rightText="查看全部单子" rightViod={() => toast("列表")} />
       </View>
       {isLoading && (
-        <PageLoading color="#28a745" topVal="0" />
+        <PageLoading />
       )}
     </View>
   );
