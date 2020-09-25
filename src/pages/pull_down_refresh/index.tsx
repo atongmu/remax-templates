@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, useCallback, useRef } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { View, } from 'remax/wechat';
 import { usePageEvent } from 'remax/macro';
 
@@ -6,7 +6,6 @@ import { toast } from '@/utils/common'
 import { deepClone } from '@/utils/util'
 import LoadingModel from '@/components/loading_model';
 import useData from '@/hooks/useData'
-import useRefState from '@/hooks/useRefState'
 
 export interface MaterialsItem {
   id: number,
@@ -35,13 +34,11 @@ export default () => {
   usePageEvent('onPullDownRefresh', () => {
     // 可以返回一个 promise，控制何时停止下来刷新行为
     return new Promise((resolve) => {
-      clean()
       const new_params = deepClone(params)
+      clean()
       setParams(new_params)
-      setTimeout(() => {
-        toast('刷新成功')
-        resolve();
-      }, 1000);
+      toast('刷新成功')
+      resolve();
     })
   });
 
