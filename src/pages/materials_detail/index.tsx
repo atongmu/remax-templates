@@ -5,18 +5,17 @@ import { usePageEvent } from 'remax/macro';
 
 import './index.less'
 import { href, modal, toast } from '@/utils/common'
+import { deepClone } from '@/utils/util'
 import NavModel from '@/components/nar_model';
 import LoadingModel from '@/components/loading_model';
-import useReachBottom from '@/hooks/useReachBottom'
-import useRefState from '@/hooks/useRefState'
-import { getMaterialsIn } from '@/api/index'
+import useData from '@/hooks/useData'
+
 export interface MaterialsItem {
   id: number,
   time: string,
   num: number
 }
 export default () => {
-  const { initStatus, pageLoading, pageStatus, setInitStatus, setPageLoading, setPageStatus } = useReachBottom()
   const [navActive, setNavActive] = useState(0)
   const [pageNo, setPageNo] = useState(1)
   const [showActive, setShowActiven] = useState(false)
@@ -29,6 +28,15 @@ export default () => {
     { value: 2, text: '修改物料' },
     { value: 3, text: '删除物料' },
   ])
+  const [params, setParams] = useState({
+    page_no: 1,
+    page_size: 15,
+    active: 0
+  })
+  const { pageStatus, empty, hasMore, list, load, clean } = useData<MaterialsItem>({
+    url: '/materials_in',
+    method: 'GET'
+  })
   const [itemNum, setItemNum] = useState('')
   const [itemName, setItemName] = useState('')
   const [navItems] = useState(['出库记录', '入库记录'])
@@ -36,52 +44,24 @@ export default () => {
 
   const tabsActive = useRef<number>(navActive);
 
+
   useEffect(() => {
-    const setFun = setTimeout(function () {
-      getData();
-    }, 500);
-    return () => {
-      clearTimeout(setFun);
-    }
-  }, [navActive, pageNo])
+    const new_page = deepClone(params)
+    load(new_page);
+  }, [params])
 
   usePageEvent('onReachBottom', () => {
-    if (pageStatus && pageLoading) {
+    if (pageStatus && hasMore) {
       console.log('onReachBottom')
-      setPageNo(e => pageNo + 1)
+      setParams({ ...params, page_no: params.page_no + 1 })
     }
   });
 
-  const setActive = useCallback((data) => {
-    if (data !== tabsActive.current) {
-      setPageLoading(e => true)
-      setInitStatus(e => true)
-      setDataSource(e => [])
-      setPageNo(e => 1)
-    }
-    console.log(data)
-    console.log(tabsActive.current)
-    tabsActive.current = data
-    setNavActive(tabsActive.current)
-  }, [navActive])
-
-  const getData = async () => {
-    setPageStatus(e => false)
-    const result: any = await getMaterialsIn({ active: tabsActive.current, page_no: pageNo })
-    if (result.status === 200) {
-      const data = result.data
-      if (initStatus) {
-        setDataSource(items => data);
-      } else {
-        setDataSource(items => dataSource.concat(data));
-      }
-      if (data.length < 15) {
-        setPageLoading(e => false)
-      }
-      setPageStatus(e => true)
-      setInitStatus(e => false)
-    }
+  const setActive = (data: any) => {
+    clean()
+    setParams({ ...params, page_no: params.page_no + 1, active: data })
   }
+
   const cimsEdit = () => { }
   const PopupClose = () => {
     setShowPopup(e => false)
@@ -91,15 +71,15 @@ export default () => {
     setShowCimsPopup(e => false)
     setItemName(e => '')
   }
-  const Loading = useMemo(() => <LoadingModel isLoading={pageLoading} />, [pageLoading]);
+  const Loading = useMemo(() => <LoadingModel isLoading={hasMore} empty={empty} />, [hasMore]);
   return (
     <View className="materials">
       <View className="nav fixed">
-        <NavModel className="text-green" active={tabsActive.current} items={navItems} detail={(o) => setActive(o)} />
+        <NavModel className="text-green" active={params.active} items={navItems} detail={(o) => setActive(o)} />
       </View>
 
       <View className="content">
-        {dataSource.map(item => (
+        {list.map(item => (
           <Cell key={item.id} label={item.num}>
             {item.time}
           </Cell>

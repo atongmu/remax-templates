@@ -11,6 +11,7 @@ import LoadingModel from '@/components/loading_model';
 import { TodoContext } from '@/app';
 import useData from '@/hooks/useData'
 import { deepClone } from '../../utils/util';
+import PullDownModel from '../../components/pullDown_model/index';
 
 export interface MaterialsItem {
   id: number,
@@ -28,17 +29,21 @@ export default () => {
   const { pageStatus, empty, hasMore, list, load, clean } = useData<MaterialsItem>({
     url: '/materials'
   })
-  usePageEvent('onPullDownRefresh', () => {
-    // 可以返回一个 promise，控制何时停止下来刷新行为
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const new_params = deepClone(params)
-        clean()
-        setParams({ ...new_params, page_no: params.page_no + 1 })
-        resolve();
-      }, 100);
-    })
-  });
+  const [pullDownText, setPullDownText] = useState('松开刷新')
+
+  // usePageEvent('onPullDownRefresh', () => {
+  //   // 可以返回一个 promise，控制何时停止下来刷新行为
+  //   setPullDownText("加载中···")
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //       const new_params = deepClone(params)
+  //       clean()
+  //       setParams({ ...new_params, page_no: params.page_no + 1 })
+  //       setPullDownText("松开刷新")
+  //       resolve();
+  //     }, 500);
+  //   })
+  // });
   usePageEvent('onReachBottom', () => {
     if (pageStatus && hasMore) {
       const new_params = deepClone(params)
@@ -68,7 +73,13 @@ export default () => {
       <View className="nav fixed">
         <SearchModel text={`${params.name !== '' ? params.name : '搜索物料'}`} searchFun={() => href(page_path.search)} color="#28a745" />
       </View>
-      <View style={{ height: '100', background: '#28a745' }}></View>
+      <View>
+        <PullDownModel detail={() => {
+          const new_params = deepClone(params)
+          clean()
+          setParams({ ...new_params, page_no: params.page_no + 1 })
+        }} />
+      </View>
       <View>
         {list.map((item, index) => (
           <Cell key={index} label={item.name} arrow onTap={() => toast("详情")}>
