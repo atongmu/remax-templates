@@ -2,21 +2,21 @@
  * @Author: codingfly
  * @Description: 分页封装
  * @Date: 2020-08-18 15:27:27
- * @LastEditTime: 2020-09-24 21:52:36
- * @FilePath: \templates-ts\src\hooks\useData.ts
+ * @LastEditTime: 2020-09-25 09:27:55
+ * @FilePath: \remax-templates\src\hooks\useData.ts
  */
 import React, { useState, useCallback } from 'react'
 import { ajax } from '@/utils/common'
 import useRefState from '@/hooks/useRefState'
 export interface Props {
     url: string;
-    method: any;
+    method?: any;
     isDelay?: boolean;
     isForm?: boolean;
     hideLoad?: boolean;
 }
 
-export default <T>({ url, method, isDelay, isForm, hideLoad = true }: Props) => {
+export default <T>({ url, method = "GET", isDelay, isForm, hideLoad = true }: Props) => {
     const [pageStatus, setPageStatus, statusRef] = useRefState(true)
     // 列表是否全部加载完毕
     const [hasMore, setHasMore, hasMoreRef] = useRefState(true)
@@ -26,7 +26,7 @@ export default <T>({ url, method, isDelay, isForm, hideLoad = true }: Props) => 
 
     const getData = useCallback(async (data) => {
         try {
-            let res: any = await ajax(url, method, { ...data }, isDelay, isForm, hideLoad)
+            let res: any = await ajax(url, method, data, isDelay, isForm, hideLoad)
             if (res.status === 200) {
                 return res.data
             }
@@ -67,12 +67,5 @@ export default <T>({ url, method, isDelay, isForm, hideLoad = true }: Props) => 
         setEmpty(false)
     }, [])
 
-    // 刷新列表
-    const refresh = useCallback((o) => {
-        clean()
-        setTimeout(() => {
-            load(o)
-        })
-    }, [])
-    return { pageStatus, empty, hasMore, list, load, refresh, clean }
+    return { pageStatus, empty, hasMore, list, load, clean }
 }
