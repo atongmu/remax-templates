@@ -2,14 +2,15 @@
  * @Author: codingfly
  * @Description: 配置文件
  * @Date: 2020-08-13 08:54:44
- * @LastEditTime: 2020-09-11 13:40:15
- * @FilePath: \templates-ts\src\app.config.ts
+ * @LastEditTime: 2020-09-25 15:00:02
+ * @FilePath: \remax-templates\src\app.config.ts
  */
 import { AppConfig } from "remax/wechat";
 const backgroundColor: string = '#28a745';
 const title: string = '微信小程序模板';
 const pages: Array<string> = [
   'pages/index/index',
+  'pages/templates/index',
   'pages/login/index',
   'pages/mall/index',
   'pages/cart/index',
@@ -43,6 +44,31 @@ const pages: Array<string> = [
 
 const config: AppConfig = {
   pages,
+  tabBar: {
+    color: '#8a8a8a',
+    selectedColor: "#39b54a",
+    backgroundColor: "#fff",
+    list: [
+      {
+        text: '组件',
+        iconPath:'image/tabbar/code.png',
+        selectedIconPath:'image/tabbar/code_active.png',
+        pagePath: 'pages/index/index',
+      },
+      {
+        text: '模板',
+        iconPath:'image/tabbar/templates.png',
+        selectedIconPath:'image/tabbar/templates_active.png',
+        pagePath: 'pages/templates/index',
+      },
+      {
+        text: '我的',
+        iconPath:'image/tabbar/my.png',
+        selectedIconPath:'image/tabbar/my_active.png',
+        pagePath: 'pages/my/index',
+      },
+    ]
+  },
   window: {
     navigationBarTitleText: title,
     navigationBarBackgroundColor: backgroundColor

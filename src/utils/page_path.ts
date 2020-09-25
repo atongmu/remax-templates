@@ -2,12 +2,14 @@
  * @Author: codingfly
  * @Description: 页面路径管理
  * @Date: 2020-08-13 09:56:53
- * @LastEditTime: 2020-09-11 13:39:47
- * @FilePath: \templates-ts\src\utils\page_path.ts
+ * @LastEditTime: 2020-09-25 14:59:39
+ * @FilePath: \remax-templates\src\utils\page_path.ts
  */
 const path = {
     // 首页
     home: '/pages/index/index',
+    // 模板
+    templates: '/pages/templates/index',
     // 商城首页
     mall: '/pages/mall/index',
     // 库存管理首页
