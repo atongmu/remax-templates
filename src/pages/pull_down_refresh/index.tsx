@@ -36,7 +36,7 @@ export default () => {
     return new Promise((resolve) => {
       const new_params = deepClone(params)
       clean()
-      setParams(new_params)
+      setParams({ ...new_params, page_no: 1 })
       toast('刷新成功')
       resolve();
     })
