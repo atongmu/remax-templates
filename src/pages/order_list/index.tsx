@@ -1,10 +1,8 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { View, Text } from 'remax/wechat';
-import { Card, Button, Tabs } from 'anna-remax-ui';
+import {  Button  } from 'anna-remax-ui';
 import { deepClone } from '@/utils/util'
 import { usePageEvent } from 'remax/macro';
-
-import './index.less';
 import { href } from '@/utils/common'
 import LoadingModel from '@/components/loading_model';
 import OrderModel from '@/components/order_model';
@@ -12,6 +10,8 @@ import NavModel from '@/components/nar_model';
 import useData from '@/hooks/useData'
 import { toast } from '../../utils/common';
 import page_path from '@/utils/page_path';
+import './index.less';
+
 export default () => {
   const [params, setParams] = useState({
     page_no: 1,
@@ -37,7 +37,7 @@ export default () => {
     return new Promise((resolve) => {
       const new_params = deepClone(params)
       clean()
-      setParams(new_params)
+      setParams({ ...new_params, page_no: 1 })
       toast('刷新成功')
       resolve();
     })
