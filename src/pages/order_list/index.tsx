@@ -4,12 +4,12 @@ import { Button } from 'anna-remax-ui';
 import { deepClone } from '@/utils/util'
 import { usePageEvent } from 'remax/macro';
 import { href } from '@/utils/common'
+import { toast } from '../../utils/common';
+import page_path from '@/utils/page_path';
 import LoadingModel from '@/components/loading_model';
 import OrderModel from '@/components/order_model';
 import NavModel from '@/components/nar_model';
 import useData from '@/hooks/useData'
-import { toast } from '../../utils/common';
-import page_path from '@/utils/page_path';
 import './index.less';
 
 export default () => {
@@ -31,16 +31,6 @@ export default () => {
     if (pageStatus && hasMore) {
       setParams({ ...params, page_no: params.page_no + 1 })
     }
-  });
-  usePageEvent('onPullDownRefresh', () => {
-    // 可以返回一个 promise，控制何时停止下来刷新行为
-    return new Promise((resolve) => {
-      const new_params = deepClone(params)
-      clean()
-      setParams({ ...new_params, page_no: 1 })
-      toast('刷新成功')
-      resolve();
-    })
   });
   const filterStatus = (e: number) => {
     let text = ''
@@ -88,7 +78,7 @@ export default () => {
               <View>
                 共计 {item.products.length} 合计：<Text className="text-price">11</Text>
               </View>
-              <View className="padding-top-sm">
+              <View className="padding-top-sm margin-top-sm solid-top">
                 <Button size="small" onTap={() => toast("按钮")}>按钮</Button>
               </View>
             </View>
