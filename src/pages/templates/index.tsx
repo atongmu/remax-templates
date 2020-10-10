@@ -77,7 +77,6 @@ export default () => {
               <Cell label="地址列表模板" onTap={() => href(page_path.address_list)} arrow />
               <Cell label="订单模板" onTap={() => href(page_path.order_detail)} arrow />
               <Cell label="订单列表模板" onTap={() => href(page_path.order_list)} arrow />
-              <Cell label="我的模板" onTap={() => href(page_path.my)} arrow />
               <Cell label="物流模板" onTap={() => href(page_path.timeaxis)} arrow />
             </View>
           )}
