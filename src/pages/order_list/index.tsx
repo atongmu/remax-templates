@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { View, Text } from 'remax/wechat';
-import {  Button  } from 'anna-remax-ui';
+import { Button } from 'anna-remax-ui';
 import { deepClone } from '@/utils/util'
 import { usePageEvent } from 'remax/macro';
 import { href } from '@/utils/common'
@@ -66,36 +66,34 @@ export default () => {
   const Loading = useMemo(() => <LoadingModel isLoading={hasMore} empty={empty} />, [hasMore]);
   return (
     <View className="order_list" style={{ paddingTop: '90rpx' }}>
-      <View className="padding-env">
-        <View className="nav fixed">
-          <NavModel className="text-green" active={params.active} items={navItems} detail={(o: number) => {
-            clean()
-            setParams({ ...params, page_no: 1, active: o })
-          }} />
-        </View>
-        <View>
-          {list.map((item, index) => (
-            <View className="bg-white margin-bottom-sm" key={index}>
-              <View className="flex padding-sm solids-bottom">
-                <View className="flex-sub">单号：{item.id}</View>
-                <View className="text-gray">{filterStatus(item.status)}</View>
+      <View className="nav fixed">
+        <NavModel className="text-green" active={params.active} items={navItems} detail={(o: number) => {
+          clean()
+          setParams({ ...params, page_no: 1, active: o })
+        }} />
+      </View>
+      <View>
+        {list.map((item, index) => (
+          <View className="bg-white margin-bottom-sm" key={index}>
+            <View className="flex padding-sm solids-bottom">
+              <View className="flex-sub">单号：{item.id}</View>
+              <View className="text-gray">{filterStatus(item.status)}</View>
+            </View>
+            <View className="solid-bottom padding-sm" onClick={() => href(page_path.order_detail)}>
+              {item.products.map((li: any) => (
+                <OrderModel key={li.id} item={li} detail={() => console.log(li)} />
+              ))}
+            </View>
+            <View className="text-right padding-sm">
+              <View>
+                共计 {item.products.length} 合计：<Text className="text-price">11</Text>
               </View>
-              <View className="solid-bottom padding-sm" onClick={() => href(page_path.order_detail)}>
-                {item.products.map((li: any) => (
-                  <OrderModel key={li.id} item={li} detail={() => console.log(li)} />
-                ))}
-              </View>
-              <View className="text-right padding-sm">
-                <View>
-                  共计 {item.products.length} 合计：<Text className="text-price">11</Text>
-                </View>
-                <View className="padding-top-sm">
-                  <Button size="small" onTap={() => toast("按钮")}>按钮</Button>
-                </View>
+              <View className="padding-top-sm">
+                <Button size="small" onTap={() => toast("按钮")}>按钮</Button>
               </View>
             </View>
-          ))}
-        </View>
+          </View>
+        ))}
       </View>
       {Loading}
     </View>
